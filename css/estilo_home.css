@@ -1,0 +1,126 @@
+*{
+	margin: 0;
+	padding: 0;
+	
+}
+
+.page-container {
+    display: grid;
+    grid-template-columns: 10% 60% 30%;
+    grid-template-rows: 80px auto 300px;
+}
+
+/*Estilo_Topo*/
+.page-header {
+    grid-row: 1;
+    grid-column:1;
+    background: #000;
+
+}
+
+.centralizar_elemento {
+	height: 100%;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+
+}
+
+.page-menu {
+    grid-row: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background: #000;
+    font-weight:10;
+}
+
+.page-menu ul{
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	
+}
+
+.page-menu li{
+	flex:auto;
+	padding-left: 20px;
+
+}
+
+.page-menu a{
+	text-decoration: none;
+	color: #fff;
+	padding: 10px;
+	position: relative;
+	font: 14px Arial;
+	font-weight: bold;
+
+}
+
+.page-menu a:before{
+	content: '';
+	width:15px;
+	height: 3px;
+	background: #ed145d;
+	position: absolute;
+	top: 90%;
+	left: 10px;
+	transition: .5s;
+
+}
+
+.page-menu ul li:hover a:before{
+	width: 50%;
+
+}
+
+.login{
+	grid-row: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    text-align: center;
+	text-decoration: none;
+	list-style: none;
+	font: 14px Arial;	
+	background: #000;
+	color: #fff;
+}
+
+.login:hover{
+	color: #ed145d;
+	transition: .5s;
+}
+
+/*Responsivo_Topo*/
+
+@media screen and (max-width: 1047px) {
+
+.page-menu {
+    grid-row: 1;
+    grid-column:1;
+    background: #000;
+    font-weight:10;
+}
+
+}
+
+
+
+/*Outra página CSS */
+
+.page-content {
+    grid-row: 2;
+  	grid-column-start: 1;
+    grid-column-end: 4;
+    background: yellow;
+}
+
+.page-footer {
+    grid-row: 3;
+  	grid-column-start: 1;
+    grid-column-end: 4;
+    background: red;
+}
