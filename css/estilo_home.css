@@ -3,21 +3,7 @@
 	padding: 0;
 	
 }
-
-.page-container {
-    display: grid;
-    grid-template-columns: 10% 60% 30%;
-    grid-template-rows: 80px auto 300px;
-}
-
-/*Estilo_Topo*/
-.page-header {
-    grid-row: 1;
-    grid-column:1;
-    background: #000;
-
-}
-
+/*Centralizando elemento*/
 .centralizar_elemento {
 	height: 100%;
 	display: -webkit-flex;
@@ -26,14 +12,58 @@
 	align-items: center;
 	-webkit-justify-content: center;
 	justify-content: center;
+}
 
+/*btn abre menu*/
+label[for="bt_menu"]{
+	display: none;
+	padding: 5px;
+	margin-top: 10px; 
+	background-color: #222;
+	color: #fff;
+	font-family: Arial;
+	text-align: center;
+	font-size: 30px;
+	width: 50px;
+	height: 50px;
+	grid-row:1;
+	grid-column:1;
+	
+}
+
+#bt_menu{
+	display: none;
+}
+
+.margem_sup{
+	width: 100%;
+	height: 80px;
+	background-color: #fff;
+}
+
+
+
+/*Estilizando_Topo*/
+
+
+.page-header {
+   	display: grid;
+    grid-template-columns: 15% 65% 20%;
+    grid-template-rows: 80px;
+    background-color: #000;
+    position: fixed;
+    width: 100%;
+}
+
+
+.page-logo{
+	grid-row: 1;
+    grid-column:1;
 }
 
 .page-menu {
     grid-row: 1;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    background: #000;
+    grid-column:2;
     font-weight:10;
 }
 
@@ -79,13 +109,11 @@
 
 .login{
 	grid-row: 1;
-    grid-column-start: 3;
-    grid-column-end: 3;
+    grid-column:3;
     text-align: center;
 	text-decoration: none;
 	list-style: none;
 	font: 14px Arial;	
-	background: #000;
 	color: #fff;
 }
 
@@ -94,28 +122,78 @@
 	transition: .5s;
 }
 
-/*Responsivo_Topo*/
+/*______________________________Responsivo_Topo_Inicio_______________________________________*/
 
-@media screen and (max-width: 1047px) {
+/* iPads (restrato e paisagem) */
+@media (max-width :1024px) {
+      /* estilos */
 
-.page-menu {
-    grid-row: 1;
-    grid-column:1;
-    background: #000;
-    font-weight:10;
+    .page-header {
+   	display: grid;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 80px; 
+	}
+
+
+	#bt_menu:checked ~ .page-menu {
+		display: block;
+	}
+
+	label[for="bt_menu"]{
+	display: block;
+	
+	}
+
+    .page-logo{
+		grid-row: 1;
+    	grid-column:2;
+	}
+
+	.page-menu {
+		display: none;
+		width: 100%;
+		grid-row-start:2;
+		grid-row-end:3;
+    	grid-column-start: 1;
+    	grid-column-end: 4;
+    	background: #ed145d;
+    	transition: all .5s;
+    }
+
+    .page-menu {
+		
+    }
+
+	.page-menu ul{
+		display: block;
+		width: 100%;
+	}
+
+	.page-menu li{
+		padding: 20px;
+		flex:none;
+		border:solid 1px black;
+	}
+
+	.page-menu li:hover{
+		background-color: rgba(0, 0, 0, 0.8);
+		transition: .5s;
+	}
+
+	.page-menu a:before{
+		background-color: #fff;
+	}
+
 }
 
-}
+/*______________________________Responsivo_Topo_Fim___________________________________________*/
 
 
 
 /*Outra página CSS */
 
 .page-content {
-    grid-row: 2;
-  	grid-column-start: 1;
-    grid-column-end: 4;
-    background: yellow;
+   height: 1000px;
 }
 
 .page-footer {
