@@ -1,5 +1,72 @@
-.margem_sup{
-	width: 400px;
-	height: 80px;
-	background-color: #fff;
+/*INICIO - MAIN*/
+.espacamento{
+	height: 310px;
 }
+
+/*Banner abaixo do slider*/
+.banner_baixo_slider{
+	width: 100%;
+	text-align: center;
+}
+
+/* Inicio - Banner novidades*/
+.banner_novidades{
+	display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 40px 274px;
+    width: 100%;
+    text-align: center;
+}
+
+.titulo_novidade{
+	grid-row: 1;
+	grid-column-start: 1; 
+    grid-column-end: 5;
+	width: 100%; 
+	line-height:40px; 
+	font-size:25px; 
+	color: #000; 
+	float:left; 
+	text-align:center; 	
+}
+
+.banner_item_01{
+	grid-row: 2;
+	grid-column-start: 1; 
+    grid-column-end: 1;
+}
+.banner_item_02{
+	grid-row: 2;
+	grid-column-start: 2; 
+    grid-column-end: 2;
+}
+.banner_item_03{
+	grid-row: 2;
+	grid-column-start: 3; 
+    grid-column-end: 3;
+}
+
+.banner_item_04{
+	grid-row: 2;
+	grid-column-start: 4; 
+    grid-column-end: 4;
+}
+
+fieldset {
+   	border-top: 1px solid #333;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    display: block;
+    text-align: center;
+}
+
+fieldset legend {
+    padding: 1px 40px;
+}
+
+/* Fim - Banner novidades*/
+
+
+
+/*FIM - MAIN*/
