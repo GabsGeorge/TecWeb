@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+	<main class="container">
+		<!-- INICIO DO MAIN -->
+
+		<!-- INICIO DO SLIDER -->
+		<section class="slider">
+			<section class="slider_box">
+				<header class="hide">
+					<h1>TÍTULO SEMÂNTICO DO SLIDE</h1>
+				</header>
+				<article class="slider_item active"  slider-bg="static/images/001.jpg">
+					<div class="slider_content">
+						<!--campo para texto-->
+						</div>
+				</article>
+
+				<article class="slider_item" slider-bg="static/images/002.jpg">
+					<div class="slider_content">
+						<!--campo para texto-->
+					</div>
+				</article>
+
+				<article class="slider_item" slider-bg="static/images/003.jpg">
+					<div class="slider_content">
+						<!--campo para texto-->
+					</div>
+				</article>
+			</section>
+
+			<div class="slider-prev"><</div>
+			<div class="slider-next">></div>
+		</section>
+		<!-- FIM DO SLIDER -->
+		
+		<section class="espacamento"></section> <!-- ESPAÇAMENTO -->
+
+
+		<!-- Inicio - Banner abaixo slider -->
+		<section class="banner_baixo_slider">
+			<img src="static/images/banner_baixo_slider.jpg">
+		</section>
+		<!-- Fim - Banner abaixo slider -->
+
+		<!-- Inicio - Banner novidades -->		
+		<section class="banner_novidades">
+			<h1 class="titulo_novidade">Novidades</h1>
+
+			<article class="banner_item_01">
+				<img src="static/images/festa-mario.jpg"> 
+			</article>
+			
+			<article class="banner_item_02"> 
+				<img src="static/images/festa-homem_aranha.jpg">
+			</article>
+			
+			<article class="banner_item_03"> 
+				<img src="static/images/festa-moana.jpg">
+			</article>
+
+			<article class="banner_item_04"> 
+				<img src="static/images/festa-carros.jpg">
+			</article>
+		</section>
+		<!-- fim - Banner novidades -->	
+		
+		<!-- Inicio - lista de produtos-->
+		<h1>Produtos</h1>
+
+		<section class="lista_produtos centralizar_elemento">
+			
+			<section class="novidades">
+			{%for produto in produtos%}
+			    <div class="quadro_produto posicao_01 ">
+				       	<a href="produto.html">
+				      	{% if produto.imagem and produto.ativo %}
+				        <figure class="foto_produto">
+				           	<img src="{{produto.imagem.url}}" alt="{{produto.nome}}">
+				        </figure>
+				        <section class="titulo_produto">{{produto.nome_p}}</section>
+				       	</a>
+				        {%else%}
+				        <figure class="foto_produto">
+				           <img src="static/images/produto-sem-imagem.png">
+				        </figure>
+				         <section class="titulo_produto">{{produto.nome_p}}</section>
+				       	</a>      		
+					    {% endif %} 
+					    <section class="preco_produto"><p>{{produto.preco_p}}</p></section>
+					    <section class="botoes_quadro_produto">
+					    {% if produto.vender %}	
+					       <button>COMPRAR</button>
+			    		{%else%}
+			    			<button>ALUGAR</button>
+			    		{% endif %} 	
+					       <button>MAIS DETALHES</button>
+			    		</section>
+			    		{% empty %}
+							<h1>Nenhum curso cadastrado</h1>
+			    </div>	
+			{%endfor%}
+			
+			    
+			     <div class="quadro_produto posicao_02">
+				     <li>
+				       <a href="produto.html">
+				         <figure>
+				           <img src="img/produtos/miniatura1.png">
+				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
+				         </figure>
+				       </a>
+				     </li>
+			     </div>	
+
+			     <div class="quadro_produto posicao_03">
+				     <li>
+				       <a href="produto.html">
+				         <figure>
+				           <img src="img/produtos/miniatura1.png">
+				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
+				         </figure>
+				       </a>
+				     </li>
+			     </div>	
+
+			      <div class="quadro_produto posicao_04">
+				     <li>
+				       <a href="produto.html">
+				         <figure>
+				           <img src="img/produtos/miniatura1.png">
+				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
+				         </figure>
+				       </a>
+				     </li>
+			     </div>
+			     <div class="quadro_produto posicao_05">
+				     <li>
+				       <a href="produto.html">
+				         <figure>
+				           <img src="img/produtos/miniatura1.png">
+				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
+				         </figure>
+				       </a>
+				     </li>
+			     </div>	
+
+			     <div class="quadro_produto posicao_06">
+				     <li>
+				       <a href="produto.html">
+				         <figure>
+				           <img src="img/produtos/miniatura1.png">
+				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
+				         </figure>
+				       </a>
+				     </li>
+			     </div>	
+
+			     <div class="quadro_produto posicao_07">
+				     <li>
+				       <a href="produto.html">
+				         <figure>
+				           <img src="img/produtos/miniatura1.png">
+				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
+				         </figure>
+				       </a>
+				     </li>
+			     </div>	
+
+			      <div class="quadro_produto posicao_08">
+				     <li>
+				       <a href="produto.html">
+				         <figure>
+				           <img src="static/img/produtos/miniatura1.png">
+				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
+				         </figure>
+				       </a>
+				     </li>
+			     </div>	
+	
+			 </section>	
+		</section>
+		<!-- Fim - lista de produtos-->
+
+				<section class="espacamento"></section> <!-- ESPAÇAMENTO -->
+
+
+
+	</main>
+		<!-- FIM DO MAIN -->
+
+{%endblock%}
