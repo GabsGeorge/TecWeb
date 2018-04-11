@@ -1,11 +1,12 @@
 /*INICIO - MAIN*/
 .espacamento{
-	height: 310px;
+	height: 150px;
 }
 
 /*Banner abaixo do slider*/
 .banner_baixo_slider{
 	width: 100%;
+	height: 100px;
 	text-align: center;
 }
 
@@ -13,7 +14,7 @@
 .banner_novidades{
 	display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 40px 274px;
+    grid-template-rows: 150px 100px;
     width: 100%;
     text-align: center;
 }
@@ -26,7 +27,6 @@
 	line-height:40px; 
 	font-size:25px; 
 	color: #000; 
-	float:left; 
 	text-align:center; 	
 }
 
@@ -67,124 +67,5 @@
 	justify-content: center;
 }
 
-
-.novidades{
-	display: grid;
-	grid-template-rows: 390px 390px;
-	grid-template-columns: 25% 25% 25% 25%;		
-}
-
-.quadro_produto{
-	border: solid 1px silver;
-	width: 300px;
-	height: 350px;
-	margin: 8px;
-}
-
-.quadro_produto a{
-	text-decoration: none;
-	color: #000;
-	text-align:center;
-}
-
-.posicao_01{
-	grid-row: 1;
-	grid-column: 1; 
-}
-
-.posicao_02{
-	grid-row: 1;
-	grid-column: 2; 
-}
-.posicao_03{
-	grid-row: 1;
-	grid-column: 3; 
-}
-.posicao_04{
-	grid-row: 1;
-	grid-column: 4; 
-}
-
-.posicao_05{
-	grid-row: 2;
-	grid-column: 1; 
-}
-
-.posicao_06{
-	grid-row: 2;
-	grid-column: 2; 
-}
-.posicao_07{
-	grid-row: 2;
-	grid-column: 3; 
-}
-.posicao_08{
-	grid-row: 2;
-	grid-column: 4; 
-}
-
-
-.foto_produto img{
-	max-height: 220px;
-	max-width: 280px;
-	width: auto;
-	height: auto;
-	text-align: center;
-
-}
-
-.preco_produto p{
-	color: #057ec5;
-	font-weight: bold;
-	margin-top: 20px;
-	margin-left: 25px;
-	font-size: 20px;
-
-}
-
-.botoes_quadro_produto{
-	padding: 20px;
-	text-align: center;
-}
-
-.botoes_quadro_produto button{
-	text-align: center;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	font-weight: bold;
-	color: #fff;
-	padding: 7px 12px;
-	background: -moz-linear-gradient(
-		top,
-		#42ba3c 0%,
-		#96e655);
-	background: -webkit-gradient(
-		linear, left top, left bottom,
-		from(#42ba3c),
-		to(#96e655));
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	border: 0px solid #000000;
-	-moz-box-shadow:
-		1px 2px 3px rgba(000,000,000,0.4),
-		inset 0px 0px 5px rgba(242,237,206,0);
-	-webkit-box-shadow:
-		1px 2px 3px rgba(000,000,000,0.4),
-		inset 0px 0px 5px rgba(242,237,206,0);
-	box-shadow:
-		1px 2px 3px rgba(000,000,000,0.4),
-		inset 0px 0px 5px rgba(242,237,206,0);
-	text-shadow:
-		0px -1px 3px rgba(255,255,255,0),
-		0px 0px 13px rgba(255,255,255,0.4);
-}
-
-
-.botoes_quadro_produto button:hover {
-	background:#057ec5;
-}
-
-/* Fim - lista produtos*/
 
 /*FIM - MAIN*/

@@ -6,7 +6,7 @@ class Colaboradores(models.Model):
     telefone_c = models.IntegerField(db_column='Telefone_C')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Colaboradores'
 
 
@@ -18,50 +18,46 @@ class Contratos(models.Model):
     endereco_ct = models.CharField(db_column='Endereco_CT', max_length=100)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Contratos'
 
 
 class Fornecedor(models.Model):
-    nome_f = models.CharField("Nome do Fornecedor",db_column='Nome_F', primary_key=True, max_length=100)  # Field name made lowercase.
+    nome_f = models.CharField(db_column='Nome_F', primary_key=True, max_length=100)  # Field name made lowercase.
     email_f = models.CharField(db_column='Email_F', max_length=100, blank=True, null=True)  # Field name made lowercase.
     endereco_f = models.CharField(db_column='Endereco_F', max_length=255)  # Field name made lowercase.
     telefoneprincipal = models.IntegerField(db_column='TelefonePrincipal')  # Field name made lowercase.
     telefonesecundario = models.IntegerField(db_column='TelefoneSecundario', blank=True, null=True)  # Field name made lowercase.
     categoria_f = models.CharField(db_column='Categoria_F', max_length=100)  # Field name made lowercase.
 
-    def __str__(self):
-        return self.nome_f
-
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Fornecedor'
 
 
 class Produto(models.Model):
-    codigo_p = models.AutoField("Codigo do produto", db_column='Codigo_P', primary_key=True)  # Field name made lowercase.
+    codigo_p = models.AutoField(db_column='Codigo_P', primary_key=True)  # Field name made lowercase.
     nome_f = models.ForeignKey(Fornecedor, models.DO_NOTHING, db_column='Nome_F')  # Field name made lowercase.
-    nome_p = models.CharField("Titulo do produto", db_column='Nome_P', max_length=100)  # Field name made lowercase.
-    quantidade = models.SmallIntegerField("Quantidade", db_column='Quantidade')  # Field name made lowercase.
-    categoria_p = models.CharField("Categoria", db_column='Categoria_P', max_length=100)  # Field name made lowercase.
-    imagem = models.ImageField("Imagem do Produto",upload_to='banco_de_imagens', null=True, blank=True)
-    descricao = models.TextField('Especificação do produto', blank=True)
-    custo_p = models.IntegerField("Custo do produto",db_column='Custo_p')
-    preco_p = models.IntegerField("Valor de venda", db_column='Preco_p')
-    vender = models.BooleanField("Vender ?",default=True)
-    ativo = models.BooleanField("Ativo ?",default=True)
-
-
-    class Meta:
-        managed = False
-        db_table = 'Produto'
-        verbose_name = 'Produto'
-        verbose_name_plural = 'Produtos'
-        ordering = ['nome_p']  
+    nome_p = models.CharField(db_column='Nome_P', max_length=100)  # Field name made lowercase.
+    quantidade = models.SmallIntegerField(db_column='Quantidade')  # Field name made lowercase.
+    categoria_p = models.CharField(db_column='Categoria_P', max_length=100)  # Field name made lowercase.
+    imagem = models.ImageField(db_column='Imagem',upload_to='banco_de_imagens')
+    descricao = models.TextField(db_column='Descricao_P')
+    custo_p = models.IntegerField(db_column='Custo_P', blank=True, null=True)
+    preco_p = models.IntegerField(db_column='Preço_P')
+    vender = models.BooleanField(db_column='Vender', default=True)
+    ativo = models.BooleanField(db_column='Ativo',default=True)
 
     def __str__(self):
         return self.nome_p
-            
+
+    class Meta:
+        managed = True
+        db_table = 'Produto'
+        verbose_name = 'Produto'
+        verbose_name_plural = 'Produtos'
+        ordering = ['codigo_p']   
+
 class Usuario(models.Model):
     codigo_u = models.AutoField(db_column='Codigo_U', primary_key=True)  # Field name made lowercase.
     nome_u = models.CharField(db_column='Nome_U', max_length=255)  # Field name made lowercase.
@@ -74,7 +70,7 @@ class Usuario(models.Model):
     news = models.NullBooleanField(db_column='News')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Usuario'
 
 

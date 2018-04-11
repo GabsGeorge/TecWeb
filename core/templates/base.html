@@ -1,19 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<title>Si Lima - Festas e Eventos</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1"/>
-	<link rel="stylesheet" href="static/css/main.css">
-	<link rel="stylesheet" href="static/css/slider.css">
-</head>
+  <meta charset="utf-8">
+  <title>Si Lima - Festas e Eventos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <!--CSS externo bootsrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  
+  <!--CSS interno-->
+  <link rel="stylesheet" href="static/css/boot/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" href="static/css/boot/custom.min.css" media="screen" />
+  <link rel="stylesheet" href="static/css/slider.css">
+  <link rel="stylesheet" href="static/css/main.css">
 <body>
-		
-		{% block conteudo %}
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand"></a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#">Início</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Categorias <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="">Notebooks</a></li>
+                <li><a href="">Acessórios</a></li>
+                <li><a href="">Celulares</a></li>
+              </ul>
+            </li>
+      <li>
+        <a href="contact.html">Contato</a>
+      </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Minha Conta</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-		{% endblock %}
 
-<script src="static/js/jquery.js"></script>
-<script src="static/js/slider.js"></script>
+    {% block conteudo %}
+
+    
+
+    {% endblock %}
+
+  <div class="container">
+    <footer>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="list-unstyled">
+            <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
+            <li><a href="">Início</a></li>
+            <li><a href="">Produtos</a></li>
+            <li><a href="">Contato</a></li>
+            <li><a href="">Termos e Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+	</div>
+	  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="static/css/bootbootstrap.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="static/js/slider.js"></script>
+
 </body>
 </html>

@@ -35,7 +35,7 @@ class UsuarioAlteraForm(forms.ModelForm):
 #
 #Produto begin
 class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ["codigo_p","nome_f","nome_p","quantidade","categoria_p","custo_p","preco_p"]
+    list_display = ["codigo_p","nome_f","nome_p","quantidade","categoria_p"]
     search_fields = ["nome_f","nome_p","categoria_p"]
     filter_horizontal = []
     ordering = ["categoria_p"]

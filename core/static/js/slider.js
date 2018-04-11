@@ -1,67 +1,41 @@
-(function($){
+(function( $ ) {
 
-	// DEFINE BACKGROUND DO SLIDE
-	(function($){
-		$('.slider_item').each(function(){
-			var sliderBg = $(this).attr('slider-bg');
-			$(this).css({'background-image': 'url('+sliderBg+')'});
+    //Function to animate slider captions 
+	function doAnimations( elems ) {
+		//Cache the animationend event in a variable
+		var animEndEv = 'webkitAnimationEnd animationend';
+		
+		elems.each(function () {
+			var $this = $(this),
+				$animationType = $this.data('animation');
+			$this.addClass($animationType).one(animEndEv, function () {
+				$this.removeClass($animationType);
+			});
 		});
-	}(jQuery));
-
-
-	// AVANÇA PARA O PRÓXIMO SLIDE
-	var nextSlider = function(){
-		if($('.slider_item.active').next('.slider_item').size()){
-
-			$('.slider_item.active').each(function(){
-				$(this).next('.slider_item').addClass('active');
-				$(this).removeClass('active');
-			});
-
-		}else{
-			$('.slider_item.active').each(function(){
-				$('.slider_item').removeClass('active');
-				$('.slider_item:eq(0)').addClass('active');
-			});
-		}
 	}
-
-		// VOLTA PARA O SLIDE ANTERIOR
-		var prevSlider = function(){
-			if($('.slider_item.active').index() > 1){
-				$('.slider_item.active').each(function(){
-					$(this).prev('.slider_item').addClass('active');
-					$(this).removeClass('active');
-				});
-
-			}else{
-				$('.slider_item.active').each(function(){
-					$('.slider_item').removeClass('active');
-					$('.slider_item:last-of-type').addClass('active');
-				});
-			}
-		}
-
-		// INICIALIZAÇÃO AUTOMÁTICA DO SLIDE
-		var sliderAuto = setInterval(nextSlider, 3000);
-
-		$('.slider_content, .slider-next, .slider-prev').hover(function(){
-			clearInterval(sliderAuto);
-		},function(){
-			sliderAuto = setInterval(nextSlider, 3000);			
-		});
-
-		//AÇÕES DE AVANÇAR E VOLTAR SLIDE
-		$('.slider-next').click(function(event){
-			event.preventDefault();
-			nextSlider();
-		});
-
-		$('.slider-prev').click(function(event){
-			event.preventDefault();
-			prevSlider();
-		});
-
-
-	}(jQuery))
-
+	
+	//Variables on page load 
+	var $myCarousel = $('#carousel-example-generic'),
+		$firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+		
+	//Initialize carousel 
+	$myCarousel.carousel();
+	
+	//Animate captions in first slide on page load 
+	doAnimations($firstAnimatingElems);
+	
+	//Pause carousel  
+	$myCarousel.carousel('pause');
+	
+	
+	//Other slides to be animated on carousel slide event 
+	$myCarousel.on('slide.bs.carousel', function (e) {
+		var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
+		doAnimations($animatingElems);
+	});  
+    $('#carousel-example-generic').carousel({
+        interval:3000,
+        pause: "false"
+    });
+	
+})(jQuery);	

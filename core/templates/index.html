@@ -1,42 +1,87 @@
 {% extends 'base.html' %}
 {% block conteudo %}
-	<main class="container">
-		<!-- INICIO DO MAIN -->
 
-		<!-- INICIO DO SLIDER -->
-		<section class="slider">
-			<section class="slider_box">
-				<header class="hide">
-					<h1>TÍTULO SEMÂNTICO DO SLIDE</h1>
-				</header>
-				<article class="slider_item active"  slider-bg="static/images/001.jpg">
-					<div class="slider_content">
-						<!--campo para texto-->
-						</div>
-				</article>
-
-				<article class="slider_item" slider-bg="static/images/002.jpg">
-					<div class="slider_content">
-						<!--campo para texto-->
-					</div>
-				</article>
-
-				<article class="slider_item" slider-bg="static/images/003.jpg">
-					<div class="slider_content">
-						<!--campo para texto-->
-					</div>
-				</article>
-			</section>
-
-			<div class="slider-prev"><</div>
-			<div class="slider-next">></div>
-		</section>
-		<!-- FIM DO SLIDER -->
+	<!-- INICIO DO SLIDER -->
 		
-		<section class="espacamento"></section> <!-- ESPAÇAMENTO -->
+	</br>
+		<div id="first-slider">
+    		<div id="carousel-example-generic" class="carousel slide carousel-fade">
+		        <!-- Indicators -->
+		        <ol class="carousel-indicators">
+		            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+		        </ol>
+		        <!-- Wrapper for slides -->
+	       		<div class="carousel-inner" role="listbox">
+	            
+	            <!-- Item 1 -->
+	            <div class="item active slide1">
+	                <div class="row"><div class="container">
+	                    <div class="col-md-3 text-right">
+	                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft">
+	                    </div>
+	                    	<div class="col-md-9 text-left">
+	                        <h3 data-animation="animated bounceInDown"><!--texto--></h3>
+	                        <h4 data-animation="animated bounceInUp"><!--texto--></h4>             
+	                     </div>
+	                </div></div>
+	             </div> 
+	            
+	            <!-- Item 2 -->
+	            <div class="item slide2">
+	                <div class="row"><div class="container">
+	                    <div class="col-md-7 text-left">
+	                        <h3 data-animation="animated bounceInDown"><!--texto--></h3>
+	                        <h4 data-animation="animated bounceInUp"><!--texto--></h4>   
+	                     </div>
+	                    <div class="col-md-5 text-right">
+	                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" >
+	                    </div>
+	                </div></div>
+	            </div>
+	            
+	            <!-- Item 3 -->
+	            <div class="item slide3">
+	                <div class="row"><div class="container">
+	                    <div class="col-md-7 text-left">
+	                        <h3 data-animation="animated bounceInDown"><!--texto--></h3>
+	                        <h4 data-animation="animated bounceInUp"><!--texto--></h4>   
+	                     </div>
+	                    <div class="col-md-5 text-right">
+	                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" >
+	                    </div>     
+	                </div></div>
+	            </div>
+	            
+	            <!-- Item 4 -->
+	            <div class="item slide4">
+	                <div class="row"><div class="container">
+	                    <div class="col-md-7 text-left">
+	                        <h3 data-animation="animated bounceInDown"><!--texto--></h3>
+	                        <h4 data-animation="animated bounceInUp"><!--texto--></h4>   
+	                     </div>
+	                    <div class="col-md-5 text-right">
+	                        <img style="max-width: 200px;"  data-animation="animated zoomInLeft" >
+	                    </div>  
+	                </div></div>
+	            </div>
+	            <!-- End Item 4 -->
+	    
+	       		</div>
+		        <!-- End Wrapper for slides-->
+		        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		            <i class="fa fa-angle-left"></i><span class="sr-only">Previous</span>
+		        </a>
+		        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		            <i class="fa fa-angle-right"></i><span class="sr-only">Next</span>
+		        </a>
+    		</div>
+		</div>
+		<!-- FIM DO SLIDER -->
+		</br>
 
-
-		<!-- Inicio - Banner abaixo slider -->
 		<section class="banner_baixo_slider">
 			<img src="static/images/banner_baixo_slider.jpg">
 		</section>
@@ -44,7 +89,9 @@
 
 		<!-- Inicio - Banner novidades -->		
 		<section class="banner_novidades">
-			<h1 class="titulo_novidade">Novidades</h1>
+			<div class="page-header">
+				<h1>Novidades</h1>
+			</div>
 
 			<article class="banner_item_01">
 				<img src="static/images/festa-mario.jpg"> 
@@ -63,129 +110,50 @@
 			</article>
 		</section>
 		<!-- fim - Banner novidades -->	
-		
-		<!-- Inicio - lista de produtos-->
-		<h1>Produtos</h1>
-
-		<section class="lista_produtos centralizar_elemento">
-			
-			<section class="novidades">
-			{%for produto in produtos%}
-			    <div class="quadro_produto posicao_01 ">
-				       	<a href="produto.html">
-				      	{% if produto.imagem and produto.ativo %}
-				        <figure class="foto_produto">
-				           	<img src="{{produto.imagem.url}}" alt="{{produto.nome}}">
-				        </figure>
-				        <section class="titulo_produto">{{produto.nome_p}}</section>
-				       	</a>
-				        {%else%}
-				        <figure class="foto_produto">
-				           <img src="static/images/produto-sem-imagem.png">
-				        </figure>
-				         <section class="titulo_produto">{{produto.nome_p}}</section>
-				       	</a>      		
-					    {% endif %} 
-					    <section class="preco_produto"><p>{{produto.preco_p}}</p></section>
-					    <section class="botoes_quadro_produto">
-					    {% if produto.vender %}	
-					       <button>COMPRAR</button>
-			    		{%else%}
-			    			<button>ALUGAR</button>
-			    		{% endif %} 	
-					       <button>MAIS DETALHES</button>
-			    		</section>
-			    		{% empty %}
-							<h1>Nenhum curso cadastrado</h1>
-			    </div>	
-			{%endfor%}
-			
-			    
-			     <div class="quadro_produto posicao_02">
-				     <li>
-				       <a href="produto.html">
-				         <figure>
-				           <img src="img/produtos/miniatura1.png">
-				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
-				         </figure>
-				       </a>
-				     </li>
-			     </div>	
-
-			     <div class="quadro_produto posicao_03">
-				     <li>
-				       <a href="produto.html">
-				         <figure>
-				           <img src="img/produtos/miniatura1.png">
-				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
-				         </figure>
-				       </a>
-				     </li>
-			     </div>	
-
-			      <div class="quadro_produto posicao_04">
-				     <li>
-				       <a href="produto.html">
-				         <figure>
-				           <img src="img/produtos/miniatura1.png">
-				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
-				         </figure>
-				       </a>
-				     </li>
-			     </div>
-			     <div class="quadro_produto posicao_05">
-				     <li>
-				       <a href="produto.html">
-				         <figure>
-				           <img src="img/produtos/miniatura1.png">
-				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
-				         </figure>
-				       </a>
-				     </li>
-			     </div>	
-
-			     <div class="quadro_produto posicao_06">
-				     <li>
-				       <a href="produto.html">
-				         <figure>
-				           <img src="img/produtos/miniatura1.png">
-				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
-				         </figure>
-				       </a>
-				     </li>
-			     </div>	
-
-			     <div class="quadro_produto posicao_07">
-				     <li>
-				       <a href="produto.html">
-				         <figure>
-				           <img src="img/produtos/miniatura1.png">
-				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
-				         </figure>
-				       </a>
-				     </li>
-			     </div>	
-
-			      <div class="quadro_produto posicao_08">
-				     <li>
-				       <a href="produto.html">
-				         <figure>
-				           <img src="static/img/produtos/miniatura1.png">
-				           <figcaption>Fuzz Cardigan por R$ 129,90</figcaption>
-				         </figure>
-				       </a>
-				     </li>
-			     </div>	
 	
-			 </section>	
-		</section>
-		<!-- Fim - lista de produtos-->
+	<section class="espacamento"></section> <!-- ESPAÇAMENTO -->
+		<!-- FIM DO SLIDER -->
 
-				<section class="espacamento"></section> <!-- ESPAÇAMENTO -->
-
-
-
-	</main>
-		<!-- FIM DO MAIN -->
-
+    <div class="container">
+		<div class="page-header">
+			<h1>Produtos</h1>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<a href="#">
+						<img src="http://placehold.it/350x250" alt="" />
+					</a>
+					<div class="caption">
+						<h3>Lorem ipsum dolor sit amet</h3>
+						<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p><a href="#" class="btn btn-success" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+	  		    <div class="thumbnail">
+	  				<a href="#">
+	  					<img src="http://placehold.it/350x250" alt="" />
+	  				</a>
+	  				<div class="caption">
+	  					<h3>Lorem ipsum dolor sit amet</h3>
+	  					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	  					<p><a href="#" class="btn btn-success" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+	  				</div>
+	  		    </div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+	  		    <div class="thumbnail">
+	  				<a href="#">
+	  					<img src="http://placehold.it/350x250" alt="" />
+	  				</a>
+	  				<div class="caption">
+	  					<h3>Lorem ipsum dolor sit amet</h3>
+	  					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	  					<p><a href="#" class="btn btn-success" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+	  				</div>
+	  		    </div>
+		  	</div>
+		</div>
 {%endblock%}
