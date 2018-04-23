@@ -44,26 +44,39 @@ class Categoria(models.Model):
     slug = models.SlugField("Identificador", max_length=100)
     criado = models.DateTimeField("Criado em", auto_now_add=True)
     modificado = models.DateTimeField("modificado em", auto_now_add=True)
+<<<<<<< HEAD
     imagem = models.ImageField(db_column='Imagem',upload_to='media')
 
     def __str__(self):
         return self.nome
+=======
+>>>>>>> 59eedc403b61e5551d71d16d914a54fddcf7e052
 
     class Meta:
         managed = True
         db_table = 'Categoria'
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
+<<<<<<< HEAD
         ordering = ['nome']
 
 class Produto(models.Model):  
 
+=======
+        ordering = ['nome'] 
+
+class Produto(models.Model):
+>>>>>>> 59eedc403b61e5551d71d16d914a54fddcf7e052
     codigo_p = models.AutoField(db_column='Codigo_P', primary_key=True)  # Field name made lowercase.
     nome_f = models.ForeignKey(Fornecedor, models.DO_NOTHING, db_column='Nome_F')  # Field name made lowercase.
     nome_p = models.CharField(db_column='Nome_P', max_length=100)  # Field name made lowercase.
     quantidade = models.SmallIntegerField(db_column='Quantidade')  # Field name made lowercase.
     categoria_p = models.ForeignKey(Categoria, models.DO_NOTHING, db_column='categoria_p')  # Field name made lowercase.
+<<<<<<< HEAD
     imagem = models.ImageField(db_column='Imagem',upload_to='media')
+=======
+    imagem = models.ImageField(db_column='Imagem',upload_to='banco_de_imagens')
+>>>>>>> 59eedc403b61e5551d71d16d914a54fddcf7e052
     descricao = models.TextField(db_column='Descricao_P')
     custo_p = models.DecimalField("Custo", decimal_places=2, max_digits=10, db_column='Custo_P')
     preco_p = models.DecimalField("Preço", decimal_places=2, max_digits=10, db_column='Preço_P')

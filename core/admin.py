@@ -79,6 +79,15 @@ class ColaboradoresAdmin(admin.ModelAdmin):
     list_filter = []
 #Colaboradores end
 
+#Categoria begin
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ["codigo_p","nome","sluga","criado","modificado",]
+    search_fields = ["nome"]
+    filter_horizontal = []
+    ordering = ["nome"]
+    list_filter = []
+#Colaboradores end
+
 admin.site.register(Usuario,UsuarioAdmin)
 admin.site.register(Fornecedor)
 admin.site.register(Contratos)
