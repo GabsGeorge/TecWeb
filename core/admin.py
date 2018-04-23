@@ -7,6 +7,7 @@ from core.models import Fornecedor
 from core.models import Contratos
 from core.models import Colaboradores
 from core.models import Produto
+from core.models import Categoria
 # Usuario begin
 class UsuarioAdmin(admin.ModelAdmin):
     list_display = ["codigo_u","nome_u","usuario","senha","email_u","cpf","telefone_u","endereco_u","news"]
@@ -42,6 +43,15 @@ class ProdutoAdmin(admin.ModelAdmin):
     list_filter = []
 #Produto end
 #
+#Categoria begin
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ["codigo_p","nome","slug","criado","modificado",]
+    search_fields = ["nome"]
+    filter_horizontal = []
+    ordering = ["nome"]
+    list_filter = []
+#Colaboradores end
+#
 #Fornecedor begin
 class FornecedorAdmin(admin.ModelAdmin):
     list_display = ["nome_f","email_f","endereco_f","telefoneprincipal","telefonesecundario","categoria_f"]
@@ -74,3 +84,4 @@ admin.site.register(Fornecedor)
 admin.site.register(Contratos)
 admin.site.register(Produto)
 admin.site.register(Colaboradores)
+admin.site.register(Categoria)

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <!--CSS externo bootsrap-->
+  <!--CSS externo bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -17,44 +17,124 @@
   <link rel="stylesheet" href="static/css/slider.css">
   <link rel="stylesheet" href="static/css/main.css">
   <link rel="stylesheet" href="static/css/topo.css">
-<body>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="../" class="navbar-brand"></a>      
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="#">Início</a>
-            </li>
-      <li>
-        <a href="contact.html">Contato</a>
-      </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Minha Conta</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    <br>
 
-<nav class="menu_categoria box">
-    <li class="item menu-magenta"><i class="fa fa-camera-retro"></i><a href="#"><span>Pictures</span></a></li>
-    <li class="item"><a href="#"><span>Code</span></a></li>
-    <li class="item"><a href="#"><span>Talks</span></a></li>
-    <li class="item"><a href="#"><span>Travel</span></a></li>
-    <li class="item"><a href="#"><span>Favorites</span></a></li>
-    <li class="item"><a href="#"><span>Favorites</span></a></li>
-</nav>
+</head>
+
+<body>
+  <header>  
+    <nav class="menu_usuario">
+      <li class="item1">Olá, Seja bem-vindo!<a href=""> - Entrar</a><span><img src="static/images/topo/login.png"></span></li>
+      <li class="item2"><a href="">Minha conta</a></li>
+      <li class="item3"><a href="">Meus pedidos </a></li>
+      <li class="item4"><a href="">Contato</a></li>   
+    </nav>
+
+    <section class="conteudo">
+      <div class="logo">
+        <img src="static/images/topo/logo_silima.png">  
+      </div>
+
+      <div class="pesquisa">
+        <input type="text" placeholder="Search..." class="pesquisa-input">
+        <button class="pesquisa-button"><img src="static/images/topo/btn_busca.png"></button>
+      </div>
+
+      <div class="carrinho">
+          <button class="carrinho_button"><img src="static/images/topo/carrinho.png"> Meu carrinho ( 0 ) </button>
+      </div>
+      
+    </section>
+     
+     
+     <nav class="menu_categorias">
+      <div class="main clearfix">
+        <nav id="menu" class="nav">         
+          <ul>
+            <li>
+              <a href="#">
+                <span class="icon">
+                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/decoracao.png"></i>
+                </span>
+                <span>Decoração</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon"> 
+                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/infantil.png"></i>
+                </span>
+                <span>Festa Infantil</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon">
+                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/joker-face.png"></i>
+                </span>
+                <span>Festa Temática</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon">
+                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/servicos.png"></i>
+                </span>
+                <span>Serviços</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon">
+                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/guloseima.png"></i>
+                </span>
+                <span>Guloseimas</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="icon">
+                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/descartavel.png"></i>
+                </span>
+                <span>Descartaveis</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div> <!-- /Fim -->
+    </nav>
+    <script>
+      //  The function to change the class
+      var changeClass = function (r,className1,className2) {
+        var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+        if( regex.test(r.className) ) {
+          r.className = r.className.replace(regex,' '+className2+' ');
+          }
+          else{
+          r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+          }
+          return r.className;
+      };  
+
+      //  Creating our button in JS for smaller screens
+      var menuElements = document.getElementById('menu');
+      menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+
+      //  Toggle the class on click to show / hide the menu
+      document.getElementById('menutoggle').onclick = function() {
+        changeClass(this, 'navtoogle active', 'navtoogle');
+      }
+
+      // http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/comment-page-2/#comment-438918
+      document.onclick = function(e) {
+        var mobileButton = document.getElementById('menutoggle'),
+          buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+
+        if(buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
+          changeClass(mobileButton, 'navtoogle active', 'navtoogle');
+        }
+      }
+    </script>
+    </header>  
 
 
     {% block conteudo %}
@@ -80,6 +160,7 @@
 	</div>
 	  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="static/css/bootbootstrap.min.js"></script>
+    <script src="static/js/menu_categorias.custom.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="static/js/slider.js"></script>
