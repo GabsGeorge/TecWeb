@@ -1,7 +1,4 @@
 /*INICIO - MAIN*/
-.espacamento{
-	height: 150px;
-}
 
 /*Banner abaixo do slider*/
 .banner_baixo_slider{
@@ -14,21 +11,14 @@
 .banner_novidades{
 	display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 150px 100px;
+    grid-template-rows: 150px 200px;
     width: 100%;
-    text-align: center;
+    position: relative;
+    top: -47px;
+    color: #f39c12;
+
 }
 
-.titulo{
-	grid-row: 1;
-	grid-column-start: 1; 
-    grid-column-end: 5;
-	width: 100%; 
-	line-height:40px; 
-	font-size:25px; 
-	color: #000; 
-	text-align:center; 	
-}
 
 .banner_item_01{
 	grid-row: 2;
