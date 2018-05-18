@@ -1,0 +1,256 @@
+/*INICIO - MAIN*/
+
+/*Banner abaixo do slider*/
+.banner_baixo_slider{
+	width: 100%;
+	height: 100px;
+	text-align: center;
+}
+
+.banner_baixo_slider img{
+	width: 90%;
+}
+
+/* Inicio - Banner novidades*/
+.banner_novidades{
+	display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 150px 200px;
+    width: 100%;
+    position: relative;
+    top: -47px;
+    color: #f39c12;
+
+}
+
+
+.banner_item_01{
+	grid-row: 2;
+	grid-column-start: 1; 
+    grid-column-end: 1;
+}
+.banner_item_02{
+	grid-row: 2;
+	grid-column-start: 2; 
+    grid-column-end: 2;
+}
+.banner_item_03{
+	grid-row: 2;
+	grid-column-start: 3; 
+    grid-column-end: 3;
+}
+
+.banner_item_04{
+	grid-row: 2;
+	grid-column-start: 4; 
+    grid-column-end: 4;
+}
+
+.banner_item_01 img{
+	width: 95%;
+}
+
+.banner_item_02 img{
+	width: 95%;
+}
+
+.banner_item_03 img{
+	width: 95%;
+}
+
+.banner_item_04 img{
+	width: 95%;
+}
+/* Fim - Banner novidades*/
+
+
+/* Inicio - lista produtos*/
+
+.centralizar_elemento {
+	height: 100%;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+
+.produtos{
+	display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-rows: 390px;
+    position: relative;
+
+}
+
+.thumbnail {
+	margin: 10px !important;
+}
+
+.thumbnail img{
+	width: 200px;
+	height:200px;
+}
+
+.caption p {
+    font-size: 16px;
+    font-family: Arial Black;
+    color: #fc9c00;
+}
+
+.page-header h1 {
+    font-size: 3em !important;
+}
+
+/*______________________________ menu_usuário - Responsivo_______________________________________*/
+
+/* iPads (restrato e paisagem) */
+@media only screen and (max-width :1010px) {
+
+	.produtos{
+	    display: grid;
+	    grid-template-columns: 50% 50%;
+	    grid-template-rows: 390px 390px;
+	 }
+
+
+}
+
+/*______________________________ menu_usuário - Responsivo_______________________________________*/
+
+/* iPads (restrato e paisagem) */
+@media only screen and (max-width :655px) {
+
+	.produtos{
+	    display: grid;
+	    grid-template-columns: 100%;
+	    grid-template-rows: 390px 390px 390px;
+	 }
+
+
+}
+
+
+
+/* Fim - lista produtos*/
+
+
+/*______________________________ banner Newslleter_______________________________________*/
+
+.news{
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: 100%;
+	background: #f09400;
+    height: 115px;
+    box-shadow: 1px 1px 1px 1px #00000047;
+    margin-top: 30px;
+}
+
+.news figure{
+	grid-row: 1;
+	grid-column-start: 1; 
+    grid-column-end: 1;
+}
+
+.news figure img{
+	width: 75px;
+    height: 75px;
+    position: relative;
+    left: 200px;
+    top: 25px;
+}
+
+.news span{
+	grid-row: 1;
+	grid-column-start: 2; 
+    grid-column-end: 2;
+    text-align: center;
+    margin-top: 40px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: Roboto,sans-serif; 
+    font-size: 2.2rem; 
+    font-weight: 400;
+    line-height: 2.4rem;
+}
+
+.news input{
+	grid-row: 1;
+	grid-column-start: 3; 
+    grid-column-end: 3;
+    height: 35px;
+    position: relative;
+    top: 40px;
+    padding: 10px;
+}
+
+.news button{
+	grid-row: 1;
+	grid-column-start: 4; 
+    grid-column-end: 4;
+    height: 35px;
+    width: 100px;
+    position: relative;
+    top: 40px;
+    background: #fff;
+    border: none;
+    margin-left: 5px;
+}
+
+/*______________________________ news - Responsivo_______________________________________*/
+
+/* iPads (restrato e paisagem) */
+@media screen and (max-width :1065px) {
+
+	.news figure img {
+	    width: 75px;
+	    height: 75px;
+	    position: relative;
+	    left: 130px;
+	    top: 25px;
+	}
+
+	.news span {
+		font-size: 25px;
+	}
+
+}
+
+/* iPads (restrato e paisagem) */
+@media screen and (max-width :817px) {
+
+	.news figure img {
+	    width: 75px;
+	    height: 75px;
+	    position: relative;
+	    left: 69px;
+	    top: 25px;
+	}
+
+	.news span {
+		font-size: 20px;
+	}
+
+}
+
+
+/* iPads (restrato e paisagem) */
+@media screen and (max-width :617px) {
+
+	.news figure img {
+	    width: 75px;
+	    height: 75px;
+	    position: relative;
+	    left: 23px;
+	    top: 25px;
+	}
+
+	.news span {
+		font-size: 15px;
+	}
+
+}
+/*FIM - MAIN*/

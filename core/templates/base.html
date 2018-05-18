@@ -10,37 +10,94 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+  
   
   <!--CSS interno-->
   <link rel="stylesheet" href="static/css/boot/bootstrap.min.css" media="screen" />
   <link rel="stylesheet" href="static/css/boot/custom.min.css" media="screen" />
-  <link rel="stylesheet" href="static/css/slider.css">
-  <link rel="stylesheet" href="static/css/main.css">
-  <link rel="stylesheet" href="static/css/topo.css">
+  <link rel="stylesheet" href="static/css/flexslider.css" type="text/css">
+  <link rel="stylesheet" href="static/css/index.css" type="text/css">
+  <link rel="stylesheet" href="static/css/topo.css" type="text/css">
+  <link rel="stylesheet" href="static/css/detalhe_produto.css" type="text/css">
+  <link rel="stylesheet" href="static/css/login.css" type="text/css">
+  <link rel="stylesheet" href="static/css/contato.css" type="text/css">
+  <link rel="stylesheet" href="static/css/registrar.css" type="text/css">
+  <link rel="stylesheet" href="static/css/rodape.css" type="text/css">
+  <link rel="stylesheet" href="static/css/festa.css" type="text/css">
+  <link rel="stylesheet" href="static/css/produto.css" type="text/css">
 
+
+
+</head>
 
     <nav class="menu_usuario">
-      <li class="item1">Olá, Seja bem-vindo!<a href=""> - Entrar</a><span><img src="static/images/topo/login.png"></span></li>
-      <li class="item2"><a href="">Minha conta</a></li>
-      <li class="item3"><a href="">Meus pedidos </a></li>
-      <li class="item4"><a href="">Contato</a></li>   
+        
+        <li class="dropdown"> <!--Menu usuário responsivo fase 2-->
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu1">Conta <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="login.html">Entrar</a></li>
+                <li><a href="registrar.html">Cadastre-se</a></li>
+                <li><a href="">Minha conta</a></li>
+                <li><a href="">Quem somos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+              </ul>
+        </li>
+
+
+        <li class="dropdown"><!--Menu usuário responsivo fase 1-->
+            <span><img src="static/images/topo/menu.png"></span>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu2">Conta <span class="caret">
+            <span></a>
+            <ul class="dropdown-menu" aria-labelledby="download">
+              <li><a href="login.html">Entrar</a></li>
+              <li><a href="registrar.html">Cadastre-se</a></li>
+            </ul>
+        </li>
+          
+        <li class="item1">
+        {% if user.is_authenticated %}
+           <span><img src="static/images/topo/login.png"></span> 
+           Olá {{user}}, Seja bem-vindo!</a><a href="{% url 'sair' %}"> Sair</a>
+        </li>
+        {%else%}
+          <span><img src="static/images/topo/login.png"></span>
+          Seja bem-vindo!<a href="registrar.html" class="txt-branco"> Cadastre-se</a> ou efetue o <a href="login.html" class="txt-branco">Login</a>
+        {%endif%}
+
+        </li>
+        <li class="carrinho_menu_usuario"><img src="static/images/topo/carrinho.png"> ( 0 )</li> <!--carrinho de compras responsivo--> 
+        <li class="item2"><a href="">Meus Pedidos</a></li>
+        <li class="item3"><a href="">Minha Conta</a></li>
+        <li class="item4"><span><img src="static/images/topo/whatsapp-logo.png"> </span>(11)0000-0000</li>
+        <li class="item5"><span><img src="static/images/topo/telefone.png"> </span>(11)0000-0000</li>
+        <li class="item6">
+            <span><img src="static/images/topo/facebook-logo.png"></span>
+            <span><img src="static/images/topo/instagram-logo.png"></span>
+        </li> 
+
     </nav>
 
     <section class="conteudo">
-      <div class="logo">
+      <div class="logo"> <a href="index.html" >
         <img src="static/images/topo/logo_silima.png">  
+         </a> 
       </div>
 
       <div class="pesquisa">
-        <input type="text" placeholder="Search..." class="pesquisa-input">
+        <input type="text" placeholder="Busca ...">
         <button class="pesquisa-button"><img src="static/images/topo/btn_busca.png"></button>
       </div>
 
       <div class="carrinho">
-          <button class="carrinho_button"><img src="static/images/topo/carrinho.png"> Meu carrinho ( 0 ) </button>
+          <button class="carrinho_button"><img src="static/images/topo/carrinho.png">  Carrinho</button>
+          <div class="preco-carrinho"> 0 itens | R$ 0,00 </div>
       </div>  
     </section>
 
+     <div class="container"> 
      <nav class="menu_categorias">
       <div class="main clearfix">
         <nav id="menu" class="nav">         
@@ -78,7 +135,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="{{categoria.slug}}">
                 <span class="icon">
                   <i aria-hidden="true"><img src="static/images/topo/icones_menu/guloseima.png"></i>
                 </span>
@@ -96,40 +153,9 @@
           </ul>
         </nav>
       </div> <!-- /Fim -->
-    </nav>
+    </div>
+  </nav>
 
-    <script>
-      //  The function to change the class
-      var changeClass = function (r,className1,className2) {
-        var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
-        if( regex.test(r.className) ) {
-          r.className = r.className.replace(regex,' '+className2+' ');
-          }
-          else{
-          r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
-          }
-          return r.className;
-      };  
-
-      //  Creating our button in JS for smaller screens
-      var menuElements = document.getElementById('menu');
-      menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
-
-      //  Toggle the class on click to show / hide the menu
-      document.getElementById('menutoggle').onclick = function() {
-        changeClass(this, 'navtoogle active', 'navtoogle');
-      }
-
-      // http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/comment-page-2/#comment-438918
-      document.onclick = function(e) {
-        var mobileButton = document.getElementById('menutoggle'),
-          buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
-
-        if(buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
-          changeClass(mobileButton, 'navtoogle active', 'navtoogle');
-        }
-      }
-    </script>
     </header>  
 
 
@@ -138,28 +164,102 @@
     
 
     {% endblock %}
+    <!--newslleter-->
+    <section class="news"> 
+        <figure><img src="static/images/email.png""></figure>
+        <span>NEWSLLETER</span>
+        <input type="text" name="news" value="E-mail">
+        <button class="pesquisa-button">Cadastrar</button>
+    </section>
+    <!--fim - newslleter-->
 
-  <div class="container">
     <footer>
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="list-unstyled">
-            <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
-            <li><a href="">Início</a></li>
-            <li><a href="">Produtos</a></li>
-            <li><a href="">Contato</a></li>
-            <li><a href="">Termos e Privacidade</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+
+       <div class="arabesco">
+         <img class="arabesco" src="static\images\Figuras\Arabesco.png">
+       </div> 
+
+      <nav class="menu-rodape">
+          
+          <li class="sobre_silima style_circulo">
+              <a href="">
+                  <img src="static\images\Figuras\Logo.png" style="height: 56px;">
+                  <p class="texto">Sobre Nós</p>
+              </a>
+          </li>
+          
+          <li class="calculadora style_circulo">
+            <a href="">
+              <img src="static\images\Figuras\calculadora.png" style="height: 56px;">
+               <p class="texto">Calculadora</p>
+            </a>
+          </li>
+
+          <li class="festa style_circulo">
+            <a href="festa.html">
+              <img src="static\images\Figuras\Festas.png">
+               <p class="texto">Festas</p>
+            </a>
+          </li>
+          
+          <li class="servico style_circulo">
+            <a href="">
+              <img src="static\images\Figuras\servico.png" style="height: 56px;">
+               <p class="texto">Serviços</p>
+            </a>
+          </li>
+          
+          <li class="nossas-dicas style_circulo">
+            <a href="">
+              <img src="static\images\nossasdicas.png">
+               <p class="texto">Nossas Dicas</p>
+            </a>
+          </li>
+          <li class="fale-conosco style_circulo">
+            <a href="">
+              <img src="static\images\Figuras\faleconosco.png">
+               <p class="texto"> Fale Conosco</p>
+            </a>
+          </li>
+
+          <li class="contato style_circulo">
+            <a href="">
+              <img src="static\images\Figuras\contato.png">
+                <p class="texto"> Contato</p>
+            </a>
+          </li>
+      </nav>
+      
+       <div class="arabesco">
+         <img class="arabesco" src="static\images\Figuras\Arabesco.png">
+       </div>     
+
+
+  <section class="obrigado">
+    <p>OBRIGADO POR NOS VISITAR! VOLTE SEMPRE</p>
+  </section>
+  <section class="pagamento">
+    <p>Formas de Pagamento:</p>
+    <img class="img_pagamentos" src="static\images\Figuras\Formas_de_Pagamento.PNG">
+
+
+   </section>
+
+
+  </footer>
 	</div>
+  
 	  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="static/css/bootbootstrap.min.js"></script>
-    <script src="static/js/menu_categorias.custom.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="static/js/slider.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 
+
+    <script src="static/css/bootbootstrap.min.js"></script>
+    <script src="static/js/menu_categorias.custom.js"></script>
+    <script src="static/js/jquery.flexslider.js"></script>
+    <script src="static/js/slider.js"></script>
+    <script src="static/js/menu.js"></script>
 </body>
 </html>

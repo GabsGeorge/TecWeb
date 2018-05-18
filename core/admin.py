@@ -1,38 +1,46 @@
 from django.contrib import admin
-from django import forms
 from django.contrib.auth.admin import UserAdmin
+from django import forms
 
-from core.models import Usuario
+from core.models import Cliente
 from core.models import Fornecedor
 from core.models import Contratos
 from core.models import Colaboradores
 from core.models import Produto
 from core.models import Categoria
+from core.models import Usuario
 
-# Usuario begin
-class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ["codigo_u","nome_u","usuario","senha","email_u","cpf","telefone_u","endereco_u","news"]
-    search_fields = ["nome_u","usuario","cpf","email_u"]
-    filter_horizontal = []
-    ordering = ["codigo_u"]
-    list_filter = []
 
-class UsuarioForm(forms.ModelForm):
+class ClienteForm(forms.ModelForm):
     def save(self, commit=True):
-        Usuario = super(UsuarioForm,self).save(commit=False)
-        Usuario.setpassword('123@mudar')
+        cliente = super(UsuarioForm,self).save(commit=False)
+        cliente.setpassword('123@mudar')
+        cliente.perfil = "cliente"
         if commit:
-            Usuario.save()
-        return Usuario
+            cliente.save()
+        return cliente
     
     class Meta:
-        model = Usuario
-        fields = ["codigo_u","nome_u","usuario","senha","email_u","cpf","telefone_u","endereco_u","news"]
+        model = Cliente
+        fields = ["nome_u","user_name","email_u","cpf","telefone_u","endereco_u","news"]
       
-class UsuarioAlteraForm(forms.ModelForm):
+class ClienteAlteraForm(forms.ModelForm):
     class Meta:
-        model = Usuario
-        fields = ["codigo_u","nome_u","usuario","senha","email_u","cpf","telefone_u","endereco_u","news"]
+        model = Cliente
+        fields = ["nome_u","user_name","email_u","cpf","telefone_u","endereco_u","news"]
+
+
+# Cliente begin
+class ClienteAdmin(UserAdmin):
+    add_form = ClienteForm
+    form = ClienteAlteraForm
+    add_fieldsets = ((None, { "fields": ("user_name", "nome_u", "email_u","cpf", "telefone_u", "endereco_u")}),)
+    fieldsets = ((None, { "fields": ("nome_u", "email_u", "cpf")}),)
+    list_display =["codigo_u","user_name","nome_u","email_u"]
+    filter_horizontal = []
+    ordering = ["codigo_u"]
+    list_filter = ["nome_u"]
+
 #Usuario end
 #
 #Produto begin
@@ -42,6 +50,7 @@ class ProdutoAdmin(admin.ModelAdmin):
     filter_horizontal = []
     ordering = ["codigo_p"]
     list_filter = []
+    prepopulated_fields = {'slug': ('nome_p',)} # Cria url amigavel para navegador
 #Produto end
 #
 #Categoria begin
@@ -87,11 +96,13 @@ class CategoriaAdmin(admin.ModelAdmin):
     filter_horizontal = []
     ordering = ["nome"]
     list_filter = []
+    prepopulated_fields = {'slug': ('nome',)} # Cria url amigavel para navegador
 #Colaboradores end
 
-admin.site.register(Usuario,UsuarioAdmin)
+admin.site.register(Cliente,ClienteAdmin)
 admin.site.register(Fornecedor)
 admin.site.register(Contratos)
 admin.site.register(Produto, ProdutoAdmin)
 admin.site.register(Colaboradores)
 admin.site.register(Categoria, CategoriaAdmin)
+admin.site.register(Usuario)

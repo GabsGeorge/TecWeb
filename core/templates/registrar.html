@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block conteudo%}
+
+<!-- Inicio Cadastro-->
+<head>
+<meta charset="utf-8">
+
+</head>
+		<div class='body' align='center'>  
+				<h1> Cadastre-se</h1>
+		</div>
+
+ <div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Cadastrar</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+		<div class="login-form" action="" method="POST">
+			<div class="sign-in-htm">
+				<form class="group padrao"  action="" method="POST">
+					{{ form.as_p}}
+        			{% csrf_token %}
+					<button type="submit" class="button group" value="Enviar"> Enviar</button>
+				</form>
+				
+				
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="/login">Já é Cadastrado? Clique aqui!</a>
+
+				</div>
+			</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{%endblock%}

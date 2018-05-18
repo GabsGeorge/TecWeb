@@ -1,4 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
+
+class UsuarioManager(BaseUserManager):
+    
+    def _criar_usuario(self, user_name, password, **campos):
+        if not user_name:
+            raise ValueError('username deve ser declarado!')
+        user = self.model(user_name=user_name, **campos)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+    
+    def create_user(self, user_name, password=None, **campos):
+        return self._criar_usuario(user_name, password,**campos)
+
+    def create_superuser(self, user_name, password=None, **campos):
+        campos.setdefault('perfil','adm')
+        return self._criar_usuario(user_name, password,**campos)
+
 
 class Colaboradores(models.Model):
     nome_c = models.CharField(db_column='Nome_C', max_length=100)  # Field name made lowercase.
@@ -44,7 +64,7 @@ class Categoria(models.Model):
     slug = models.SlugField("Identificador", max_length=100)
     criado = models.DateTimeField("Criado em", auto_now_add=True)
     modificado = models.DateTimeField("modificado em", auto_now_add=True)
-    imagem = models.ImageField(db_column='Imagem',upload_to='media')
+    imagem = models.ImageField(db_column='Imagem',upload_to='media', blank=True, null=True)
 
     def __str__(self):
         return self.nome
@@ -59,12 +79,12 @@ class Categoria(models.Model):
 
 class Produto(models.Model):
     codigo_p = models.AutoField(db_column='Codigo_P', primary_key=True)  # Field name made lowercase.
-    nome_f = models.ForeignKey(Fornecedor, models.DO_NOTHING, db_column='Nome_F')  # Field name made lowercase.
-    nome_p = models.CharField(db_column='Nome_P', max_length=100)  # Field name made lowercase.
-    quantidade = models.SmallIntegerField(db_column='Quantidade')  # Field name made lowercase.
+    nome_f = models.ForeignKey(Fornecedor, models.DO_NOTHING, db_column='Nome Fornecedor')  # Field name made lowercase.
+    nome_p = models.CharField("Nome do produto", db_column='Nome_P', max_length=100)  # Field name made lowercase.
+    quantidade = models.SmallIntegerField("Quantidade", db_column='Quantidade')  # Field name made lowercase.
     categoria_p = models.ForeignKey(Categoria, models.DO_NOTHING, db_column='categoria_p')  # Field name made lowercase.
-    imagem = models.ImageField(db_column='Imagem',upload_to='media')
-    descricao = models.TextField(db_column='Descricao_P')
+    imagem = models.ImageField("Imagem", db_column='Imagem',upload_to='media')
+    descricao = models.TextField("Descrição",db_column='Descricao_P')
     custo_p = models.DecimalField("Custo", decimal_places=2, max_digits=10, db_column='Custo_P')
     preco_p = models.DecimalField("Preço", decimal_places=2, max_digits=10, db_column='Preço_P')
     
@@ -82,23 +102,59 @@ class Produto(models.Model):
         db_table = 'Produto'
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
-        ordering = ['codigo_p']   
+        ordering = ['codigo_p']  
 
-class Usuario(models.Model):
+
+class Usuario(AbstractBaseUser):
     codigo_u = models.AutoField(db_column='Codigo_U', primary_key=True)  # Field name made lowercase.
-    nome_u = models.CharField(db_column='Nome_U', max_length=255)  # Field name made lowercase.
-    usuario = models.CharField(db_column='Usuario', unique=True, max_length=100)  # Field name made lowercase.
-    senha = models.CharField(db_column='Senha', max_length=100)  # Field name made lowercase.
-    email_u = models.CharField(db_column='Email_U', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    cpf = models.IntegerField(db_column='CPF', unique=True)  # Field name made lowercase.
-    telefone_u = models.IntegerField(db_column='Telefone_U')  # Field name made lowercase.
-    endereco_u = models.CharField(db_column='Endereco_U', max_length=255)  # Field name made lowercase.
-    news = models.NullBooleanField(db_column='News')  # Field name made lowercase.
+    nome_u = models.CharField("Nome",db_column='Nome_U', max_length=255)  # Field name made lowercase.
+    user_name = models.CharField("username",db_column='user_name', unique=True, max_length=100)  # Field name made lowercase.
+    password = models.CharField(db_column='password', max_length=200)  # Field name made lowercase.
+    email_u = models.EmailField("E-mail",db_column='Email_U', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    perfil = models.CharField("Perfil", max_length=1)
+    Ativo = models.BooleanField("Ativo", default=True)
+
+    USERNAME_FIELD = 'user_name'
+    REQUIRED_FIELDS = ["nome_u","email_u"]
+    objects = UsuarioManager()
 
     class Meta:
         managed = True
         db_table = 'Usuario'
 
+
+    def get_full_name(self):
+        return self.nome_u
+
+    def get_short_name(self):
+        return self.nome_u
+
+    def __str__(self):
+        return self.nome_u
+
+    @property
+    def is_staff(self):
+        return self.perfil == "adm"
+
+    def has_module_perms(self, package_name):
+        return True
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_perms(self, perm_list, obj=None):
+        return True
+
+
+class Cliente(Usuario):
+    cpf = models.IntegerField("CPF", db_column='CPF', unique=True)  # Field name made lowercase.
+    telefone_u = models.IntegerField("Telefone", db_column='Telefone_U')  # Field name made lowercase.
+    endereco_u = models.CharField("Endereço", db_column='Endereco_U', max_length=255)  # Field name made lowercase.
+    news = models.NullBooleanField("Deseja receber novidades ?", db_column='News', blank=True)  # Field name made lowercase.
+        
+
+
+    # --------------------------------------------------------------------- // ------------------------------------------------------------#
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=80)
