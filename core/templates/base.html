@@ -49,7 +49,7 @@
 
 
         <li class="dropdown"><!--Menu usuário responsivo fase 1-->
-            <span><img src="static/images/topo/menu.png"></span>
+            <span><img src="{% static 'images/topo/menu.png' %}"></span>
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu2">Conta <span class="caret">
             <span></a>
             <ul class="dropdown-menu" aria-labelledby="download">
@@ -60,40 +60,40 @@
           
         <li class="item1">
         {% if user.is_authenticated %}
-           <span><img src="static/images/topo/login.png"></span> 
+           <span><img src="{%static 'images/topo/login.png' %} "></span> 
            Olá {{user}}, Seja bem-vindo!</a><a href="{% url 'sair' %}"> Sair</a>
         </li>
         {%else%}
-          <span><img src="static/images/topo/login.png"></span>
+          <span><img src="{% static 'images/topo/login.png' %}"></span>
           Seja bem-vindo!<a href="{% url 'registrar' %}" class="txt-branco"> Cadastre-se</a> ou efetue o <a href="login.html" class="txt-branco">Login</a>
         {%endif%}
 
         </li>
-        <li class="carrinho_menu_usuario"><img src="static/images/topo/carrinho.png"> ( 0 )</li> <!--carrinho de compras responsivo--> 
+        <li class="carrinho_menu_usuario"><img src="{% static 'images/topo/carrinho.png' %}"> ( 0 )</li> <!--carrinho de compras responsivo--> 
         <li class="item2"><a href="">Meus Pedidos</a></li>
         <li class="item3"><a href="">Minha Conta</a></li>
-        <li class="item4"><span><img src="static/images/topo/whatsapp-logo.png"> </span>(11)0000-0000</li>
-        <li class="item5"><span><img src="static/images/topo/telefone.png"> </span>(11)0000-0000</li>
+        <li class="item4"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)0000-0000</li>
+        <li class="item5"><span><img src="{% static 'images/topo/telefone.png' %}"> </span>(11)0000-0000</li>
         <li class="item6">
-            <span><img src="static/images/topo/facebook-logo.png"></span>
-            <span><img src="static/images/topo/instagram-logo.png"></span>
+            <span><img src="{% static 'images/topo/facebook-logo.png' %}"></span>
+            <span><img src="{% static 'images/topo/instagram-logo.png' %}"></span>
         </li> 
 
     </nav>
 
     <section class="conteudo">
       <div class="logo"> <a href="{% url 'index' %}" >
-        <img src="static/images/topo/logo_silima.png">  
+        <img src="{%static 'images/topo/logo_silima.png' %}">  
          </a> 
       </div>
 
       <div class="pesquisa">
         <input type="text" placeholder="Busca ...">
-        <button class="pesquisa-button"><img src="static/images/topo/btn_busca.png"></button>
+        <button class="pesquisa-button"><img src="{%static 'images/topo/btn_busca.png' %}"></button>
       </div>
 
       <div class="carrinho">
-          <button class="carrinho_button"><img src="static/images/topo/carrinho.png">  Carrinho</button>
+          <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}">  Carrinho</button>
           <div class="preco-carrinho"> 0 itens | R$ 0,00 </div>
       </div>  
     </section>
@@ -106,7 +106,7 @@
             <li>
               <a href="#">
                 <span class="icon">
-                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/decoracao.png"></i>
+                  <i aria-hidden="true"><img src="{%static 'images/topo/icones_menu/decoracao.png' %}"></i>
                 </span>
                 <span>Decoração</span>
               </a>
@@ -114,7 +114,7 @@
             <li>
               <a href="#">
                 <span class="icon"> 
-                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/infantil.png"></i>
+                  <i aria-hidden="true"><img src="{%static 'images/topo/icones_menu/infantil.png' %}"></i>
                 </span>
                 <span>Festa Infantil</span>
               </a>
@@ -122,7 +122,7 @@
             <li>
               <a href="#">
                 <span class="icon">
-                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/joker-face.png"></i>
+                  <i aria-hidden="true"><img src="{%static 'images/topo/icones_menu/joker-face.png' %}"></i>
                 </span>
                 <span>Festa Temática</span>
               </a>
@@ -130,7 +130,7 @@
             <li>
               <a href="#">
                 <span class="icon">
-                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/servicos.png"></i>
+                  <i aria-hidden="true"><img src="{%static 'images/topo/icones_menu/servicos.png' %}"></i>
                 </span>
                 <span>Serviços</span>
               </a>
@@ -138,7 +138,7 @@
             <li>
               <a href="{{categoria.slug}}">
                 <span class="icon">
-                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/guloseima.png"></i>
+                  <i aria-hidden="true"><img src="{%static 'images/topo/icones_menu/guloseima.png' %}"></i>
                 </span>
                 <span>Guloseimas</span>
               </a>
@@ -146,7 +146,7 @@
             <li>
               <a href="#">
                 <span class="icon">
-                  <i aria-hidden="true"><img src="static/images/topo/icones_menu/descartavel.png"></i>
+                  <i aria-hidden="true"><img src="{%static 'images/topo/icones_menu/descartavel.png' %}"></i>
                 </span>
                 <span>Descartaveis</span>
               </a>
@@ -167,7 +167,7 @@
     {% endblock %}
     <!--newslleter-->
     <section class="news"> 
-        <figure><img src="static/images/email.png""></figure>
+        <figure><img src="{%static 'images/email.png ' %}"></figure>
         <span>NEWSLLETER</span>
         <input type="text" name="news" value="E-mail">
         <button class="pesquisa-button">Cadastrar</button>
@@ -177,62 +177,62 @@
     <footer>
 
        <div class="arabesco">
-         <img class="arabesco" src="static\images\Figuras\Arabesco.png">
+         <img class="arabesco" src="{%static 'images\Figuras\Arabesco.png' %}">
        </div> 
 
       <nav class="menu-rodape">
           
           <li class="sobre_silima style_circulo">
               <a href="">
-                  <img src="static\images\Figuras\Logo.png" style="height: 56px;">
+                  <img src="{%static 'images\Figuras\Logo.png' %}" style="height: 56px;">
                   <p class="texto">Sobre Nós</p>
               </a>
           </li>
           
           <li class="calculadora style_circulo">
             <a href="">
-              <img src="static\images\Figuras\calculadora.png" style="height: 56px;">
+              <img src="{%static 'images\Figuras\calculadora.png' %}" style="height: 56px;">
                <p class="texto">Calculadora</p>
             </a>
           </li>
 
           <li class="festa style_circulo">
-            <a href="festa.html">
-              <img src="static\images\Figuras\Festas.png">
+            <a href="{% url 'festas' %}">
+              <img src="{%static 'images\Figuras\Festas.png' %}">
                <p class="texto">Festas</p>
             </a>
           </li>
           
           <li class="servico style_circulo">
             <a href="">
-              <img src="static\images\Figuras\servico.png" style="height: 56px;">
+              <img src="{%static 'images\Figuras\servico.png' %}" style="height: 56px;">
                <p class="texto">Serviços</p>
             </a>
           </li>
           
           <li class="nossas-dicas style_circulo">
             <a href="">
-              <img src="static\images\nossasdicas.png">
+              <img src="{%static 'images\nossasdicas.png' %}">
                <p class="texto">Nossas Dicas</p>
             </a>
           </li>
           <li class="fale-conosco style_circulo">
             <a href="">
-              <img src="static\images\Figuras\faleconosco.png">
+              <img src="{%static 'images\Figuras\faleconosco.png' %}">
                <p class="texto"> Fale Conosco</p>
             </a>
           </li>
 
           <li class="contato style_circulo">
             <a href="">
-              <img src="static\images\Figuras\contato.png">
+              <img src="{%static 'images\Figuras\contato.png' %}">
                 <p class="texto"> Contato</p>
             </a>
           </li>
       </nav>
       
        <div class="arabesco">
-         <img class="arabesco" src="static\images\Figuras\Arabesco.png">
+         <img class="arabesco" src="{%static 'images\Figuras\Arabesco.png' %}">
        </div>     
 
 
@@ -241,7 +241,7 @@
   </section>
   <section class="pagamento">
     <p>Formas de Pagamento:</p>
-    <img class="img_pagamentos" src="static\images\Figuras\Formas_de_Pagamento.PNG">
+    <img class="img_pagamentos" src="{%static 'images\Figuras\Formas_de_Pagamento.PNG' %}">
 
 
    </section>

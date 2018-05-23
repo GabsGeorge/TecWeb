@@ -44,6 +44,13 @@ def categoria(request, slug):
 def contato(request):
     pass
 
+def festa(request):
+    return render(request,"festa.html")
+
+
+
+
+#Autenticação login
 
 def login_cliente(request):
     return render(request,"login.html")
@@ -51,8 +58,7 @@ def login_cliente(request):
 def contato(request):
     return render(request,"contato.html")
 
-def festa(request):
-    return render(request,"festa.html")
+
 
 #Auntenticação Usuario
 @login_required(login_url="entrar")

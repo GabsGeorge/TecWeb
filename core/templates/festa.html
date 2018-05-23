@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %} 
 {% block conteudo %}
 
 
@@ -11,11 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Festas - Si Lima</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-    <link rel="stylesheet" href="festa.css">
 
 
 </head>
@@ -31,40 +27,22 @@
 
         <div class="row">
             <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="static/images/festas/festa1.jpg">
-                    <img src="static/images/festas/festa1.jpg" alt=>
+                <a class="lightbox" href="{% static 'images/festas/festa1.jpg' %}">
+                    <img src="{% static 'images/festas/festa1.jpg' %}" alt="">
                 </a>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="static/images/festas/festa2.jpg">
-                    <img src="static/images/festas/festa2.jpg" alt=>
-                </a>
-            </div>
+
            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="static/images/festas/festa3.jpg">
-                    <img src="static/images/festas/festa3.jpg" alt=>
+                <a class="lightbox" href="{% static 'images/festas/festa3.jpg' %}">
+                    <img src="{% static 'images/festas/festa3.jpg' %}" alt="">
                 </a>
             </div>
             <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="static/images/festas/festa4.jpg">
-                    <img src="static/images/festas/festa4.jpg" alt=>
+                <a class="lightbox" href="{% static 'images/festas/festa4.jpg' %}">
+                    <img src="{% static 'images/festas/festa4.jpg' %}" alt="">
                 </a>
             </div>
-           <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="static/images/festas/festa5.jpg">
-                    <img src="static/images/festas/festa5.jpg" alt=>
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="static/images/festas/festa8.jpg">
-                    <img src="static/images/festas/festa8.jpg" alt=>
-                </a>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="static/images/festas/festa9.jpg">
-                    <img src="static/images/festas/festa9.jpg" alt=>
-                </a>
-            </div>
+
         </div>
 
     </div>
