@@ -64,7 +64,7 @@ class Categoria(models.Model):
     slug = models.SlugField("Identificador", max_length=100)
     criado = models.DateTimeField("Criado em", auto_now_add=True)
     modificado = models.DateTimeField("modificado em", auto_now_add=True)
-    imagem = models.ImageField(db_column='Imagem',upload_to='media', blank=True, null=True)
+    #imagem = models.ImageField(db_column='Imagem',upload_to='media', blank=True, null=True)
 
     def __str__(self):
         return self.nome
