@@ -4,18 +4,21 @@ from django.contrib.auth.views import login, logout
 from django.conf.urls.static import static
 from django.conf import settings
 
-from core.views import categoria
-from core.views import editarConta
-from core.views import editarSenha
-
 from core import views
+from catalogo import views as catalogo_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^index/', views.index, name="index"),
-    url(r'^produto/', views.produto, name="produto"),
-    url(r'^produtos/', views.lista_produto, name="lista_produto"),
+    
+    # begin app Catalogo
+    url(r'^produto/', catalogo_views.produto, name="produto"),
+    url(r'^produtos/', catalogo_views.lista_produto, name="lista_produto"),
+    url(r'^(?P<slug>[\w_-]+)/$', catalogo_views.categoria),
+    # end app Catalogo
+
+
     url(r'^contato/', views.contato, name="contato"),
     url(r'^festas/', views.festa, name="festas"),
     url(r'^registrar/',views.registrar, name='registrar'),
@@ -25,12 +28,8 @@ urlpatterns = [
     #url(r'^(?P<slug>[\w_-]+)/$', produto),
     
 
-    url(r'^(?P<slug>[\w_-]+)/$', views.categoria),
-
     
-     # pagina de cadastro
-    url(r'^editar-conta', editarConta, name="editar-conta"),
-    url(r'^editar-senha', editarSenha, name="editar-senha"),
+
 ]
 
 # verifica se o django está em modo de desenvolvimento (DEBUG), assim ele vai usar o diretório 

@@ -8,37 +8,14 @@ from django.shortcuts import render
 
 
 from core.forms import ClienteForm, EditaContaClienteForm
-from core.models import Produto
-from core.models import Categoria
-
-
+from catalogo.models import Produto
 
 
 def index(request):
     contexto = {
         "produtos":Produto.objects.all()
     }
-    return render(request, "index.html", contexto)  
-
-def produto(request): #, slug):
-    #contexto = {
-    #    'produto': get_object_or_404(Produto, slug=slug) #verifica se a url existe, caso nao exista ele retorna erro 404
-    #}
-    template_name = 'produto.html'
-    return render(request, template_name)   
-
-def lista_produto(request):
-    pass
-
-
-def categoria(request, slug):
-    categoria = Categoria.objects.get(slug=slug)  
-    contexto = {
-        'categoria': categoria, 
-        'produtos': Produto.objects.filter(categoria=categoria),
-       
-    }
-    return render(request,'categoria.html', contexto) 
+    return render(request, "index.html", contexto)   
 
 
 def contato(request):
@@ -46,8 +23,6 @@ def contato(request):
 
 def festa(request):
     return render(request,"festa.html")
-
-
 
 
 #Autenticação login
