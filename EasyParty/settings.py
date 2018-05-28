@@ -26,7 +26,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '_vj89-pt+ubkp1!shq-ol0tpoict&f6=%!&c3mb%1una2i7sra'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    #apps
     'core',
 ]
 
@@ -84,18 +86,6 @@ DATABASES = {
     }
 }
 
-'''
-DATABASES = {
-    'default':{
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'EasyParty',
-        'USER': 'manager',
-        'PASSWORD': 'admin@123',
-        'HOST': 'easypartyteste.database.windows.net',
-        'PORT': '',
-    }
-}
-'''
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -149,3 +139,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
