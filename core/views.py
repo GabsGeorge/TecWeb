@@ -8,12 +8,13 @@ from django.shortcuts import render
 
 
 from core.forms import ClienteForm, EditaContaClienteForm
-from catalogo.models import Produto
+from catalogo.models import Produto, Categoria
 
 
 def index(request):
     contexto = {
-        "produtos":Produto.objects.all()
+        "produtos":Produto.objects.all(),
+        "categorias":Categoria.objects.all()
     }
     return render(request, "index.html", contexto)   
 

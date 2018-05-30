@@ -1,3 +1,6 @@
+# coding=utf-8
+
+from django.urls import reverse
 from django.db import models
 
 class Fornecedor(models.Model):
@@ -31,6 +34,9 @@ class Categoria(models.Model):
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
         ordering = ['nome']
+
+    def get_absolute_url(self):
+        return reverse('catalogo:categoria', kwargs={'slug': self.slug})    
 
 class Produto(models.Model):
     codigo_p = models.AutoField(db_column='Codigo_P', primary_key=True)  # Field name made lowercase.

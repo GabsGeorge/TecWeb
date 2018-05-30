@@ -102,54 +102,16 @@
       <div class="main clearfix">
         <nav id="menu" class="nav">         
           <ul>
-            <li>
-              <a href="#">
-                <span class="icon">
-                  <i aria-hidden="true"><img src="{%static 'images/topo/decoracao.png' %}"></i>
-                </span>
-                <span>Decoração</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="icon"> 
-                  <i aria-hidden="true"><img src="{%static 'images/topo/infantil.png' %}"></i>
-                </span>
-                <span>Festa Infantil</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="icon">
-                  <i aria-hidden="true"><img src="{%static 'images/topo/joker-face.png' %}"></i>
-                </span>
-                <span>Festa Temática</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="icon">
-                  <i aria-hidden="true"><img src="{%static 'images/topo/servicos.png' %}"></i>
-                </span>
-                <span>Serviços</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{categoria.slug}}">
-                <span class="icon">
-                  <i aria-hidden="true"><img src="{%static 'images/topo/guloseima.png' %}"></i>
-                </span>
-                <span>Guloseimas</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="icon">
-                  <i aria-hidden="true"><img src="{%static 'images/topo/descartavel.png' %}"></i>
-                </span>
-                <span>Descartaveis</span>
-              </a>
-            </li>
+            {%for categoria in categorias %}
+                <li>
+                  <a href="{{ categoria.get_absolute_url }}">
+                    <span class="icon">
+                      <i aria-hidden="true"><img src="{{categoria.imagem.url}}"></i>
+                    </span>
+                    <span>{{categoria.nome}}</span>
+                  </a>
+                </li>
+            {%endfor%}
           </ul>
         </nav>
       </div> <!-- /Fim -->

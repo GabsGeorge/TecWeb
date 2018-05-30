@@ -1,20 +1,20 @@
 from django.shortcuts import render
 from catalogo.models import Categoria
+from catalogo.models import Produto
 # Create your views here.
 
 
 def categoria(request, slug):
     categoria = Categoria.objects.get(slug=slug)  
     contexto = {
-        'categoria': categoria, 
-        'produtos': Produto.objects.filter(categoria=categoria),
-       
+        'categoria_atual': categoria, 
+        'produtos': Produto.objects.filter(categoria_p=categoria),   
     }
-    return render(request,'categoria.html', contexto) 
+    return render(request,'catalogo/categoria.html', contexto) 
 
 
 def lista_produto(request):
-    pass
+    return render(request, "catalogo/lista_produto.html")
 
 def produto(request): #, slug):
     #contexto = {

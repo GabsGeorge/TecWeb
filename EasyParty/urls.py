@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf.urls.static import static
@@ -12,12 +12,9 @@ urlpatterns = [
     url(r'^$', views.index),
     url(r'^index/', views.index, name="index"),
     
-    # begin app Catalogo
-    url(r'^produto/', catalogo_views.produto, name="produto"),
-    url(r'^produtos/', catalogo_views.lista_produto, name="lista_produto"),
-    url(r'^(?P<slug>[\w_-]+)/$', catalogo_views.categoria),
+    # begin app Catalogo,
+    url(r'^produtos/', include('catalogo.urls'), name="catalogo"),
     # end app Catalogo
-
 
     url(r'^contato/', views.contato, name="contato"),
     url(r'^festas/', views.festa, name="festas"),
@@ -25,9 +22,7 @@ urlpatterns = [
 
     url(r'^login', login, { "template_name":"login.html" }, name='entrar'),
     url(r'^logout',logout, { "next_page":"index.html" }, name="sair"),
-    #url(r'^(?P<slug>[\w_-]+)/$', produto),
     
-
     
 
 ]
