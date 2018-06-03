@@ -36,7 +36,7 @@ class Categoria(models.Model):
         ordering = ['nome']
 
     def get_absolute_url(self):
-        return reverse('catalogo:categoria', kwargs={'slug': self.slug})    
+        return reverse('categoria', kwargs={'slug': self.slug})       
 
 class Produto(models.Model):
     codigo_p = models.AutoField(db_column='Codigo_P', primary_key=True)  # Field name made lowercase.
@@ -64,3 +64,6 @@ class Produto(models.Model):
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
         ordering = ['nome_p']  
+
+    def get_absolute_url(self):
+        return reverse('produto', kwargs={'slug': self.slug})      

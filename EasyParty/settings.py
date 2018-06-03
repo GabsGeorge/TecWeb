@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #apps
     'core',
     'catalogo',
+    'paineldecontrole',
 ]
 
 MIDDLEWARE = [

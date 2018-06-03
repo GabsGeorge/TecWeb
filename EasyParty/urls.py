@@ -6,15 +6,20 @@ from django.conf import settings
 
 from core import views
 from catalogo import views as catalogo_views
+from paineldecontrole import views as paineldecontrole_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^index/', views.index, name="index"),
     
-    # begin app Catalogo,
-    url(r'^produtos/', include('catalogo.urls'), name="catalogo"),
-    # end app Catalogo
+    # begin url app Catalogo,
+    url(r'^catalogo/', include('catalogo.urls')),
+    # end url app Catalogo
+
+    # begin url app Painel de Controle,
+    url(r'^easyparty/', include('paineldecontrole.urls')),
+    # end url app Painel de Controle
 
     url(r'^contato/', views.contato, name="contato"),
     url(r'^festas/', views.festa, name="festas"),
