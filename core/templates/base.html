@@ -64,7 +64,7 @@
         </li>
         {%else%}
           <span><img src="{% static 'images/topo/login.png' %}"></span>
-          Seja bem-vindo!<a href="{% url 'registrar' %}" class="txt-branco"> Cadastre-se</a> ou efetue o <a href="login.html" class="txt-branco">Login</a>
+          Seja bem-vindo!<a href="{% url 'registrar' %}" class="txt-branco"> Cadastre-se</a> ou efetue o <a href="{% url 'entrar' %}" class="txt-branco">Login</a>
         {%endif%}
 
         </li>
@@ -98,25 +98,25 @@
     </section>
 
      <div class="container"> 
-     <nav class="menu_categorias">
-      <div class="main clearfix">
-        <nav id="menu" class="nav">         
-          <ul>
-            {%for categoria in categorias %}
-                <li>
-                  <a href="{{ categoria.get_absolute_url }}">
-                    <span class="icon">
-                      <i aria-hidden="true"><img src="{{categoria.imagem.url}}"></i>
-                    </span>
-                    <span>{{categoria.nome}}</span>
-                  </a>
-                </li>
-            {%endfor%}
+      <nav class="menu_categorias">
+        <div class="main clearfix">
+          <nav id="menu" class="nav">         
+            <ul>
+              {%for categoria in categorias %}
+                  <li>
+                    <a href="{{ categoria.get_absolute_url }}">
+                      <span class="icon">
+                        <i aria-hidden="true"><img src="{{categoria.imagem.url}}"></i>
+                      </span>
+                      <span>{{categoria.nome}}</span>
+                    </a>
+                  </li>
+              {%endfor%}
           </ul>
         </nav>
       </div> <!-- /Fim -->
+    </nav>
     </div>
-  </nav>
 
     </header>  
 
@@ -196,20 +196,32 @@
          <img src="{%static 'images/Arabesco.png' %}">
        </div>     
 
+  <section class="info">
+     
+    <section class="envio">
+      <p>Formas de Envio:</p>
+      <img src="{%static 'images/envio.png' %}">
+    </section>  
 
-  <section class="obrigado">
-    <p>OBRIGADO POR NOS VISITAR! VOLTE SEMPRE</p>
-  </section>
-  <section class="pagamento">
-    <p>Formas de Pagamento:</p>
-    <img class="img_pagamentos" src="{%static 'images\Formas_de_Pagamento.png' %}">
+
+    <section class="pagamento">
+      <p>Formas de Pagamento:</p>
+      <img src="{%static 'images/pagseguro.jpg' %}">
+    </section> 
+
+    <section class="seguro">
+      <img src="{%static 'images/seguro.png' %}">
+    </section> 
 
 
    </section>
 
+  <section class="obrigado">
+      <p>Obrigado por nos visitar, volte sempre!</p>
+  </section> 
 
   </footer>
-  </div>
+  
   
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>

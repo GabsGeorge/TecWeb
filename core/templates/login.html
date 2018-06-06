@@ -1,16 +1,9 @@
 {% extends 'base.html' %}
-{% block conteudo%}
-
+{% load static %} 
+{% block conteudo %}
 <!-- Inicio Login-->
-<head>
-<meta charset="utf-8">
 
-</head>
-		<div class='body' align='center'>  
-				<h1> Acesse sua conta </h1>
-		</div>
-
- <div class="login-wrap">
+<div class="login-wrap">
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Entrar</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
@@ -28,12 +21,10 @@
 
 				</div>
 			</div>
-
-
-			</div>
 		</div>
 	</div>
 </div>
+
 
 
 {%endblock%}
