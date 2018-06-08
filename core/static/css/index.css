@@ -78,10 +78,11 @@
 
 
 .produtos{
-	display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 425px;
     position: relative;
+    right: 56px;
 
 }
 

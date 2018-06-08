@@ -1,6 +1,6 @@
 /*produto*/
 
-.product{
+.produto{
     display: grid;
     grid-template-columns: 45% 55%;
     grid-auto-rows: auto auto;
@@ -49,15 +49,6 @@
 .siz[size="2"] {
     max-width: 52px;
 }
-
-
-
-
-
-
-
-
-
 
 
 

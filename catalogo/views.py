@@ -22,6 +22,7 @@ def lista_produto(request):
 def produto(request, slug):
     produto = Produto.objects.get(slug=slug)
     contexto = {
-        'produtos': produto
+        'produto_atual': produto,
+        'produtos': Produto.objects.all()
     }
     return render(request, 'catalogo/produto.html', contexto)      
