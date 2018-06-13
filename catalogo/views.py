@@ -23,6 +23,5 @@ def produto(request, slug):
     produto = Produto.objects.get(slug=slug)
     contexto = {
         'produto_atual': produto,
-        'produtos': Produto.objects.all()
     }
     return render(request, 'catalogo/produto.html', contexto)      

@@ -37,8 +37,21 @@
 		<!-- FIM DO SLIDER -->
 		</br>
 
+		<!-- inicio - Banner abaixo slider -->
 		<section class="banner_baixo_slider">
-			<img src="{% static 'images/banner_baixo_slider.jpg' %}">
+			<article class="item_01">
+				<img src="{% static 'images/banner_baixo/compra_segura.jpg' %}">
+			</article>
+			<article class="item_02">
+				<img src="{% static 'images/banner_baixo/compra_segura.jpg' %}">
+			</article>
+			<article class="item_03">
+				<img src="{% static 'images/banner_baixo/compra_segura.jpg' %}">
+			</article>
+			<article class="item_04">
+				<img src="{% static 'images/banner_baixo/compra_segura.jpg' %}">
+			</article>
+
 		</section>
 		<!-- Fim - Banner abaixo slider -->
 
@@ -87,11 +100,13 @@
 			  					<img src="{% static 'images/produto-sem-imagem2.png" alt="{{produto.nome_p}}" />
 			  				{% endif %}
 			  				<div class="caption">
-			  					<h3>{{produto.nome_p}}</h3>
-			  					<p>Por R$ {{produto.preco_p}}</p>
+			  					<h4>{{produto.nome_p}}</h4>
+			  					<p>Por: R$ {{produto.preco_p}}</p>
 			  				{% if produto.vender %}	
-			  					<p><a href="" class="btn btn-success" role="button">Comprar</a>
-			  					<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>	
+			  					<section class="btn_produto">
+			  						<p><a href="" class="btn btn-success" role="button">Comprar</a>
+			  						<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>
+			  					</section>	
 			  				{% else %}
 			  					 <p><a href="#" class="btn btn-success" role="button">Alugar</a>
 			  					<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>	
