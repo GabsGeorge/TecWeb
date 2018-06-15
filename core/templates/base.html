@@ -32,7 +32,7 @@
 
 
 </head>
-
+  <header>
     <nav class="menu_usuario">
         
         <li class="dropdown"> <!--Menu usuário responsivo fase 2-->
@@ -97,7 +97,7 @@
       </div>  
     </section>
 
-     <div class="container"> 
+    <div class="container"> 
       <nav class="menu_categorias">
         <div class="main clearfix">
           <nav id="menu" class="nav">         
@@ -112,20 +112,20 @@
                     </a>
                   </li>
               {%endfor%}
-          </ul>
-        </nav>
-      </div> <!-- /Fim -->
-    </nav>
-    </div>
+            </ul>
+          </nav>
+        </div> 
+      </nav>
+    </div><!-- /Fim -->
 
     </header>  
 
+    <main class="container">
+      {% block conteudo %}
 
-    {% block conteudo %}
+      {% endblock %}
+    </main>
 
-    
-
-    {% endblock %}
     <!--newslleter-->
     <section class="news"> 
         <figure><img src="{%static 'images/email.png' %}"></figure>

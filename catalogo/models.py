@@ -48,6 +48,9 @@ class Produto(models.Model):
     descricao = models.TextField("Descrição",db_column='Descricao_P')
     custo_p = models.DecimalField("Custo", decimal_places=2, max_digits=10, db_column='Custo_P')
     preco_p = models.DecimalField("Preço", decimal_places=2, max_digits=10, db_column='Preço_P')
+    #altura = models.DecimalField("Altura em cm", decimal_places=2, max_digits=10, db_column='alutra')
+    #largura = models.DecimalField("largura em cm", decimal_places=2, max_digits=10, db_column='largura')
+    #comprimeito = models.DecimalField("comprimeito em cm", decimal_places=2, max_digits=10, db_column='comprimeito')
     
     slug = models.SlugField("Identificador", max_length=100)
     vender = models.BooleanField(db_column='Vender', default=True)
