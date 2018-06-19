@@ -20,9 +20,13 @@
     grid-column: 2;
     background: #e4e4e4;
     box-shadow: 1px 1px 22px 1px #00000061;
-
 }
 
+.dados p {
+    padding-top: 25px;
+    padding-left: 5px;    
+}
 
-
-
+.btn_compra button{
+   border: none;     
+}
