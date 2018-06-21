@@ -16,15 +16,32 @@
         </section>
 
         <section class="dados">
-            <p>Preço: {{produto_atual.preco_p}}</p>
-            </br>
             <p> Quantidade em estoque: {{produto_atual.quantidade}}</p>
-            </br>
             <p> Fornecedor: {{produto_atual.nome_f}}</p>
-            </br>
-  
-        </section>
+                {% if produto_atual.ativo %}
+                    <p> Disponibilidade: Imediata</p>
+                {%else%}
+                    <p> Disponibilidade: Não</p>
+                {%endif%}    
 
+            <article class="preco">
+                <p>Por apenas: {{produto_atual.preco_p}}</p>
+            </article>
+
+            <article class="btn_compra">
+                <button>Comprar</button>    
+            </article>
+  
+            </br>
+
+            <article class="frete">
+                <button>Calcular Frete</button>
+                <input type="text" name="frete" placeholder="xxxxx-xxx">    
+            </article>
+
+        </section>    
+
+        
         <section class="especificacao">
 
         </section>
