@@ -22,21 +22,31 @@
                     <p> Disponibilidade: Imediata</p>
                 {%else%}
                     <p> Disponibilidade: Não</p>
-                {%endif%}    
+                {%endif%} 
+            </br>       
 
-            <article class="preco">
-                <p>Por apenas: {{produto_atual.preco_p}}</p>
-            </article>
-
-            <article class="btn_compra">
-                <button>Comprar</button>    
-            </article>
-  
+            <div class="incremento">
+                <article class="btn_incrementar">
+                    <input type="text" name="format" value="0" id="format" size="2"/>
+                    <input type="button" name="menos" id="menos" value="&#8744" />
+                    <input type="button" name="mais" id="mais" value="&#8743" />
+                </article>  
+                    
+                <article class="preco">
+                    <p> <span>R$ {{produto_atual.preco_p}}</span> à vista</p>
+                    <p>ou 1x de R$ 24,90 Sem juros</p>
+                </article>
+            </div>
+            </br>  
+            <button class="btn_compra">Comprar</button>
+            <button class="btn_colocar_carrinho"><img src="{% static 'images/topo/carrinho.png' %}">Colocar no carrinho</button>   
             </br>
+            </br>  
 
             <article class="frete">
                 <button>Calcular Frete</button>
-                <input type="text" name="frete" placeholder="xxxxx-xxx">    
+                <input type="text" name="frete" placeholder="Digite seu cep">
+                <p>Atente-se ao tempo de produção dos produtos selecionados, as estimativas de entrega abaixo não contemplam o prazo de produção.</p>    
             </article>
 
         </section>    
@@ -56,6 +66,5 @@
 <script>
     baguetteBox.run('.tz-gallery');
 </script>
-
 
 {%endblock%}
