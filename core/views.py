@@ -27,7 +27,6 @@ def festa(request):
 
 
 #Autenticação login
-
 def login_cliente(request):
     return render(request,"login.html")
 

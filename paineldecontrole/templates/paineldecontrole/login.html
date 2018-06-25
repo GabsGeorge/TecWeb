@@ -41,20 +41,15 @@
                         <div class="login-content card">
                             <div class="login-form">
                                 <h4> <img src="{% static 'images/easyparty.jpg' %}" width="150"> </h4>
-                                <form>
+                                <form action="" method="POST">
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" placeholder="Email">
+                                    {% csrf_token %}
+                                    {{ form.as_p}}   
                                     </div>
-                                    <div class="form-group">
-                                        <label>Senha</label>
-                                        <input type="password" class="form-control" placeholder="Senha">
-                                    </div>
-                                    <div class="checkbox">
 
                                         <label class="pull-right">
-        										<a href="#">Esqueceu sua senha?</a>
-        									</label>
+        								    <a href="#">Esqueceu sua senha?</a>
+        								</label>
 
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Entrar</button>

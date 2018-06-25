@@ -1,3 +1,10 @@
+/*password*/
+#id_password{
+    margin-left: 0px;
+    padding-right: 39px;
+    }
+
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300i,400,600,700,800');
 @import url(../icons/font-awesome/css/font-awesome.min.css);
 @import url(../icons/simple-line-icons/css/simple-line-icons.css);
@@ -5502,7 +5509,6 @@ tbody tr td:last-child {
 }
 .login-form {
   background: #ffffff;
-  padding: 30px 30px 20px;
   border-radius: 2px;
 }
 .login-form h4 {
