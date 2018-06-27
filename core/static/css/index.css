@@ -96,7 +96,16 @@
 	-webkit-justify-content: center;
 	justify-content: center;
 }
+.img_produto{
+	height: 200px;
+    width: 100%;
+    text-align: center;
+}
 
+.txt_nome_produto{
+	width: 100%;
+    height: 120px;
+}
 
 .produtos{
     display: grid;

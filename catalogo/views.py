@@ -8,13 +8,15 @@ def categoria(request, slug):
     categoria = Categoria.objects.get(slug=slug)  
     contexto = {
         'categoria_atual': categoria, 
-        'produtos': Produto.objects.filter(categoria_p=categoria),   
+        'produtos': Produto.objects.filter(categoria_p=categoria),
+        'categorias':Categoria.objects.all()   
     }
     return render(request,'catalogo/categoria.html', contexto) 
 
 def lista_produto(request):
     contexto = {
-        "produtos":Produto.objects.all()
+        'produtos':Produto.objects.all(),
+        'categorias':Categoria.objects.all()
     }
     return render(request, "catalogo/lista_produto.html", contexto)
 
@@ -23,5 +25,6 @@ def produto(request, slug):
     produto = Produto.objects.get(slug=slug)
     contexto = {
         'produto_atual': produto,
+        'categorias':Categoria.objects.all()
     }
     return render(request, 'catalogo/produto.html', contexto)      

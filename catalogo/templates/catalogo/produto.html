@@ -2,7 +2,6 @@
 {% load static %} 
 {% block conteudo %}
 
-
 <div class="container gallery-container">
 
     <h1>{{produto_atual}}</h1>
@@ -16,12 +15,12 @@
         </section>
 
         <section class="dados">
-            <p> Quantidade em estoque: {{produto_atual.quantidade}}</p>
-            <p> Fornecedor: {{produto_atual.nome_f}}</p>
+            <p> <b>Quantidade em estoque</b>: {{produto_atual.quantidade}}</p>
+            <p> <b>Fornecedor</b>: {{produto_atual.nome_f}}</p>
                 {% if produto_atual.ativo %}
-                    <p> Disponibilidade: Imediata</p>
+                    <p><b>Disponibilidade</b>: Imediata</p>
                 {%else%}
-                    <p> Disponibilidade: Não</p>
+                    <p><b>Disponibilidade</b>: Não</p>
                 {%endif%} 
             </br>       
 
@@ -44,8 +43,10 @@
             </br>  
 
             <article class="frete">
-                <button>Calcular Frete</button>
-                <input type="text" name="frete" placeholder="Digite seu cep">
+                <div class="busca_frete">
+                    <input type="text" name="frete" placeholder="Digite seu cep" id="campo_frete">
+                    <button class="btn_calcular_frete">ok</button>
+                </div>
                 <p>Atente-se ao tempo de produção dos produtos selecionados, as estimativas de entrega abaixo não contemplam o prazo de produção.</p>    
             </article>
 

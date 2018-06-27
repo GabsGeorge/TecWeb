@@ -23,7 +23,10 @@ def contato(request):
     pass
 
 def festa(request):
-    return render(request,"festa.html")
+    contexto = {
+        "categorias":Categoria.objects.all()
+    }
+    return render(request,"festa.html", contexto)
 
 
 #Autenticação login

@@ -94,14 +94,19 @@
 			  		    <div class="thumbnail">
 			  				<a href="{{ produto.get_absolute_url }}">
 			  				{% if produto.imagem %}	
+			  				<figure class="img_produto">
 			  					<img src="{{produto.imagem.url}}" alt="{{produto.nome_p}}" />
+			  				</figure>
 			  				</a>
 			  				{% else %}
 			  					<img src="{% static 'images/produto-sem-imagem2.png" alt="{{produto.nome_p}}" />
 			  				{% endif %}
 			  				<div class="caption">
-			  					<h4>{{produto.nome_p}}</h4>
-			  					<p>Por: R$ {{produto.preco_p}}</p>
+			  					<div class="txt_nome_produto">
+			  						<h4>{{produto.nome_p}}</h4>
+			  						<p>Por: R$ {{produto.preco_p}}</p>
+			  					</div>
+
 			  				{% if produto.vender %}	
 			  					<section class="btn_produto">
 			  						<p><a href="" class="btn btn-success" role="button">Comprar</a>
