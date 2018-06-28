@@ -20,7 +20,10 @@ def index(request):
 
 
 def contato(request):
-    pass
+    contexto = {
+        "categorias":Categoria.objects.all()
+    }
+    return render(request, "contato.html", contexto)
 
 def festa(request):
     contexto = {

@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
-{% block conteudo%}
-<body>
-	<div class="container-contact100">
-		<div class="wrap-contact100">
-			<span class="contact100-form-symbol">
-				<img src="/static/icons/symbol-01.png" alt="SYMBOL-MAIL">
-			</span>
-			<h1>ENTRE EM CONTATO</h1>
-				<form class="cf form">
-  					<div class="half left cf">
-    						<input type="text" id="input-name" placeholder="Nome Completo">
-    						<input type="email" id="input-email" placeholder="E-mail">
-    						<input type="text" id="input-subject" placeholder="Assunto">
-  						</div>
-  					<div class="half right cf">
-    					<textarea name="message" type="text" id="input-message" placeholder="Mensagem"></textarea>
-  				       </div>  
-  				<input type="submit" value="Enviar" id="input-submit" class="button">
-				</form>
-			</div>
-		</div>
-	</div>
+{% load static %} 
+{% block conteudo %}
+
+
+<div class="container gallery-container">
+
+    <p class="page-description text-center">Entre em contato conosco</p>
+    
+    <div class="pgContato">  
+	   <div class="contato">  
+	      <div class="formContato">  
+	         <form action="#" id="formContato" method="post" tabindex="1">  
+	            <input type="text" id="nome" name="nome" placeholder="Nome" required />  
+	            <input type="email" id="email" name="email" placeholder="Email" required />  
+	            <input type="tel" id="tel" name="tel" placeholder="Telefone" />  
+	            <textarea id="conteudo" name="conteudo" placeholder="Deixe uma mensagem" required ></textarea>  
+	            <button type="submit" class="botaoContato">Enviar</button>  
+	         </form>  
+	      </div>  
+	   </div>  
+	</div>  
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
 </body>
 </html>
-
 
 {%endblock%}
