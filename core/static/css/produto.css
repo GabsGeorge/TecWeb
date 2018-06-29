@@ -180,9 +180,10 @@
     padding: 7px;
     font-family: Ubuntu, sans-serif;
     font-size: 14px;
-    color: #1111;
+    color: #000;
     font-style: italic;
 }
+
 
 .busca_frete{
     width: 240px;

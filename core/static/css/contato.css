@@ -1,6 +1,12 @@
 .formContato {  
-     width: 100%;  
-   }  
+    width: 50%;
+    float: left;
+  }  
+
+ .img_contato img{
+      max-width: 570px;
+  }
+
    .formContato input {  
      width: 90%;  
      margin-left: 10px;  
