@@ -1,5 +1,3 @@
-/*Rodapé*/
-
 .menu-rodape{
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto;
@@ -9,30 +7,26 @@
   color: #fff;
   padding-bottom: 35px;
   padding-top: 25px;
+ 
 }
 
 .style_circulo{
-  border-radius: 100%;
   background: #d02424;
-  width: 90px;
-  height: 90px;
-  margin: auto;
-  padding: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
 }
 
 .texto{
-    right: 19px;
-    color: #d02424;
-    width: 100px;
-    position: relative;
-    top: 20px;
-    text-decoration: none;
+  color: #d02424;
+  margin-top: 15px;
 }
 
 .style_circulo:hover{
   box-shadow: 2px 2px 2px 2px #00000073;
-    transition: 0.1s;
-    opacity: 0.8;
+  transition: 0.1s;
+  opacity: 0.8;
 }
 
 
@@ -86,7 +80,9 @@
   grid-column-end: 8;
 }
 
-
+footer li {
+    margin: auto;
+}
 
 /*Arabesco Botton_______________________________________________________________________________________________________________________*/
 
@@ -544,8 +540,6 @@ input[type=text]{outline:none}
     margin-top: 1px;
 	}
 
-
-
 	.menu_usuario{
 	display: grid;
 	grid-template-columns: 10.66% 13% 14% 20% 19% 13%;
@@ -560,9 +554,10 @@ input[type=text]{outline:none}
 @media only screen and (max-width :860px) {
 	.menu_usuario{
 		display: grid;
-	    grid-template-columns: 3.66% 10% 14% 20% 19% 13%;
+	  grid-template-columns: 3.66% 10% 14% 20% 19% 13%;
 	 }	
-	.dropdown {
+	
+  .dropdown {
     position: relative;
     margin-top: 6px;
 	}

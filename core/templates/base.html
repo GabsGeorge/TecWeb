@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
   
@@ -29,9 +28,9 @@
   <link rel="stylesheet" href="{% static 'css/festa.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/produto.css'%}" type="text/css">
 
-
-
 </head>
+
+<body>
   <header>
     <nav class="menu_usuario">
         
@@ -141,53 +140,53 @@
        </div> 
 
       <nav class="menu-rodape">
-          
-          <li class="sobre_silima style_circulo">
-              <a href="">
-                  <img src="{%static 'images/Logo.png' %}" style="height: 56px;">
-                  <p class="texto">Sobre Nós</p>
-              </a>
+
+           <li class="sobre_silima" >
+            <a class="style_circulo" href="">
+              <img src="{%static 'images/Logo.png' %}" style="height: 45px; margin-top: 30%;">
+            </a>
+            <p class="texto">Sobre Nós</p>
           </li>
           
-          <li class="calculadora style_circulo">
-            <a href="">
-              <img src="{%static 'images/Calculadora.png' %}" style="height: 56px;">
-               <p class="texto">Calculadora</p>
+          <li class="calculadora" >
+            <a class="style_circulo" href="">
+              <img src="{%static 'images/Calculadora.png' %}" style="height: 45px; margin-top: 30%;">
             </a>
+            <p class="texto">Calculadora</p>
           </li>
 
-          <li class="festa style_circulo">
-            <a href="{% url 'festas' %}">
-              <img src="{%static 'images\Festas.png' %}">
-               <p class="texto">Festas</p>
+          <li class="festa" >
+            <a class="style_circulo" href="{% url 'festas' %}">
+              <img src="{%static 'images/Festas.png' %}" style="height: 45px; margin-top: 30%;">
             </a>
+            <p class="texto">Festas</p>
           </li>
           
-          <li class="servico style_circulo">
-            <a href="">
-              <img src="{%static 'images\servico.png' %}" style="height: 56px;">
-               <p class="texto">Serviços</p>
+          <li class="servico">
+            <a class="style_circulo" href="">
+              <img src="{%static 'images/servico.png' %}" style="height:45px; margin-top: 30%;">
             </a>
+            <p class="texto">Serviços</p>
           </li>
           
-          <li class="nossas-dicas style_circulo">
-            <a href="">
-              <img src="{%static 'images\nossasdicas.png' %}">
-               <p class="texto">Nossas Dicas</p>
+          <li class="nossas-dicas">
+            <a class="style_circulo" href="">
+              <img src="{%static 'images\nossasdicas.png' %}" style="height:45px; margin-top: 30%;">
             </a>
+            <p class="texto">Nossas Dicas</p>
           </li>
-          <li class="fale-conosco style_circulo">
-            <a href="">
-              <img src="{%static 'images\faleconosco.png' %}">
-               <p class="texto"> Fale Conosco</p>
+          <li class="fale-conosco">
+            <a class="style_circulo" href="">
+              <img src="{%static 'images\faleconosco.png' %}"style="height:45px; margin-top: 30%;";>
             </a>
+            <p class="texto"> Fale Conosco</p>
           </li>
 
-          <li class="contato style_circulo">
-            <a href="{% url 'contato' %}">
-              <img src="{%static 'images/contato.png' %}">
-                <p class="texto"> Contato</p>
+          <li class="contato">
+            <a class="style_circulo" href="{% url 'contato' %}">
+              <img src="{%static 'images/contato.png' %}"style="height:45px; margin-top: 30%;";>
             </a>
+            <p class="texto"> Contato</p>
           </li>
       </nav>
       

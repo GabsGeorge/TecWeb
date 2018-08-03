@@ -1,9 +1,9 @@
 body {
-    background-image: linear-gradient(to top, #ecedee 0%, #eceeef 75%, #e7e8e9 100%);
+    background-image: silver;
     min-height: 100vh;
     font: normal 16px sans-serif;
 }
-
+/*Roda*/
 
 .container.gallery-container {
     background-color: #fff;
