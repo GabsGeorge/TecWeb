@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #libs
+    'widget_tweaks',
     #apps
     'core',
     'catalogo',

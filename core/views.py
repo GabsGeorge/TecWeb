@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 
 
-from core.forms import ClienteForm, EditaContaClienteForm
+from core.forms import ClienteForm, EditaContaClienteForm, ContatoForm
 from catalogo.models import Produto, Categoria
 
 
@@ -20,8 +20,10 @@ def index(request):
 
 
 def contato(request):
+    form = contatoForm
     contexto = {
-        "categorias":Categoria.objects.all()
+        "categorias":Categoria.objects.all(),
+        'form':form
     }
     return render(request, "contato.html", contexto)
 
