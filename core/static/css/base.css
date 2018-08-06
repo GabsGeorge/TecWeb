@@ -1092,8 +1092,14 @@ a {
   grid-column-end: 8;
 }
 
+.bg-rodape{
+	background-image: url(../images/footer/bg-rodape.jpg);
+	background-repeat: no-repeat;
+	
+}
+
 footer li {
-    margin: auto;
+	margin: auto;
 }
 
 /*Arabesco Botton_______________________________________________________________________________________________________________________*/

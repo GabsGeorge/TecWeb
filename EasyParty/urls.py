@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^contato/', views.contato, name="contato"),
     url(r'^festas/', views.festa, name="festas"),
     url(r'^registrar/',views.registrar, name='registrar'),
+    url(r'^quemsomos/',views.quemsomos, name='quemsomos'),
 
     url(r'^login', login, { "template_name":"login.html" }, name='entrar'),
     url(r'^logout',logout, { "next_page":"index.html" }, name="sair"),

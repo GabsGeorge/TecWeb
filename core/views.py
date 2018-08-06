@@ -30,8 +30,16 @@ def contato(request):
 def festa(request):
     contexto = {
         "categorias":Categoria.objects.all()
+
     }
     return render(request,"festa.html", contexto)
+
+def quemsomos(request):
+    contexto = {
+        "categorias":Categoria.objects.all()
+    }
+    return render(request,"quemsomos.html", contexto)
+
 
 
 #Autenticação login

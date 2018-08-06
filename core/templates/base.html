@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{% static 'css/registrar.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/festa.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/produto.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/quemsomos.css'%}" type="text/css">
 
 </head>
 
@@ -50,7 +51,7 @@
                 <li><a href="{% url 'index' %}">Entrar</a></li>
                 <li><a href="{% url 'registrar' %}">Cadastre-se</a></li>
                 <li><a href="">Minha conta</a></li>
-                <li><a href="">Quem somos</a></li>
+                <li><a href="{% url 'quemsomos' %}"">Quem somos</a></li>
                 <li><a href="{% url 'contato' %}">Contato</a></li>
               </ul>
         </li>
@@ -133,7 +134,7 @@
     </section>
     <!--fim - newslleter-->
 
-    <footer>
+    <footer class="bg-rodape">
 
        <div class="arabesco">
          <img src="{%static 'images/Arabesco.png' %}">
@@ -142,7 +143,7 @@
       <nav class="menu-rodape">
 
            <li class="sobre_silima" >
-            <a class="style_circulo" href="">
+            <a class="style_circulo" href="{% url 'quemsomos' %}">
               <img src="{%static 'images/Logo.png' %}" style="height: 45px; margin-top: 30%;">
             </a>
             <p class="texto">Sobre Nós</p>
