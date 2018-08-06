@@ -34,6 +34,16 @@
   <header>
     <nav class="menu_usuario">
         
+        <li class="dropdown"><!--Menu usuário responsivo fase 1-->
+            <span><img src="{% static 'images/topo/menu.png' %}"></span>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu2">Conta <span class="caret">
+            <span></a>
+            <ul class="dropdown-menu" aria-labelledby="download">
+              <li><a href="{% url 'index' %}">Entrar</a></li>
+              <li><a href="{% url 'registrar' %}">Cadastre-se</a></li>
+            </ul>
+        </li>
+        
         <li class="dropdown"> <!--Menu usuário responsivo fase 2-->
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu1">Conta <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
@@ -46,16 +56,6 @@
         </li>
 
 
-        <li class="dropdown"><!--Menu usuário responsivo fase 1-->
-            <span><img src="{% static 'images/topo/menu.png' %}"></span>
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu2">Conta <span class="caret">
-            <span></a>
-            <ul class="dropdown-menu" aria-labelledby="download">
-              <li><a href="{% url 'index' %}">Entrar</a></li>
-              <li><a href="{% url 'registrar' %}">Cadastre-se</a></li>
-            </ul>
-        </li>
-          
         <li class="item1">
         {% if user.is_authenticated %}
            <span><img src="{%static 'images/topo/login.png' %} "></span> 
@@ -233,6 +233,7 @@
     <script src="{%static 'js/jquery.flexslider.js' %}"></script>
     <script src="{%static 'js/slider.js' %}"></script>
     <script src="{%static 'js/menu.js' %}"></script>
-    <script src="{%static 'js/produto.js' %}"></script>
+    <script src="{%static 'js/produto.js' %}"></script> 
+    <script src="{%static 'js/MenuFixo.js' %}"></script>
 </body>
 </html>

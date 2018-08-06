@@ -1,5 +1,3 @@
-/*INICIO - MAIN*/
-
 /*begin - banner abaixo do slider*/
 .banner_baixo_slider{
 	display: grid;
@@ -82,7 +80,7 @@
 .banner_item_04 img{
 	width: 95%;
 }
-/* enf - Banner novidades*/
+/* end - Banner novidades*/
 
 
 /* begin - lista produtos*/
@@ -154,6 +152,7 @@
 /* end - lista produtos*/
 
 /*______________________________Responsivo_______________________________________*/
+
 
 @media only screen and (max-width :1200px) {
 
