@@ -125,6 +125,30 @@
 				</div>
 			</div>
 
+		
+		{% for contact in contacts.object_list %}
+    	{# Cada "contato" é um objeto do model Contact. #}
+   		{{ contact.full_name|upper }}<br />
+    	...
+		{% endfor %}
+
+		<div class="pagination">
+    	<span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page={{ contacts.previous_page_number }}">anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">próxima</a>
+        {% endif %}
+    </span>
+</div>	
+
+
        </div>
 
 </div>
