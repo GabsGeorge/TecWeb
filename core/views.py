@@ -5,37 +5,29 @@ from django.views.generic import View, TemplateView, CreateView, UpdateView
 from django.conf import settings 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 
 from core.forms import ClienteForm, EditaContaClienteForm, ContatoForm
 from catalogo.models import Produto, Categoria
 
 
 def index(request):
+    produtos = Produto.objects.all()
+    paginator = Paginator(produtos, 4)
+    page = request.GET.get('page')
     contexto = {
-        "produtos":Produto.objects.all(),
         "categorias":Categoria.objects.all()
     }
     return render(request, "index.html", contexto)
 
-def listing(request):
-    produtos = Produto.objects.all()
-    paginator = Paginator(produtos, 4) # Mostra 25 contatos por página
-
-    # Make sure page request is an int. If not, deliver first page.
-    # Esteja certo de que o `page request` é um inteiro. Se não, mostre a primeira página.
+    # Handle out of range and invalid page numbers:
     try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-
-    # Se o page request (9999) está fora da lista, mostre a última página.
-    try:
-        contacts = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        contacts = paginator.page(paginator.num_pages)
-
-    return render_to_response('index.html', {"contacts": contacts})   
+        produtos = paginator.page(page)
+    except PageNotAnInteger:
+        produtos = paginator.page(1)
+    except EmptyPage:
+        produtos = paginator.page(paginator.num_pages)
+    return render(request, 'index.html', contexto, {'produtos': produtos}) 
 
 
 def contato(request):
