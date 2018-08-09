@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect , HttpResponseRedirect, get_object
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.views.generic import View, TemplateView, CreateView, UpdateView
+from django.views import generic
 from django.conf import settings 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
@@ -11,21 +12,12 @@ from core.forms import ClienteForm, EditaContaClienteForm, ContatoForm
 from catalogo.models import Produto, Categoria
 
 
-def index(request):
-    produtos_list = Produto.objects.all()
-    page = request.GET.get('page', 1)
-    contexto = {
-        "categorias":Categoria.objects.all(),
-    }    
-    paginator = Paginator(produtos_list, 4)
-    try:
-        produtos = paginator.page(page)
-    except PageNotAnInteger:
-        produtos = paginator.page(1)
-    except EmptyPage:
-        produtos = paginator.page(paginator.num_pages)
 
-    return render(request,'index.html', {'produtos': produtos})
+class IndexView(generic.ListView):
+    model = Produto
+    template_name = 'index.html'
+    context_object_name = 'produtos'
+index = IndexView.as_view()
 
 
 def contato(request):
@@ -50,15 +42,12 @@ def quemsomos(request):
     return render(request,"quemsomos.html", contexto)
 
 
-
 #Autenticação login
 def login_cliente(request):
     return render(request,"login.html")
 
 def contato(request):
     return render(request,"contato.html")
-
-
 
 #Auntenticação Usuario
 @login_required(login_url="entrar")

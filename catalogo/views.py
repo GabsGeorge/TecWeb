@@ -1,17 +1,18 @@
 from django.shortcuts import render
 from catalogo.models import Categoria
 from catalogo.models import Produto
+from django.views import generic
 # Create your views here.
 
+class CategoriaListViwe(generic.ListView):
+    template_name = 'catalogo/categoria.html'
+    context_object_name = 'produtos'
 
-def categoria(request, slug):
-    categoria = Categoria.objects.get(slug=slug)  
-    contexto = {
-        'categoria_atual': categoria, 
-        'produtos': Produto.objects.filter(categoria_p=categoria),
-        'categorias':Categoria.objects.all()   
-    }
-    return render(request,'catalogo/categoria.html', contexto) 
+    def get_queryset(self):
+        return Produto.objects.filter(categoria__slug=self.kwargs['slug'])
+
+categoria = CategoriaListViwe.as_Viwe()
+
 
 def lista_produto(request):
     contexto = {
