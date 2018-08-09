@@ -12,22 +12,20 @@ from catalogo.models import Produto, Categoria
 
 
 def index(request):
-    produtos = Produto.objects.all()
-    paginator = Paginator(produtos, 4)
-    page = request.GET.get('page')
+    produtos_list = Produto.objects.all()
+    page = request.GET.get('page', 1)
     contexto = {
-        "categorias":Categoria.objects.all()
-    }
-    return render(request, "index.html", contexto)
-
-    # Handle out of range and invalid page numbers:
+        "categorias":Categoria.objects.all(),
+    }    
+    paginator = Paginator(produtos_list, 4)
     try:
         produtos = paginator.page(page)
     except PageNotAnInteger:
         produtos = paginator.page(1)
     except EmptyPage:
         produtos = paginator.page(paginator.num_pages)
-    return render(request, 'index.html', contexto, {'produtos': produtos}) 
+
+    return render(request,'index.html', {'produtos': produtos})
 
 
 def contato(request):
