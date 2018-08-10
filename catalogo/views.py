@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from catalogo.models import Categoria
 from catalogo.models import Produto
 from django.views import generic
+from django.db import models
 # Create your views here.
 
 #Categorias
@@ -20,12 +21,29 @@ class CategoriaListView(generic.ListView):
 
 categoria = CategoriaListView.as_view() 
 
+
+
 #Listatgem de produtos
 class ListProdutoView(generic.ListView):
     model = Produto
     template_name = 'catalogo/lista_produto.html'
     context_object_name = 'produtos'
+    paginate_by = 8
+
+    def get_queryset(self):
+        queryset = Produto.objects.all()
+        q = self.request.GET.get('q', '')
+        if q:
+            queryset = queryset.filter(
+                models.Q(nome_p__icontains=q) | models.Q(categoria_p__nome__icontains=q) \
+                | models.Q(descricao__icontains=q)
+            )
+        return queryset
+
+
+        
 lista_produto = ListProdutoView.as_view()
+
 
 #Produto unico
 def produto(request, slug):

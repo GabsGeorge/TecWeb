@@ -45,9 +45,9 @@ margin-left: 30px;
 }
 
 #menos{
-     position: relative;
-    top: 10px;
-    left: 0px;
+    position: relative;
+    top: -30px;
+    left: 45px;
     background: none;
     border: none;
     color: #f09400;
@@ -56,7 +56,7 @@ margin-left: 30px;
 
 #mais{  
     position: relative;
-    left: 53px;
+    left: 17px;
     top: -51px;
     background: none;
     border: none;

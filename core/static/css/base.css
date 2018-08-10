@@ -225,39 +225,27 @@ body{
 
 /*Conteudo*/
 .conteudo{
-	display: grid;
+  display: grid;
   grid-template-columns: 25% 20% 14% 13% 22% ;
   grid-template-rows: 100px;
 }
 
 /*Logo*/
-.logo img {
-    width: 240px;
-    height: 112px;
+.logo{
+
 }
+	.logo img {
+	    width: 240px;
+	    height: 112px;
+	}
 
 /*Campo pesquisa*/
 .pesquisa {
     grid-row: 1;
-	grid-column-start: 2; 
-    grid-column-end: 4;	
-    display: inline-flex;
-    margin-top: 40px;
-    width: 100%;
-    font-size: 16px;
-    height: 50px;
-}
-
-.pesquisa input{
-	width: 100%;
-	padding: 10px;
-}
-
-
-.pesquisa button{
-	background: #1691be;
-    border: none;
-    width: 100px;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    margin-top: 6%;
+ 
 }
 
 
@@ -267,7 +255,7 @@ body{
     grid-row: 1;
     grid-column-start: 5;
     grid-column-end: 5;
-    margin-top: 36px;
+    margin-top: 9%;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50px;
@@ -277,6 +265,7 @@ body{
     box-shadow: 0px 0px 0px 1px #1691bead;
     background: #1691be;
     color: #fff;
+    height: 45px;
 }
 
 .carrinho_button span{
@@ -284,10 +273,11 @@ body{
 }
 
 .preco-carrinho{
-    text-align: center;
-    padding-top: 17px;
+	text-align: center;
+    padding-top: 13px;
     background: #00000000;
     box-shadow: 0px 0px 1px 1px #0000002e;
+    height: 45px;
 }
 
 
@@ -913,12 +903,13 @@ a {
 .main,
 .container > header {
 	width: 100%;
-	margin: 0 auto;
-	padding: 2em;
+    margin: auto;
+    padding: 1em;
 }
 
 .main {
-	max-width: 82.667em;
+    max-width: 83em;
+    margin: 0 auto;
 }
 
 .container > header {

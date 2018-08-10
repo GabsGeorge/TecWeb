@@ -86,12 +86,25 @@
         <img src="{%static 'images/topo/logo_silima.png' %}">  
          </a> 
       </div>
+      <!--Begin Pesquisa-->
+      <div class="container pesquisa">
+        <div class="row">
+              <div class="col-md-6">
+                  <form id="custom-search-input" role="search" action="{% url 'lista_produto' %}">
+                      <div class="input-group col-md-12">
+                          <input name="q" type="text" class="form-control input-lg" placeholder="Buscar" />
+                          <span class="input-group-btn">
+                              <button class="btn btn-info btn-lg" type="button">
+                                  <i class="glyphicon glyphicon-search"></i>
+                              </button>
+                          </span>
+                      </div>
+                    </form> 
+                  </div>
+              </div>
+        </div>
 
-      <div class="pesquisa">
-        <input type="text" placeholder="Busca ...">
-        <button class="pesquisa-button"><img src="{%static 'images/topo/btn_busca.png' %}"></button>
-      </div>
-
+      <!--End Pesquisa-->
       <div class="carrinho">
           <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}">  Carrinho</button>
           <div class="preco-carrinho"> 0 itens | R$ 0,00 </div>
@@ -234,8 +247,9 @@
     <script src="{%static 'js/menu_categorias.custom.js' %}"></script>
     <script src="{%static 'js/jquery.flexslider.js' %}"></script>
     <script src="{%static 'js/slider.js' %}"></script>
+    <script src="{%static 'js/MenuFixo.js' %}"></script>
     <script src="{%static 'js/menu.js' %}"></script>
     <script src="{%static 'js/produto.js' %}"></script> 
-    <script src="{%static 'js/MenuFixo.js' %}"></script>
+    
 </body>
 </html>
