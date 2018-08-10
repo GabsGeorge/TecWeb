@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block conteudo %}
+{% load pagination %}
 
 
     <div class="container">
@@ -35,7 +36,12 @@
 
 			</div>
 		</div>
+			<!--Begin Paginator-->
+			{% pagination request paginator page_obj %}
+       		<!--End Paginator-->
 	</div>
+
+
 
 
 {%endblock%}

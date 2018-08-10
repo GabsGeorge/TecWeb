@@ -1,3 +1,5 @@
+input[type=text]{outline:none}
+
 
 #navthing {
   margin-left: 50px;
@@ -90,7 +92,6 @@ a{color:inherit;text-decoration:none}
   width:100%;
   margin:auto;
   max-width:525px;
-  min-height:930px;
   position:relative;
   background:url(../../static/images/bg-login.jpg) no-repeat center;
   background-size: 600px;
@@ -152,14 +153,10 @@ a{color:inherit;text-decoration:none}
 }
 #id_password{
   width:100%;
-  color:#fff;
-  display:block;
 }
 
 #id_username{ 
   width:100%;
-  color:#fff;
-  display:block;
 }
 
 .login-form .group .input,

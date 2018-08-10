@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %} 
 {% block conteudo %}
+{% load pagination %}
 
 		<!-- INICIO DO SLIDER -->		
 	</br>
@@ -11,17 +12,21 @@
 		            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 		            <li data-target="#myCarousel" data-slide-to="1"></li>
 		            <li data-target="#myCarousel" data-slide-to="2"></li>
+		            <li data-target="#myCarousel" data-slide-to="3"></li>
 		        </ol>   
 		        <!-- Wrapper for carousel items -->
 		        <div class="carousel-inner">
 		            <div class="item active">
-		                <img src="{% static 'images/images-banner/slide1.jpg' %}" alt="First Slide">
+		                <img src="{% static 'images/images-banner/slide1.jpg' %}" alt="Chuva de amor">
 		            </div>
 		            <div class="item">
-		                <img src="{% static 'images/images-banner/slide2.jpg' %}" alt="Second Slide">
+		                <img src="{% static 'images/images-banner/slide2.jpg' %}" alt="Meu batizado">
 		            </div>
 		            <div class="item">
-		                <img src="{% static 'images/images-banner/slide3.jpg' %}" alt="Third Slide">
+		                <img src="{% static 'images/images-banner/slide3.jpg' %}" alt="Harry Potter">
+		            </div>
+		            <div class="item">
+		                <img src="{% static 'images/images-banner/slide4.jpg' %}" alt="Cassino">
 		            </div>
 		        </div>
 		        <!-- Carousel controls -->
@@ -58,7 +63,7 @@
 		<!-- Inicio - Banner novidades -->		
 		<section class="banner_novidades">
 			<div class="page-header">
-				<h1>Novidades</h1>
+				<h2>Novidades <img src="{% static 'images/confetti.png' %}"></h2>
 			</div>
 
 			<article class="banner_item_01">
@@ -83,7 +88,11 @@
 
 <div class="container gallery-container">
 
-    <h1>Produtos</h1>
+    <div class="page-header">
+		<h1>Em destaque
+		<img src="{% static 'images/balloons.png' %}">	
+		</h1>
+	</div>
     
     <div class="tz-gallery">
 
@@ -125,28 +134,8 @@
 				</div>
 			</div>
 			<!--Begin Paginator-->
-				{% if produtos.has_other_pages %}
-				  <ul class="pagination">
-				    {% if produtos.has_previous %}
-				      <li><a href="?page={{ produtos.previous_page_number }}">&laquo;</a></li>
-				    {% else %}
-				      <li class="disabled"><span>&laquo;</span></li>
-				    {% endif %}
-				    {% for i in produtos.paginator.page_range %}
-				      {% if produtos.number == i %}
-				        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-				      {% else %}
-				        <li><a href="?page={{ i }}">{{ i }}</a></li>
-				      {% endif %}
-				    {% endfor %}
-				    {% if produtos.has_next %}
-				      <li><a href="?page={{ produtos.next_page_number }}">&raquo;</a></li>
-				    {% else %}
-				      <li class="disabled"><span>&raquo;</span></li>
-				    {% endif %}
-				  </ul>
-				{% endif %}
-
+			{% pagination request paginator page_obj %}
+       		<!--End Paginator-->
        </div>
 </div>
 

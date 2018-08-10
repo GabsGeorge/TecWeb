@@ -17,6 +17,7 @@ class IndexView(generic.ListView):
     model = Produto
     template_name = 'index.html'
     context_object_name = 'produtos'
+    paginate_by = 8
 index = IndexView.as_view()
 
 

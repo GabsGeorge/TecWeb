@@ -1,30 +1,36 @@
 {% extends 'base.html' %}
 {% load static %} 
 {% block conteudo %}
-<!-- Inicio Login-->
 
-<div class="login-wrap">
-	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Entrar</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
-		<div class="login-form" action="" method="POST">
-			<div class="sign-in-htm">
-				<form class="group"  action="" method="POST">
-					{% csrf_token %}
-					{{ form.as_p}}	
-					<button type="submit" class="button group" value="Enviar"> Entrar</button>
-				</form>
-				
-				<div class="hr"></div>
-				<div class="foot-lnk">
-					<a href="#">Esqueceu sua senha ? Clique aqui!</a>
+<div class="container gallery-container">
+	<div class="page-header">
+    	<h1>Login <img src="{% static 'images/cake.png' %}"></h1>
+    </div>
+    <div class="tz-gallery">
 
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Entrar</label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+        <div class="login-form" action="" method="POST">
+            <div class="sign-in-htm">
+                <form class="group"  action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p}}  
+                    <button type="submit" class="button group" value="Enviar"> Entrar</button>
+                </form>
+                
+                <div class="hr"></div>
+                <div class="foot-lnk">
+                    <a href="#">Esqueceu sua senha ? Clique aqui!</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
+</div>
+</div>
 
 {%endblock%}
