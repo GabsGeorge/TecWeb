@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^catalogo/', include('catalogo.urls')),
     # end url app Catalogo
 
-    # begin url app Painel de Controle,
+    # begin url app Painel de Controle
     url(r'^easyparty/', include('paineldecontrole.urls')),
     # end url app Painel de Controle
 
@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^festas/', views.festa, name="festas"),
     url(r'^registrar/',views.registrar, name='registrar'),
     url(r'^quemsomos/',views.quemsomos, name='quemsomos'),
+    url(r'^servicos/',views.servicos, name='servicos'),
     
 
     url(r'^login', login, { "template_name":"login.html" }, name='entrar'),

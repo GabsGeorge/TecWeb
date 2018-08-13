@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="{% static 'css/produto.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/quemsomos.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/pagination.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/servicos.css'%}" type="text/css">
 
 </head>
 
@@ -87,22 +88,11 @@
          </a> 
       </div>
       <!--Begin Pesquisa-->
-      <div class="container pesquisa">
-        <div class="row">
-              <div class="col-md-6">
-                  <form id="custom-search-input" role="search" action="{% url 'lista_produto' %}">
-                      <div class="input-group col-md-12">
-                          <input name="q" type="text" class="form-control input-lg" placeholder="Buscar" />
-                          <span class="input-group-btn">
-                              <button class="btn btn-info btn-lg" type="button">
-                                  <i class="glyphicon glyphicon-search"></i>
-                              </button>
-                          </span>
-                      </div>
-                    </form> 
-                  </div>
-              </div>
-        </div>
+
+      <form class="pesquisa" role="search" action="{% url 'lista_produto' %}">
+        <input name="q"  type="text" placeholder="Buscar">
+        <button class="pesquisa-button"><img src="{%static 'images/topo/btn_busca.png' %}"></button>
+      </form>
 
       <!--End Pesquisa-->
       <div class="carrinho">
@@ -178,7 +168,7 @@
           </li>
           
           <li class="servico">
-            <a class="style_circulo" href="">
+            <a class="style_circulo" href="{% url 'servicos' %}"">
               <img src="{%static 'images/servico.png' %}" style="height:45px; margin-top: 30%;">
             </a>
             <p class="texto">Serviços</p>

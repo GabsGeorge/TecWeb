@@ -240,13 +240,30 @@ body{
 	}
 
 /*Campo pesquisa*/
+/*Campo pesquisa*/
 .pesquisa {
     grid-row: 1;
     grid-column-start: 2;
     grid-column-end: 4;
+    display: inline-flex;
     margin-top: 6%;
- 
+    width: 100%;
+    font-size: 16px;
+    height: 45px;
 }
+
+.pesquisa input{
+	width: 100%;
+	padding: 10px;
+}
+
+
+.pesquisa button{
+	background: #1691be;
+    border: none;
+    width: 100px;
+}
+
 
 
 /*Carrinho de compras*/

@@ -29,18 +29,19 @@ def contato(request):
     }
     return render(request, "contato.html", contexto)
 
-def festa(request):
-    contexto = {
-        "categorias":Categoria.objects.all()
+class FestaView(TemplateView):
+    template_name = 'festa.html'
+festa = FestaView.as_view()    
 
-    }
-    return render(request,"festa.html", contexto)
+class QuemsomosView(TemplateView):
+    template_name = 'quemsomos.html'
+quemsomos =  QuemsomosView.as_view()   
 
-def quemsomos(request):
-    contexto = {
-        "categorias":Categoria.objects.all()
-    }
-    return render(request,"quemsomos.html", contexto)
+class ServicosView(TemplateView):
+    template_name = 'servicos.html'
+servicos = ServicosView.as_view()    
+
+
 
 
 #Autenticação login
