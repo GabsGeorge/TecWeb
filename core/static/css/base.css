@@ -39,16 +39,15 @@ body{
 .menu_usuario{
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
-  grid-template-rows: 35px;
   width: 100%;
   background-color: #fb9f0de0;
   box-shadow: 0px 3px 13px 0px #00000030;
+  padding: 10px;
 }
 
     .menu_usuario li{
  	  display: inline;
  	  text-align: center;
-      margin-top: 10px;
     }
 
         .menu_usuario li a{
@@ -113,7 +112,7 @@ body{
 
 
 
-/*______________________________ menu_usuário - Responsivo_______________________________________*/
+/*------------Begin menu_usuário - Responsivo-------------*/
 
 /* iPads (restrato) */
 @media only screen and (max-width :1025px) {
@@ -121,51 +120,33 @@ body{
 	.item1{
 		display: none !important;
 	}
-
-	#menu2{
-	display: inline !important;
+	#menu1{
+		display: inline !important;
 	}
 
-	.dropdown img {
-	display: inline;
+	.m1 img{
+		display: inline !important;
 	}
-
-	.dropdown {
-    position: relative;
-    margin-top: 1px;
-	}
-
 	.menu_usuario{
 	display: grid;
-	grid-template-columns: 10.66% 13% 14% 20% 19% 13%;
+	grid-template-columns: auto auto auto auto auto auto;
 	}
-
-	
 		
 }
 
-/*______________________________ menu_usuário - Responsivo_______________________________________*/
-/* Smartphone (retrato) */
 @media only screen and (max-width :860px) {
-	.menu_usuario{
-		display: grid;
-	  grid-template-columns: 3.66% 10% 14% 20% 19% 13%;
-	 }	
-	
-  .dropdown {
-    position: relative;
-    margin-top: 6px;
+	.m1 img{
+		display: none !important;
 	}
-
-	.dropdown img {
-	display: none;
-	}
-	
-	#menu2{
+	#menu1{
 		display: none !important;
 	}
 
-	#menu1{
+	.m2 img{
+		display: inline !important;
+	}
+	
+	#menu2{
 		display: inline !important;
 	}
 
@@ -184,70 +165,45 @@ body{
 	.item6 img{
 	display: none;
 	}
-
-	.menu_usuario {
-    	display: grid;
-    	grid-template-columns: 45%;
-    }	
-
-    .carrinho_menu_usuario{
-		display: inline !important;
+	
+	.item4{
 		grid-row: 1;
-		grid-column-start: 7; 
-   		grid-column-end: 7
-		
-		}	
+		grid-column:5;
 
-		.item2{
-			grid-row: 1;
-			grid-column-start: 4; 
-   			grid-column-end: 4;
-		}
-
-		.item3{
-			grid-row: 1;
-			grid-column-start: 5; 
-		    grid-column-end: 5;
-		}
-
-		.item4{
-			grid-row: 1;
-			grid-column-start: 6; 
-	    	grid-column-end: 6;
-
-		}
+	}
 
 }
 
-/*______________________________ -FIM menu_usuário - Responsivo  _______________________________________*/
+/*------ - End menu_usuário - Responsivo  ---------*/
 
 
 
 /*Conteudo*/
 .conteudo{
   display: grid;
-  grid-template-columns: 25% 20% 14% 13% 22% ;
+  grid-template-columns: 25% 25% 25% 25% ;
   grid-template-rows: 100px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /*Logo*/
 .logo{
-
+margin: 0;
 }
 	.logo img {
-	    width: 240px;
-	    height: 112px;
+	    width: 200px;
 	}
 
-/*Campo pesquisa*/
+
 /*Campo pesquisa*/
 .pesquisa {
     grid-row: 1;
     grid-column-start: 2;
     grid-column-end: 4;
     display: inline-flex;
-    margin-top: 6%;
-    width: 100%;
+    margin-top: 30px;
+    width: 80%;
     font-size: 16px;
     height: 45px;
 }
@@ -270,16 +226,17 @@ body{
 
 .carrinho{
     grid-row: 1;
-    grid-column-start: 5;
-    grid-column-end: 5;
-    margin-top: 9%;
+    grid-column: 4;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50px;
+    max-width: 90%;
 }
+
 .carrinho_button{
 	border: none;
-    box-shadow: 0px 0px 0px 1px #1691bead;
+    box-shadow: 0px 0px 0px 1px silver;
     background: #1691be;
     color: #fff;
     height: 45px;
@@ -300,55 +257,61 @@ body{
 
 
 
-/*______________________________ conteudo - Responsivo_______________________________________*/
+/*------- Begin conteudo - Responsivo-------*/
 
-/* iPads (restrato e paisagem) */
-@media only screen and (max-width :962px) {
+
+@media only screen and (max-width :1025px) {
 
 	.conteudo{
 		display: grid;
-   		grid-template-columns: 23% 35% 3% 8%;
+   		grid-template-columns: 25% 25% 25% 25%;
     	grid-template-rows: 100px;
 
 	}
 
-	.logo img {
-		width: 217px;
-    	height: 115px;
-	}
-
 	.carrinho{
 		grid-row: 1;
-		grid-column-start: 5; 
-	    grid-column-end: 5;
-	    margin-top: 40px;
+		grid-column: 4; 
+		width: 100%;
 	}
+
+	.carrinho_button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.preco-carrinho {
+    	text-align: center;
+    	padding-top: 6px;
+    }	
 }
 
-/*______________________________ conteudo - Responsivo_______________________________________*/
 
-/* iPads (paisagem) */
-@media only screen and (max-width :840px) {
+@media only screen and (max-width :860px) {
 	
+
+
+}
+
+
+@media only screen and (max-width :605px) {
+	.carrinho_menu_usuario{
+		display: inline !important;
+		grid-row: 1;
+		grid-column: 6; 
+		
+	}
+
 	.carrinho{
-		display: none !important; 
+		display: none;
+	}
+
+	.carrinho_menu_usuario img{
+		width: 19px;
+		height: 19px;
 	}
 
 	.conteudo{
-		display: grid;
-	    grid-template-columns: 33% 21% 26% 15% 32%;
-	}	
-
-	 .pesquisa {
-    	margin-top: 40px;
-	}
-}
-
-/*______________________________ conteudo - Responsivo_______________________________________*/
-
-/* Smartphone (retrato) */
-@media only screen and (max-width :605px) {
-		.conteudo{
 			display: grid;
 	   		grid-template-columns: 100%;
 	   		grid-template-rows: 100px 100px;
@@ -360,6 +323,7 @@ body{
 		grid-column-start: 1; 
 	    grid-column-end: 1;
 	    margin-top: 20px;
+	    width: 100%;
 	}
 
 	.logo{
@@ -376,7 +340,7 @@ body{
 	}
 }
 
-
+/*------- End conteudo - Responsivo-------*/
 
 
 /*-----------------------------------------------Menu Categorias P1-01----------------------------------------------------*/
@@ -794,9 +758,7 @@ a, button {
 	cursor: pointer;
 }
 
-.navtoogle i{
-	z-index:-1;
-}
+
 
 .icon-menu {
 	position: relative;
@@ -811,7 +773,7 @@ a, button {
 	.nav .navtoogle{
 		margin: 0;
 		display: block;
-		box-shadow: 1px 1px 1px 1px #f39c123b;
+		background: #1690bd;
 	}
 	
 	/* Animating the height of the navigation when the button is clicked */

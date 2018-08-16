@@ -38,8 +38,8 @@
     <nav class="menu_usuario">
         
         <li class="dropdown"><!--Menu usuário responsivo fase 1-->
-            <span><img src="{% static 'images/topo/menu.png' %}"></span>
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu2">Conta <span class="caret">
+            <span class="m1"><img src="{% static 'images/topo/menu.png' %}"></span>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu1">Conta <span class="caret">
             <span></a>
             <ul class="dropdown-menu" aria-labelledby="download">
               <li><a href="{% url 'index' %}">Entrar</a></li>
@@ -48,7 +48,9 @@
         </li>
         
         <li class="dropdown"> <!--Menu usuário responsivo fase 2-->
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu1">Conta <span class="caret"></span></a>
+            <span class="m2"><img src="{% static 'images/topo/menu.png' %}"></span>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu2">Conta <span class="caret">
+            <span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
                 <li><a href="{% url 'index' %}">Entrar</a></li>
                 <li><a href="{% url 'registrar' %}">Cadastre-se</a></li>
