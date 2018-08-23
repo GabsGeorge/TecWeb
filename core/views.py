@@ -7,10 +7,14 @@ from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
+from django.contrib.auth import get_user_model
+
 
 from core.forms import ClienteForm, EditaContaClienteForm, ContatoForm
 from catalogo.models import Produto, Categoria
 
+
+User = get_user_model()
 
 
 class IndexView(generic.ListView):
@@ -41,6 +45,11 @@ class ServicosView(TemplateView):
     template_name = 'servicos.html'
 servicos = ServicosView.as_view()    
 
+class RegistroView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'registrar.html'
+    model = User
+registro = RegistroView.as_view()
 
 
 

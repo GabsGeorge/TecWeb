@@ -1,3 +1,8 @@
+.col-md-9 {
+    width: 75%;
+    padding: 10px !important;
+}
+
 input[type=text]{outline:none}
 
 
