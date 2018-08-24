@@ -1,20 +1,21 @@
 from django.shortcuts import render, redirect , HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
-from django.views.generic import View, TemplateView, CreateView, UpdateView
+from django.views.generic import View, TemplateView, CreateView, UpdateView, FormView
 from django.views import generic
 from django.conf import settings 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 from django.contrib.auth import get_user_model
+from django.core.urlresolvers import reverse_lazy
 
-
-from core.forms import ClienteForm, EditaContaClienteForm, ContatoForm
+from core.forms import ClienteForm, EditaContaClienteForm, ContatoForm, UserAdminCreationForm
 from catalogo.models import Produto, Categoria
+from core.models import Cliente
 
 
-User = get_user_model()
+Usuario = get_user_model()
 
 
 class IndexView(generic.ListView):
@@ -33,91 +34,64 @@ def contato(request):
     }
     return render(request, "contato.html", contexto)
 
-class FestaView(TemplateView):
+
+class FestaView(CreateView):
     template_name = 'festa.html'
 festa = FestaView.as_view()    
 
-class QuemsomosView(TemplateView):
+
+class QuemsomosView(CreateView):
     template_name = 'quemsomos.html'
 quemsomos =  QuemsomosView.as_view()   
 
+
 class ServicosView(TemplateView):
     template_name = 'servicos.html'
-servicos = ServicosView.as_view()    
+servicos = ServicosView.as_view()  
+
+
+class MinhaContaView(LoginRequiredMixin, TemplateView):
+    template_name = 'minhaconta.html'
+minhaconta = MinhaContaView.as_view()  
+
+
+# -----------------------------------------------//---------------------------------#
+# pagina de cadastro
 
 class RegistroView(CreateView):
-    form_class = UserCreationForm
     template_name = 'registrar.html'
-    model = User
+    model = Usuario
+    form_class = UserAdminCreationForm
+    success_url = reverse_lazy('minhaconta')
 registro = RegistroView.as_view()
 
 
+# -----------------------------------------------//---------------------------------#
+#funcao para alterar dados
 
-#Autenticação login
-def login_cliente(request):
-    return render(request,"login.html")
+class UpdateUserView(LoginRequiredMixin, UpdateView):
+    template_name = 'alterar-dados.html'
+    model = Cliente
+    fields = ['name', 'email', 'cpf']
+    success_url = reverse_lazy('minhaconta')
 
-def contato(request):
-    return render(request,"contato.html")
-
-#Auntenticação Usuario
-@login_required(login_url="entrar")
-def page_user(request):
-    return render(request,'index.html')
-
-
+    def get_object(self):
+        return self.request.user
+alterarusuario = UpdateUserView.as_view() 
 
 # -----------------------------------------------//---------------------------------#
-
-# pagina de cadastro
-def registrar(request):    
-     # Se dados forem passados via POST
-    if request.POST:
-        form = ClienteForm(request.POST)
-        if form.is_valid(): # se o formulario for valido
-            form.save() # cria um novo usuario a partir dos dados enviados
-            form.cleaner
-    else:
-        form = ClienteForm()
-    contexto = {
-        "form":form
-    }
-    return render(request, "registrar.html", contexto)
-
-
-# -----------------------------------------------//---------------------------------#
-
-#funcao para alterar conta
-@login_required
-def editarConta(request):
-    template_name = 'editarConta.html'
-    contexto = {}
-    if request.method == 'POST':
-        form = EditaContaClienteForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            form = EditaContaClienteForm(instance=request.user)
-            contexto['success'] = True
-    else:
-        form = EditaContaClienteForm(instance=request.user)
-    contexto['form'] = form
-    return render(request, template_name, contexto)
-
-# -----------------------------------------------//---------------------------------#
-
 #funcao para alterar senha
-@login_required
-def editarSenha(request):
-    template_name = 'editarSenha.html'
-    context = {}
-    if request.method == 'POST':
-        form = PasswordChangeForm(data=request.POST, user=request.user)
-        if form.is_valid():
-            form.save()
-            context['success'] = True
-    else:
-        form = PasswordChangeForm(user=request.user)
-    context['form'] = form
-    return render(request, template_name, context)   
 
-    # -----------------------------------------------//---------------------------------#
+class UpdatePasswordView(LoginRequiredMixin, FormView):
+
+    template_name = 'alterar-senha.html'
+    success_url = reverse_lazy('minhaconta')
+    form_class = PasswordChangeForm
+
+    def get_form_kwargs(self):
+        kwargs = super(UpdatePasswordView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+alterarsenha = UpdatePasswordView.as_view() 
+
+# -----------------------------------------------//---------------------------------#

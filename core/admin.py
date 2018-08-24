@@ -19,24 +19,24 @@ class ClienteForm(forms.ModelForm):
     
     class Meta:
         model = Cliente
-        fields = ["nome_u","user_name","email_u","cpf","telefone_u","endereco_u","news"]
+        fields = ["name","username","email","cpf","telefone_u","endereco_u","news"]
       
 class ClienteAlteraForm(forms.ModelForm):
     class Meta:
         model = Cliente
-        fields = ["nome_u","user_name","email_u","cpf","telefone_u","endereco_u","news"]
+        fields = ["name","username","email","cpf","telefone_u","endereco_u","news"]
 
 
 # Cliente begin
 class ClienteAdmin(UserAdmin):
     add_form = ClienteForm
     form = ClienteAlteraForm
-    add_fieldsets = ((None, { "fields": ("user_name", "nome_u", "email_u","cpf", "telefone_u", "endereco_u")}),)
-    fieldsets = ((None, { "fields": ("nome_u", "email_u", "cpf")}),)
-    list_display =["codigo_u","user_name","nome_u","email_u"]
+    add_fieldsets = ((None, { "fields": ("username", "name", "email","cpf", "telefone_u", "endereco_u")}),)
+    fieldsets = ((None, { "fields": ("name", "email", "cpf", "password1", "password2")}),)
+    list_display =["codigo_u","username","name","email", 'is_staff', 'is_active', 'date_joined']
     filter_horizontal = []
     ordering = ["codigo_u"]
-    list_filter = ["nome_u"]
+    list_filter = ["name"]
 
 #Usuario end
 #

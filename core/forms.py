@@ -1,11 +1,28 @@
 from django import forms
-from core.models import Cliente
+from django.contrib.auth.forms import UserCreationForm
+from django import forms
+
+from .models import Usuario, Cliente
+
+class UserAdminCreationForm(UserCreationForm):
+
+    class Meta:
+        model = Cliente
+        fields = ['username', 'email', 'cpf', 'telefone_u']
+
+
+class UserAdminForm(forms.ModelForm):
+
+    class Meta:
+        model = Cliente
+        fields = ['username', 'email', 'name', 'is_active', 'is_staff']
+
 
 class ClienteForm(forms.ModelForm):
 
     class Meta:
         model = Cliente
-        fields = ["nome_u","user_name","email_u","cpf","telefone_u","endereco_u","news"]
+        fields = ["name","username","email","cpf","telefone_u","endereco_u","news"]
 
 
 
@@ -21,7 +38,7 @@ class EditaContaClienteForm(forms.ModelForm):
 
     def clean_email(self):
     #Verifica se Email ja está cadastrado para poder editar    
-        email = self.cleaned_data['email_u']
+        email = self.cleaned_data['email']
         queryset = Cliente.objects.filter(email=email).exclude(pk=self.instance.pk)
         if queryset.exists():
             raise forms.ValidationError('Já existe usuário com este E-mail')
@@ -29,4 +46,4 @@ class EditaContaClienteForm(forms.ModelForm):
 
     class Meta:
         model = Cliente
-        fields = ('nome_u','email_u','telefone_u', 'endereco_u')
+        fields = ('name','email','telefone_u', 'endereco_u')

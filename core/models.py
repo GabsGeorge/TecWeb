@@ -1,23 +1,8 @@
+import re
+
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
-
-class UsuarioManager(BaseUserManager):
-    
-    def _criar_usuario(self, user_name, password, **campos):
-        if not user_name:
-            raise ValueError('username deve ser declarado!')
-        user = self.model(user_name=user_name, **campos)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-    
-    def create_user(self, user_name, password=None, **campos):
-        return self._criar_usuario(user_name, password,**campos)
-
-    def create_superuser(self, user_name, password=None, **campos):
-        campos.setdefault('perfil','adm')
-        return self._criar_usuario(user_name, password,**campos)
+from django.core import validators
+from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 
 
 class Colaboradores(models.Model):
@@ -41,46 +26,44 @@ class Contratos(models.Model):
         managed = True
         db_table = 'Contratos'
 
+class Usuario(AbstractBaseUser, PermissionsMixin):
 
-class Usuario(AbstractBaseUser):
+    username = models.CharField(
+        'Apelido / Usuário', max_length=30, unique=True, validators=[
+            validators.RegexValidator(
+                re.compile('^[\w.@+-]+$'),
+                'Informe um nome de usuário válido. '
+                'Este valor deve conter apenas letras, números '
+                'e os caracteres: @/./+/-/_ .'
+                , 'invalid'
+            )
+        ], help_text='Um nome curto que será usado para identificá-lo de forma única na plataforma'
+    )
     codigo_u = models.AutoField(db_column='Codigo_U', primary_key=True)  # Field name made lowercase.
-    nome_u = models.CharField("Nome",db_column='Nome_U', max_length=255)  # Field name made lowercase.
-    user_name = models.CharField("username",db_column='user_name', unique=True, max_length=100)  # Field name made lowercase.
-    password = models.CharField(db_column='password', max_length=200)  # Field name made lowercase.
-    email_u = models.EmailField("E-mail",db_column='Email_U', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    perfil = models.CharField("Perfil", max_length=1)
-    Ativo = models.BooleanField("Ativo", default=True)
+    name = models.CharField('Nome', max_length=100, blank=True)
+    email = models.EmailField('E-mail', unique=True)
+    is_staff = models.BooleanField('Equipe', default=False)
+    is_active = models.BooleanField('Ativo', default=True)
+    date_joined = models.DateTimeField('Data de Entrada', auto_now_add=True)
 
-    USERNAME_FIELD = 'user_name'
-    REQUIRED_FIELDS = ["nome_u","email_u"]
-    objects = UsuarioManager()
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
+    objects = UserManager()
 
     class Meta:
-        managed = True
-        db_table = 'Usuario'
-
-
-    def get_full_name(self):
-        return self.nome_u
-
-    def get_short_name(self):
-        return self.nome_u
+        verbose_name = 'Usuário'
+        verbose_name_plural = 'Usuários'
 
     def __str__(self):
-        return self.nome_u
+        return self.name or self.username
 
-    @property
-    def is_staff(self):
-        return self.perfil == "adm"
+    def get_full_name(self):
+        return str(self)
 
-    def has_module_perms(self, package_name):
-        return True
+    def get_short_name(self):
+        return str(self).split(" ")[0]
 
-    def has_perm(self, perm, obj=None):
-        return True
-
-    def has_perms(self, perm_list, obj=None):
-        return True
 
 
 class Cliente(Usuario):
@@ -91,126 +74,5 @@ class Cliente(Usuario):
         
 
 
-    # --------------------------------------------------------------------- // ------------------------------------------------------------#
-
-class AuthGroup(models.Model):
-    name = models.CharField(unique=True, max_length=80)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group'
 
 
-class AuthGroupPermissions(models.Model):
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_group_permissions'
-        unique_together = (('group', 'permission'),)
-
-
-class AuthPermission(models.Model):
-    name = models.CharField(max_length=255)
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
-    codename = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_permission'
-        unique_together = (('content_type', 'codename'),)
-
-
-class AuthUser(models.Model):
-    password = models.CharField(max_length=128)
-    last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.BooleanField()
-    username = models.CharField(unique=True, max_length=150)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=150)
-    email = models.CharField(max_length=254)
-    is_staff = models.BooleanField()
-    is_active = models.BooleanField()
-    date_joined = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user'
-
-
-class AuthUserGroups(models.Model):
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_groups'
-        unique_together = (('user', 'group'),)
-
-
-class AuthUserUserPermissions(models.Model):
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_user_permissions'
-        unique_together = (('user', 'permission'),)
-
-
-class DjangoAdminLog(models.Model):
-    action_time = models.DateTimeField()
-    object_id = models.TextField(blank=True, null=True)
-    object_repr = models.CharField(max_length=200)
-    action_flag = models.SmallIntegerField()
-    change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'django_admin_log'
-
-
-class DjangoContentType(models.Model):
-    app_label = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
-
-    class Meta:
-        managed = False
-        db_table = 'django_content_type'
-        unique_together = (('app_label', 'model'),)
-
-
-class DjangoMigrations(models.Model):
-    app = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    applied = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_migrations'
-
-
-class DjangoSession(models.Model):
-    session_key = models.CharField(primary_key=True, max_length=40)
-    session_data = models.TextField()
-    expire_date = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_session'
-
-
-class Sysdiagrams(models.Model):
-    name = models.CharField(max_length=128)
-    principal_id = models.IntegerField()
-    diagram_id = models.AutoField(primary_key=True)
-    version = models.IntegerField(blank=True, null=True)
-    definition = models.BinaryField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'sysdiagrams'
-        unique_together = (('principal_id', 'name'),)

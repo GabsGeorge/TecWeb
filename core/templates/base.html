@@ -54,7 +54,7 @@
               <ul class="dropdown-menu" aria-labelledby="download">
                 <li><a href="{% url 'index' %}">Entrar</a></li>
                 <li><a href="{% url 'registrar' %}">Cadastre-se</a></li>
-                <li><a href="">Minha conta</a></li>
+                <li><a href="{% url 'minhaconta' %}">Minha conta</a></li>
                 <li><a href="{% url 'quemsomos' %}"">Quem somos</a></li>
                 <li><a href="{% url 'contato' %}">Contato</a></li>
               </ul>
@@ -74,7 +74,7 @@
         </li>
         <li class="carrinho_menu_usuario"><img src="{% static 'images/topo/carrinho.png' %}"> ( 0 )</li> <!--carrinho de compras responsivo--> 
         <li class="item2"><a href="">Meus Pedidos</a></li>
-        <li class="item3"><a href="">Minha Conta</a></li>
+        <li class="item3"><a href="{% url 'minhaconta' %}">Minha Conta</a></li>
         <li class="item4"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)0000-0000</li>
         <li class="item5"><span><img src="{% static 'images/topo/telefone.png' %}"> </span>(11)0000-0000</li>
         <li class="item6">

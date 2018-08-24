@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block conteudo %}
+
+<div class="container gallery-container">
+	<div class="page-header">
+    	<h1>{% block title %} Minha Conta {% endblock %} <img src="{% static 'images/verification.png' %}"></h1>
+    <ol class="breadcrumb">
+  		<li><a href="{% url 'index'%}">Início</a></li>
+  		<li class="active">Minha Conta</li>
+	</ol>
+    </div>
+     <div class="tz-gallery">
+	<div class="row">
+    	<div class="col-md-4">
+        	<div class="list-group">
+          	<a href="#" class="list-group-item active">Minha Conta</a>
+          	<a href="{% url 'alterarusuario' %}" class="list-group-item">Alterar Dados</a>
+          	<a href="{% url 'alterarsenha' %}" class="list-group-item">Alterar Senha</a>
+        </div>
+    </div>
+        {% block accounts_container %}
+            <h2>Bem vindo {{user}}</h2>
+        {% endblock %}
+</div>
+
+    </div>
+
+</div>
+
+{%endblock%}

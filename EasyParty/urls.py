@@ -26,11 +26,14 @@ urlpatterns = [
     url(r'^registrar/',views.registro, name='registrar'),
     url(r'^quemsomos/',views.quemsomos, name='quemsomos'),
     url(r'^servicos/',views.servicos, name='servicos'),
-    
 
+    # begin url app Conta
+    url(r'^minhaconta/',views.minhaconta, name='minhaconta'),
+    url(r'^alterar-usuario/',views.alterarusuario, name='alterarusuario'),
+    url(r'^alterar-senha/',views.alterarsenha, name='alterarsenha'),
     url(r'^entrar/', login, { "template_name":"login.html" }, name='entrar'),
-    url(r'^sair/',logout, { "next_page":"index.html" }, name="sair"),
-    
+    url(r'^sair/$', logout, {'next_page': 'index'}, name='sair'),
+    # end url app Conta    
     
 
 ]
