@@ -31,8 +31,8 @@ urlpatterns = [
     url(r'^minhaconta/',views.minhaconta, name='minhaconta'),
     url(r'^alterar-usuario/',views.alterarusuario, name='alterarusuario'),
     url(r'^alterar-senha/',views.alterarsenha, name='alterarsenha'),
-    url(r'^entrar/', login, { "template_name":"login.html" }, name='entrar'),
-    url(r'^sair/$', logout, {'next_page': 'index'}, name='sair'),
+    url(r'^login/', login, { "template_name":"login.html" }, name='login'),
+    url(r'^logout/$', logout, {'next_page': 'index'}, name='logout'),
     # end url app Conta    
     
 

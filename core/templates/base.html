@@ -52,7 +52,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu2">Conta <span class="caret">
             <span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="{% url 'index' %}">Entrar</a></li>
+                <li><a href="{% url 'login' %}">Entrar</a></li>
                 <li><a href="{% url 'registrar' %}">Cadastre-se</a></li>
                 <li><a href="{% url 'minhaconta' %}">Minha conta</a></li>
                 <li><a href="{% url 'quemsomos' %}"">Quem somos</a></li>
@@ -64,11 +64,11 @@
         <li class="item1">
         {% if user.is_authenticated %}
            <span><img src="{%static 'images/topo/login.png' %} "></span> 
-           Olá {{user}}, Seja bem-vindo!</a><a href="{% url 'sair' %}"> Sair</a>
+           Olá {{user}}, Seja bem-vindo!</a><a href="{% url 'logout' %}"> Sair</a>
         </li>
         {%else%}
           <span><img src="{% static 'images/topo/login.png' %}"></span>
-          Seja bem-vindo!<a href="{% url 'registrar' %}" class="txt-branco"> Cadastre-se</a> ou efetue o <a href="{% url 'entrar' %}" class="txt-branco">Login</a>
+          Seja bem-vindo!<a href="{% url 'registrar' %}" class="txt-branco"> Cadastre-se</a> ou efetue o <a href="{% url 'login' %}" class="txt-branco">Login</a>
         {%endif%}
 
         </li>

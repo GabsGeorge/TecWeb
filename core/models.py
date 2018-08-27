@@ -29,7 +29,7 @@ class Contratos(models.Model):
 class Usuario(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(
-        'Apelido / Usuário', max_length=30, unique=True, validators=[
+        'Username', max_length=30, unique=True, validators=[
             validators.RegexValidator(
                 re.compile('^[\w.@+-]+$'),
                 'Informe um nome de usuário válido. '

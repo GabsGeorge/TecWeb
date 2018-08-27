@@ -8,9 +8,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse, reverse_lazy, resolve
 
-from core.forms import ClienteForm, EditaContaClienteForm, ContatoForm, UserAdminCreationForm
+from core.forms import ClienteForm, ContatoForm, UserAdminCreationForm
 from catalogo.models import Produto, Categoria
 from core.models import Cliente
 
@@ -35,12 +35,12 @@ def contato(request):
     return render(request, "contato.html", contexto)
 
 
-class FestaView(CreateView):
+class FestaView(TemplateView):
     template_name = 'festa.html'
 festa = FestaView.as_view()    
 
 
-class QuemsomosView(CreateView):
+class QuemsomosView(TemplateView):
     template_name = 'quemsomos.html'
 quemsomos =  QuemsomosView.as_view()   
 
@@ -56,23 +56,23 @@ minhaconta = MinhaContaView.as_view()
 
 
 # -----------------------------------------------//---------------------------------#
-# pagina de cadastro
+# pagina de cadastro Usuário
 
-class RegistroView(CreateView):
+class RegistroView(TemplateView, FormView):
     template_name = 'registrar.html'
-    model = Usuario
+    model = Cliente
     form_class = UserAdminCreationForm
     success_url = reverse_lazy('minhaconta')
 registro = RegistroView.as_view()
 
 
 # -----------------------------------------------//---------------------------------#
-#funcao para alterar dados
+#funcao para alterar dados Usuário
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
     template_name = 'alterar-dados.html'
     model = Cliente
-    fields = ['name', 'email', 'cpf']
+    fields = ['username','name', 'email', 'cpf']
     success_url = reverse_lazy('minhaconta')
 
     def get_object(self):
@@ -80,7 +80,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
 alterarusuario = UpdateUserView.as_view() 
 
 # -----------------------------------------------//---------------------------------#
-#funcao para alterar senha
+#funcao para alterar senha Usuário
 
 class UpdatePasswordView(LoginRequiredMixin, FormView):
 

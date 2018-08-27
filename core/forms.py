@@ -8,7 +8,7 @@ class UserAdminCreationForm(UserCreationForm):
 
     class Meta:
         model = Cliente
-        fields = ['username', 'email', 'cpf', 'telefone_u']
+        fields = ['username', 'email', 'cpf']
 
 
 class UserAdminForm(forms.ModelForm):
@@ -33,17 +33,3 @@ class ContatoForm(forms.ModelForm):
     mensagem = forms.CharField(label="mensagem", widget=forms.Textarea())
 
         
-
-class EditaContaClienteForm(forms.ModelForm):
-
-    def clean_email(self):
-    #Verifica se Email ja está cadastrado para poder editar    
-        email = self.cleaned_data['email']
-        queryset = Cliente.objects.filter(email=email).exclude(pk=self.instance.pk)
-        if queryset.exists():
-            raise forms.ValidationError('Já existe usuário com este E-mail')
-        return email
-
-    class Meta:
-        model = Cliente
-        fields = ('name','email','telefone_u', 'endereco_u')
