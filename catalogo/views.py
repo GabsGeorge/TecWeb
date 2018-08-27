@@ -50,6 +50,5 @@ def produto(request, slug):
     produto = Produto.objects.get(slug=slug)
     contexto = {
         'produto_atual': produto,
-        'categorias':Categoria.objects.all()
     }
-    return render(request, 'catalogo/produto.html', contexto)      
+    return render(request, 'catalogo/produto_unico.html', contexto)      

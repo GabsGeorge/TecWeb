@@ -93,49 +93,15 @@
 		<img src="{% static 'images/balloons.png' %}">	
 		</h1>
 	</div>
-    
+
     <div class="tz-gallery">
-
-            <div class="container">
-				<div class="row">
-					<div class="produtos">
-						{%for produto in produtos%}
-			  		    <div class="thumbnail">
-			  				<a href="{{ produto.get_absolute_url }}">
-			  				{% if produto.imagem %}	
-			  				<figure class="img_produto">
-			  					<img src="{{produto.imagem.url}}" alt="{{produto.nome_p}}" />
-			  				</figure>
-			  				</a>
-			  				{% else %}
-			  					<img src="{% static 'images/produto-sem-imagem2.png" alt="{{produto.nome_p}}" />
-			  				{% endif %}
-			  				<div class="caption">
-			  					<div class="txt_nome_produto">
-			  						<h4>{{produto.nome_p}}</h4>
-			  						<p>Por: R$ {{produto.preco_p}}</p>
-			  					</div>
-
-			  				{% if produto.vender %}	
-			  					<section class="btn_produto">
-			  						<p><a href="" class="btn btn-success" role="button">Comprar</a>
-			  						<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>
-			  					</section>	
-			  				{% else %}
-			  					 <p><a href="#" class="btn btn-success" role="button">Alugar</a>
-			  					<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>	
-			  				{%endif%}
-			  					
-			  				</div>
-			  		    </div>
-			  		    {% endfor %}
-
-					</div>
-				</div>
-			</div>
-			<!--Begin Paginator-->
-			{% pagination request paginator page_obj %}
-       		<!--End Paginator-->
+    	{%for produto in produtos%}
+        {% include "catalogo/_produto.html" %}
+		{% endfor %}
+    </div>
+		<!--Begin Paginator-->
+		{% pagination request paginator page_obj %}
+       	<!--End Paginator-->
        </div>
 </div>
 

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'core',
     'catalogo',
     'paineldecontrole',
+    'checkout'
 ]
 
 MIDDLEWARE = [
@@ -130,13 +131,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
-LOGIN_REDIRECT_URL = 'index'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 AUTH_USER_MODEL = 'core.Usuario'
 LOGIN_URL='login'
+LOGIN_REDIRECT_URL = 'index'
 
+
+#Mensagens Django
+
+from django.contrib.messages import constants as messages_constants
+MESSAGE_TAGS = {
+    messages_constants.DEBUG: 'debug',
+    messages_constants.INFO: 'info',
+    messages_constants.SUCCESS: 'success',
+    messages_constants.WARNING: 'warning',
+    messages_constants.ERROR: 'danger',
+}
+
+
+
+#Config Heroku
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
