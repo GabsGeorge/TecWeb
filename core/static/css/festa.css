@@ -1,9 +1,9 @@
 .container.gallery-container {
-    background-color: #fff;
+    background-color: #fcfcfc;
     color: #35373a;
     min-height: 100vh;
     border-radius: 20px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.34);
+    box-shadow: 0 1px 15px rgba(95, 95, 95, 0.7);
 }
 
 .gallery-container h1 {

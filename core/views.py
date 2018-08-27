@@ -15,6 +15,7 @@ from catalogo.models import Produto, Categoria
 from core.models import Cliente
 
 
+
 Usuario = get_user_model()
 
 
@@ -53,6 +54,11 @@ servicos = ServicosView.as_view()
 class MinhaContaView(LoginRequiredMixin, TemplateView):
     template_name = 'minhaconta.html'
 minhaconta = MinhaContaView.as_view()  
+
+
+class CalculadoraView(TemplateView):
+    template_name = 'calculadora.html'
+calculadora =  CalculadoraView.as_view()  
 
 
 # -----------------------------------------------//---------------------------------#

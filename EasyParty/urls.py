@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^registrar/',views.registro, name='registrar'),
     url(r'^quemsomos/',views.quemsomos, name='quemsomos'),
     url(r'^servicos/',views.servicos, name='servicos'),
+    url(r'^calculadora/',views.calculadora, name='calculadora'),
 
     # begin url app Conta
     url(r'^minhaconta/',views.minhaconta, name='minhaconta'),

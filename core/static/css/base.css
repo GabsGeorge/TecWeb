@@ -1,5 +1,13 @@
+header{
+  background-image: url(../images/background.png); 
+  background-position: 139px 41px;
+}
+
 body{
-  background: #f5f5f5;
+background-color: #fcf1d3;		
+}
+footer{
+	background-color: #fff;
 }
 
 .reset_list{display: inline; text-align: center;}
@@ -865,9 +873,6 @@ a, button {
 	font-weight: normal;
 	font-style: normal;
 }
-footer{
-	margin: 15px;
-}
 
 
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
@@ -1065,7 +1070,8 @@ a {
 .bg-rodape{
 	background-image: url(../images/footer/bg-rodape.jpg);
 	background-repeat: no-repeat;
-	
+	width: 100%;
+	padding-top: 60px;	
 }
 
 footer li {

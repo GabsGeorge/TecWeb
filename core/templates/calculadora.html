@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block conteudo %}
+
+<div class="container gallery-container">
+	<div class="page-header">
+    	<h1>Calcule sua festa!<img src="{% static 'images/calculator.png' %}"></h1>
+    </div>
+     <div class="tz-gallery">
+	    <section class="calculadora">
+	    	<div class="card">
+  <div class="card-body">
+
+      <h3 class="text-center font-weight-bold blue-text mt-3 mb-4 pb-4"><strong>Slide to see the pricing change</strong></h3>
+      <hr>
+
+      <form class="range-field my-5">
+          <input id="calculatorSlider" class="no-border" type="range" value="0" min="0" max="300" />
+      </form>
+
+      <!-- Grid row -->
+      <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-md-6 text-center pb-5">
+
+              <h2><span class="badge blue lighten-2 mb-4">You earn</span></h2>
+              <h2 class="display-4" style="color:#0d47a1"><strong id="resellerEarnings">75$</strong></h2>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-6 text-center pb-5">
+
+              <h2><span class="badge blue lighten-2 mb-4">Client pays</span></h2>
+              <h2 class="display-4" style="color:#0d47a1"><strong id="clientPrice">319$</strong></h2>
+
+          </div>
+          <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+  </div>
+</div>
+	    </section>
+
+    </div>
+
+</div>
+
+{%endblock%}
