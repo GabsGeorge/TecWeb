@@ -21,6 +21,11 @@ urlpatterns = [
     url(r'^easyparty/', include('paineldecontrole.urls')),
     # end url app Painel de Controle
 
+    # begin url app Checkout
+    url(r'^compras/', include('checkout.urls', namespace='checkout')),
+    # end url app Checkout
+
+
     url(r'^contato/', views.contato, name="contato"),
     url(r'^festas/', views.festa, name="festas"),
     url(r'^registrar/',views.registro, name='registrar'),

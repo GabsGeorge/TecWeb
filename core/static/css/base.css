@@ -117,7 +117,11 @@ footer{
         height: 19px;
     }	
 
-
+.btn-default {
+    color: #ffffff !important;
+    background-color: #f39c12 !important;
+    font-size: 14px !important;
+}
 
 
 /*------------Begin menu_usuário - Responsivo-------------*/

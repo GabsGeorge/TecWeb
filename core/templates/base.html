@@ -92,17 +92,18 @@
          </a> 
       </div>
       <!--Begin Pesquisa-->
-
       <form class="pesquisa" role="search" action="{% url 'lista_produto' %}">
         <input name="q"  type="text" placeholder="Buscar">
         <button class="pesquisa-button"><img src="{%static 'images/topo/btn_busca.png' %}"></button>
       </form>
 
-      <!--End Pesquisa-->
+      <!--End Carrinho-->
+      <a href="{% url 'checkout:cart_item' %}">
       <div class="carrinho">
           <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}">  Carrinho</button>
           <div class="preco-carrinho"> 0 itens | R$ 0,00 </div>
-      </div>  
+      </div>
+      </a>  
     </section>
 
       <nav class="menu_categorias">
@@ -124,11 +125,21 @@
         </div> 
       </nav>
     </div><!-- /Fim -->
+    
+    <!-- Alertas -->
+    {% block messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+      </div>
+      {% endfor %}
+    {% endblock %}
 
     </header>  
 
     <main class="container">
       {% block conteudo %}
+
 
       {% endblock %}
     </main>

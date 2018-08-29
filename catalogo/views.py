@@ -40,8 +40,6 @@ class ListProdutoView(generic.ListView):
             )
         return queryset
 
-
-        
 lista_produto = ListProdutoView.as_view()
 
 

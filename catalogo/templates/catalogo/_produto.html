@@ -1,6 +1,7 @@
  			<div class="container">
 				<div class="row">
 					<div class="produtos">
+						{%for produto in produtos%}
 			  		    <div class="thumbnail">
 			  				<a href="{{ produto.get_absolute_url }}">
 			  				{% if produto.imagem %}	
@@ -13,15 +14,16 @@
 			  					<h3>{{produto.nome_p}}</h3>
 			  					<p>Por R$ {{produto.preco_p}}</p>
 			  				{% if produto.vender %}	
-			  					<p><a href="" class="btn btn-success" role="button">Comprar</a>
+			  					<p><a href="{% url 'checkout:create_cartitem' produto.slug %}" class="btn btn-success" role="button">Adicionar</a>
 			  					<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>	
 			  				{% else %}
-			  					 <p><a href="#" class="btn btn-success" role="button">Alugar</a>
+			  					 <p><a href="" class="btn btn-success" role="button">Alugar</a>
 			  					<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>	
 			  				{%endif%}
 			  					
 			  				</div>
 			  		    </div>
+			  		    {% endfor %}
 					</div>
 				</div>
 			</div>

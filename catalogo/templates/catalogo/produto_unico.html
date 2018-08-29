@@ -36,9 +36,13 @@
                     ou 1x de R$ 24,90 Sem juros</p>
                 </article>
             </div>
-            </br>  
-            <button class="btn_compra">Comprar</button>
-            <button class="btn_colocar_carrinho"><img src="{% static 'images/topo/carrinho.png' %}">Colocar no carrinho</button>   
+            </br> 
+
+             {% if produto.vender %}    
+                <p><a href="{% url 'checkout:create_cartitem' produto.slug %}" class="btn btn-success" role="button">Adicionar</a>
+                <a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>    
+            {% endif %}   
+            
             </br>
             </br>  
 

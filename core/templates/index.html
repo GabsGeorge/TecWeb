@@ -95,9 +95,7 @@
 	</div>
 
     <div class="tz-gallery">
-    	{%for produto in produtos%}
         {% include "catalogo/_produto.html" %}
-		{% endfor %}
     </div>
 		<!--Begin Paginator-->
 		{% pagination request paginator page_obj %}
