@@ -39,6 +39,8 @@ urlpatterns = [
     url(r'^alterar-senha/',views.alterarsenha, name='alterarsenha'),
     url(r'^login/', login, { "template_name":"login.html" }, name='login'),
     url(r'^logout/$', logout, {'next_page': 'index'}, name='logout'),
+    #Social Login
+    url(r'^oauth/', include('social_django.urls', namespace='social'))
     # end url app Conta    
     
 

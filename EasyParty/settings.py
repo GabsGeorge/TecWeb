@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     
     #libs
     'widget_tweaks',
+    'social_django',
     #apps
     'core',
     'catalogo',
@@ -58,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # social Login
+     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'EasyParty.urls'
@@ -75,12 +78,26 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 #Categoria apps
                 'catalogo.context_processors.categorias',
+                #Social Login    
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'EasyParty.wsgi.application'
+
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 
 # Database
@@ -165,3 +182,7 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+#social login
+SOCIAL_AUTH_GITHUB_KEY = '00361c3cb7c9a77b76b5'
+SOCIAL_AUTH_GITHUB_SECRET = 'd75d15aacec3ccd18a9f67edfdbf508caa36693e'
