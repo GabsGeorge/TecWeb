@@ -1,0 +1,83 @@
+{% extends "minhaconta.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}Alterar Configurações{% endblock %}
+
+{% block accounts_container %}
+ 
+<h2>Alterar Configurações</h2>
+    <form class="form-horizontal" action="" method="post">
+        {% csrf_token %}
+        <fieldset>
+          <h3>Fcebook</h3>
+          <form class="form-horizontal" action="" method="post">
+            {% if facebook_login %}
+              <p>Conecte-se <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
+              
+              {% if can_disconnect %}
+                <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
+                  {% csrf_token %}
+                  <button type="submit">Desconectar-se</button>
+                </form>
+              {% else %}
+                  <button type="button" disabled>Disconnect from Facebook</button>
+                  <p style="color: red">You must <a href="{% url 'alterarsenha' %}">define a password</a> for your account before disconnecting from Facebook.</p>
+              {% endif %}
+              
+              {% else %}
+               <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-block btn-social btn-facebook">
+                <span class="fa fa-facebook"></span> Entrar com facebook
+              </a>
+            {% endif %}
+            </form>
+
+            <h3>GitHub</h3>
+            <form class="form-horizontal" action="" method="post">
+            {% if github_login %}
+            <p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+              {% if can_disconnect %}
+                <form method="post" action="{% url 'social:disconnect' 'github' %}">
+                  {% csrf_token %}
+                  <button type="submit">Disconnect from GitHub</button>
+                </form>
+              {% else %}
+                  <button type="button" disabled>Disconnect from GitHub</button>
+                  <p style="color: red">You must <a href="{% url 'alterarsenha' %}">define a password</a> for your account before disconnecting from Github.</p>
+              {% endif %}
+              {% else %}
+              <a href="{% url 'social:begin' 'github' %}" class="btn btn-block btn-social btn-github">
+                <span class="fa fa-github"></span> Entrar com Github
+              </a>
+              {% endif %}
+          </form>
+
+          <h3>Twitter</h3>
+            <form class="form-horizontal" action="" method="post">
+            {% if twitter_login %}
+            <p>Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
+              {% if can_disconnect %}
+                <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
+                  {% csrf_token %}
+                  <button type="submit">Disconnect from Twitter</button>
+                </form>
+              {% else %}
+                  <button type="button" disabled>Disconnect from Twitter</button>
+                  <p style="color: red">You must <a href="{% url 'alterarsenha' %}">define a password</a> for your account before disconnecting from Twitter.</p>
+              {% endif %}
+              {% else %}
+              <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-block btn-social btn-twitter">
+                <span class="fa fa-twitter"></span> Entrar com Twitter
+              </a>
+              {% endif %}
+          </form>
+        </fieldset>
+    </form>
+     
+        
+
+    
+{% endblock %}
+
+
+

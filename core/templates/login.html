@@ -42,24 +42,36 @@
                           </div>
                         </div>
 
-                    </fieldset>
-
-                    <p><strong>-- OR --</strong></p>
-                    <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
 
                     <div class="form-group">
-                        <div class="col-md-9 col-md-offset-3">
+                        <div class="col-md-4 center-block">
                             <button type="submit" class="btn btn-primary">Entrar</button>
                         </div>
-                    </div>
-                </form>
-               
-                
-                <div class="hr"></div>
-                <div class="foot-lnk">
-                    <a href="#">Esqueceu sua senha ? Clique aqui!</a>
+                    </div> 
+                        <div class="row omb_row-sm-offset-3 omb_loginOr">
+                            <div class="col-xs-12 col-sm-6">
+                                <hr class="omb_hrOr">
+                            </div>
+                         </div>
 
-                </div>
+                </fieldset>
+            </form>       
+                <section>
+                    <h4 class="omb_authTitle">Entrar com</h4>
+                        <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-block btn-social btn-facebook">
+                            <span class="fa fa-facebook"></span> Entrar com facebook
+                        </a>
+
+                        <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-block btn-social btn-twitter">
+                            <span class="fa fa-twitter"></span> Entrar com Twitter
+                        </a>
+                        <a href="{% url 'social:begin' 'github' %}" class="btn btn-block btn-social btn-github">
+                            <span class="fa fa-github"></span> Entrar com Github
+                        </a>
+                </section>
+                </br>
+                <a href="#">Esqueceu sua senha ? Clique aqui!</a>
+
             </div>
         </div>
     </div>

@@ -2,10 +2,13 @@
 
 {% load widget_tweaks %}
 
-{% block title %}Alterar Senha{% endblock %}
+{% block title %}Alterar Configurações{% endblock %}
 
 {% block accounts_container %}
     <h2>Alterar Senha</h2>
+    {% if not user.has_usable_password %}
+    <p style="color: red">You have not defined a password yet.</p>
+    {% endif %}
     <form class="form-horizontal" action="" method="post">
         {% csrf_token %}
         <fieldset>
@@ -26,5 +29,4 @@
               </div>
             </div>
         </fieldset>
-    </form>
 {% endblock %}

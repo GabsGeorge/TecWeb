@@ -183,6 +183,14 @@ try:
 except ImportError:
     pass
 
-#social login
+#Social login GitHub
 SOCIAL_AUTH_GITHUB_KEY = '00361c3cb7c9a77b76b5'
 SOCIAL_AUTH_GITHUB_SECRET = 'd75d15aacec3ccd18a9f67edfdbf508caa36693e'
+
+#Social login Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '316913515726919'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '060ef0bbce8616088cde0fea7c10ceb4'  # App Secret
+
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/configuracoes/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/configuracoes/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False

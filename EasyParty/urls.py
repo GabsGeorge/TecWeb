@@ -34,9 +34,10 @@ urlpatterns = [
     url(r'^calculadora/',views.calculadora, name='calculadora'),
 
     # begin url app Conta
-    url(r'^minhaconta/',views.minhaconta, name='minhaconta'),
-    url(r'^alterar-usuario/',views.alterarusuario, name='alterarusuario'),
-    url(r'^alterar-senha/',views.alterarsenha, name='alterarsenha'),
+    url(r'^usuario/minhaconta/',views.minhaconta, name='minhaconta'),
+    url(r'^usuario/alterar-usuario/',views.alterarusuario, name='alterarusuario'),
+    url(r'^usuario/alterar-senha/',views.alterarsenha, name='alterarsenha'),
+    url(r'^usuario/configuracoes/',views.config, name='config'),
     url(r'^login/', login, { "template_name":"login.html" }, name='login'),
     url(r'^logout/$', logout, {'next_page': 'index'}, name='logout'),
     #Social Login
