@@ -5,7 +5,7 @@ from django.core import validators
 from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 
 
-class Colaboradores(models.Model):
+class Colaborador(models.Model):
     nome_c = models.CharField(db_column='Nome_C', max_length=100)  # Field name made lowercase.
     codigo_c = models.AutoField(db_column='Codigo_C', primary_key=True)  # Field name made lowercase.
     telefone_c = models.IntegerField(db_column='Telefone_C')  # Field name made lowercase.
@@ -15,7 +15,7 @@ class Colaboradores(models.Model):
         db_table = 'Colaboradores'
 
 
-class Contratos(models.Model):
+class Contrato(models.Model):
     codigo_u = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='Codigo_U')  # Field name made lowercase.
     descricao = models.TextField(db_column='Descricao')  # Field name made lowercase.
     dia = models.DateField(db_column='Dia')  # Field name made lowercase.
