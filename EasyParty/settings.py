@@ -172,22 +172,6 @@ MESSAGE_TAGS = {
 }
 
 
-
-#Config Heroku
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-ALLOWED_HOSTS = ['*']
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-
 #Social login GitHub
 SOCIAL_AUTH_GITHUB_KEY = '00361c3cb7c9a77b76b5'
 SOCIAL_AUTH_GITHUB_SECRET = 'd75d15aacec3ccd18a9f67edfdbf508caa36693e'
@@ -203,3 +187,19 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '898048350911-sh9pnf1b8vrvpg0fu38n3n2o5n2m4tgb.app
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/configuracoes/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/configuracoes/'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+
+
+#Config Heroku
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
