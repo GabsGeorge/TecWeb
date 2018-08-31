@@ -3,8 +3,8 @@ from django.contrib.auth.admin import UserAdmin
 from django import forms
 
 from core.models import Cliente
-from core.models import Contratos
-from core.models import Colaboradores
+from core.models import Contrato
+from core.models import Colaborador
 from core.models import Usuario
 
 
@@ -60,6 +60,6 @@ class ColaboradoresAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Cliente,ClienteAdmin)
-admin.site.register(Contratos)
-admin.site.register(Colaboradores)
+admin.site.register(Contrato)
+admin.site.register(Colaborador)
 admin.site.register(Usuario)
