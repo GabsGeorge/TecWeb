@@ -59,10 +59,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # social Login
+    
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    # Carrinho de compras
-    'checkout.middleware.cart_item_middleware',   
+    
+    'checkout.middleware.cart_item_middleware',
 ]
 
 ROOT_URLCONF = 'EasyParty.urls'
@@ -81,8 +81,8 @@ TEMPLATES = [
                 #Categoria apps
                 'catalogo.context_processors.categorias',
                 #Social Login    
-                'social_django.context_processors.backends',  # <--
-                'social_django.context_processors.login_redirect', # <--
+                'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect', 
             ],
         },
     },
@@ -159,6 +159,7 @@ AUTH_USER_MODEL = 'core.Usuario'
 LOGIN_URL='login'
 LOGIN_REDIRECT_URL = 'index'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #Mensagens Django
 
