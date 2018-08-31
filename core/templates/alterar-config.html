@@ -52,25 +52,10 @@
               {% endif %}
           </form>
 
-          <h3>Twitter</h3>
-            <form class="form-horizontal" action="" method="post">
-            {% if twitter_login %}
-            <p>Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>
-              {% if can_disconnect %}
-                <form method="post" action="{% url 'social:disconnect' 'twitter' %}">
-                  {% csrf_token %}
-                  <button type="submit">Disconnect from Twitter</button>
-                </form>
-              {% else %}
-                  <button type="button" disabled>Disconnect from Twitter</button>
-                  <p style="color: red">You must <a href="{% url 'alterarsenha' %}">define a password</a> for your account before disconnecting from Twitter.</p>
-              {% endif %}
-              {% else %}
-              <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-block btn-social btn-twitter">
-                <span class="fa fa-twitter"></span> Entrar com Twitter
+          <h3>Google</h3>
+              <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-block btn-social btn-google">
+                <span class="fa fa-google"></span> Entrar com Google
               </a>
-              {% endif %}
-          </form>
         </fieldset>
     </form>
      

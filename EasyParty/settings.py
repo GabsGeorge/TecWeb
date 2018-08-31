@@ -60,7 +60,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # social Login
-     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+    # Carrinho de compras
+    'checkout.middleware.cart_item_middleware',   
 ]
 
 ROOT_URLCONF = 'EasyParty.urls'
@@ -94,6 +96,9 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOpenId',  
+    'social_core.backends.google.GoogleOAuth2',
+
 
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -190,6 +195,10 @@ SOCIAL_AUTH_GITHUB_SECRET = 'd75d15aacec3ccd18a9f67edfdbf508caa36693e'
 #Social login Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = '316913515726919'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '060ef0bbce8616088cde0fea7c10ceb4'  # App Secret
+
+#Social login Google
+SOCIAL_AUTH_FACEBOOK_KEY = 'BRBzgNP8l2JzajC8-WvhZ6Rt'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '898048350911-sh9pnf1b8vrvpg0fu38n3n2o5n2m4tgb.apps.googleusercontent.com'  # App Secret
 
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/configuracoes/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/configuracoes/'
