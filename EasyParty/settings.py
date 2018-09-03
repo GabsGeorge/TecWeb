@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
     'social_django.middleware.SocialAuthExceptionMiddleware',
     
     'checkout.middleware.cart_item_middleware',
@@ -159,7 +159,6 @@ AUTH_USER_MODEL = 'core.Usuario'
 LOGIN_URL='login'
 LOGIN_REDIRECT_URL = 'index'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #Mensagens Django
 
