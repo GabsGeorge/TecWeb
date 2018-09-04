@@ -8,8 +8,6 @@ jsonify==0.5
 
 social-auth-app-django==2.1.0
 social-auth-core==1.7.0
-urllib3==1.22
-virtualenv==15.1.0
 Werkzeug==0.14.1
 
 dj-database-url==0.4.1
