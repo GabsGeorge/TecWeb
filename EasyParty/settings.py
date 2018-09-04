@@ -59,9 +59,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'checkout.middleware.cart_item_middleware',
 ]
 
@@ -89,20 +89,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'EasyParty.wsgi.application'
-
-
-
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.google.GoogleOpenId',  
-    'social_core.backends.google.GoogleOAuth2',
-
-
-    'django.contrib.auth.backends.ModelBackend',
-)
-
 
 
 # Database
@@ -153,11 +139,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+
+
+#login
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 AUTH_USER_MODEL = 'core.Usuario'
 LOGIN_URL='login'
 LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = 'logout'
+
+UTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+)
 
 
 #Mensagens Django
@@ -170,6 +175,12 @@ MESSAGE_TAGS = {
     messages_constants.WARNING: 'warning',
     messages_constants.ERROR: 'danger',
 }
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 
 
 #Social login GitHub
@@ -187,19 +198,3 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '898048350911-sh9pnf1b8vrvpg0fu38n3n2o5n2m4tgb.app
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/configuracoes/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/configuracoes/'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
-
-
-#Config Heroku
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-ALLOWED_HOSTS = ['*']
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
