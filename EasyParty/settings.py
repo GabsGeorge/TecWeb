@@ -181,7 +181,7 @@ try:
     from .local_settings import *
 except ImportError:
     pass
-    
+
 
 AUTHENTICATION_BACKENDS = (
  'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
@@ -196,7 +196,7 @@ AUTHENTICATION_BACKENDS = (
 
 #Social login GitHub
 SOCIAL_AUTH_GITHUB_KEY = '00361c3cb7c9a77b76b5'
-SOCIAL_AUTH_GITHUB_SECRET = 'd75d15aacec3ccd18a9f67edfdbf508caa36693e'
+SOCIAL_AUTH_GITHUB_SECRET = '23427532b3195fcf0b8aafbff42d8ce0b23b27e7'
 
 #Social login Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = '316913515726919'  # App ID
