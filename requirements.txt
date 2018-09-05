@@ -13,3 +13,4 @@ psycopg2==2.7.1
 model-mommy==1.2.6
 whitenoise==3.2
 nodejs==0.1.1
+nodejs==0.1.1
