@@ -165,7 +165,6 @@ UTHENTICATION_BACKENDS = (
     'accounts.backends.ModelBackend',
 )
 
-
 #Mensagens Django
 
 from django.contrib.messages import constants as messages_constants

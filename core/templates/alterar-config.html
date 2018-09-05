@@ -13,7 +13,7 @@
           <h3>Fcebook</h3>
           <form class="form-horizontal" action="" method="post">
             {% if facebook_login %}
-              <p>Conecte-se <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
+              <p>conexão<a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
               
               {% if can_disconnect %}
                 <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
@@ -21,8 +21,8 @@
                   <button type="submit">Desconectar-se</button>
                 </form>
               {% else %}
-                  <button type="button" disabled>Disconnect from Facebook</button>
-                  <p style="color: red">You must <a href="{% url 'alterarsenha' %}">define a password</a> for your account before disconnecting from Facebook.</p>
+                  <button type="button" disabled>Desconectar do facebook</button>
+                  <p style="color: red">Você deve <a href="{% url 'alterarsenha' %}">definir uma senha para sua conta</a> antes de desconectar do Facebook.</p>
               {% endif %}
               
               {% else %}
@@ -35,7 +35,7 @@
             <h3>GitHub</h3>
             <form class="form-horizontal" action="" method="post">
             {% if github_login %}
-            <p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+            <p>conexão <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
               {% if can_disconnect %}
                 <form method="post" action="{% url 'social:disconnect' 'github' %}">
                   {% csrf_token %}
@@ -43,7 +43,7 @@
                 </form>
               {% else %}
                   <button type="button" disabled>Disconnect from GitHub</button>
-                  <p style="color: red">You must <a href="{% url 'alterarsenha' %}">define a password</a> for your account before disconnecting from Github.</p>
+                  <p style="color: red">Você deve <a href="{% url 'alterarsenha' %}">definir uma senha para sua conta</a> antes de desconectar do Github.</p>
               {% endif %}
               {% else %}
               <a href="{% url 'social:begin' 'github' %}" class="btn btn-block btn-social btn-github">
