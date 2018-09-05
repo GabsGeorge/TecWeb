@@ -181,7 +181,17 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+    
 
+AUTHENTICATION_BACKENDS = (
+ 'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+ 'social_core.backends.google.GoogleOpenId',  # for Google authentication
+ 'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+ 'social_core.backends.github.GithubOAuth2',  # for Github authentication
+ 'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+ 
+ 'django.contrib.auth.backends.ModelBackend',
+)
 
 
 #Social login GitHub
@@ -193,20 +203,11 @@ SOCIAL_AUTH_FACEBOOK_KEY = '316913515726919'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '060ef0bbce8616088cde0fea7c10ceb4'  # App Secret
 
 #Social login Google
-SOCIAL_AUTH_FACEBOOK_KEY = 'BRBzgNP8l2JzajC8-WvhZ6Rt'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '898048350911-sh9pnf1b8vrvpg0fu38n3n2o5n2m4tgb.apps.googleusercontent.com'  # App Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'BRBzgNP8l2JzajC8-WvhZ6Rt'  # App ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '898048350911-sh9pnf1b8vrvpg0fu38n3n2o5n2m4tgb.apps.googleusercontent.com'  # App Secret
 
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/configuracoes/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/configuracoes/'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 
-AUTHENTICATION_BACKENDS = (
- 'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
- 'social_core.backends.google.GoogleOpenId',  # for Google authentication
- 'social_core.backends.google.GoogleOAuth2',  # for Google authentication
- 'social_core.backends.github.GithubOAuth2',  # for Github authentication
- 'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
- 
- 'django.contrib.auth.backends.ModelBackend',
-)

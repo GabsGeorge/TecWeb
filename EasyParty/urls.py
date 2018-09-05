@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views
 
 from core import views
 from catalogo import views as catalogo_views

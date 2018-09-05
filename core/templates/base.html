@@ -71,7 +71,7 @@
         <li class="item1">
         {% if user.is_authenticated %}
            <span><img src="{%static 'images/topo/login.png' %} "></span> 
-           Olá {{user}}, Seja bem-vindo!</a><a href="{% url 'logout' %}"> Sair</a>
+           Olá {{user.username}}, Seja bem-vindo!</a><a href="{% url 'logout' %}"> Sair</a>
         </li>
         {%else%}
           <span><img src="{% static 'images/topo/login.png' %}"></span>
