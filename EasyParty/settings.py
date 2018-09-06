@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #libs
     'widget_tweaks',
     'social_django',
+    'paypal.standard.ipn',
     #apps
     'core',
     'catalogo',
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     'checkout.middleware.cart_item_middleware',
 ]
 
@@ -209,4 +211,11 @@ SOCIAL_AUTH_LOGIN_ERROR_URL = '/configuracoes/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/configuracoes/'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
+#PagSeguro
+PAGSEGURO_TOKEN = ''
+PAGSEGURO_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
+PAGSEGURO_SANDBOX = True
 
+#Paypal
+PAYPAL_TEST = True
+PAYPAL_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'

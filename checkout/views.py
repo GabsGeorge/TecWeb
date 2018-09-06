@@ -1,9 +1,23 @@
+# coding=utf-8
+
+#from pagseguro import PagSeguro
+
+from paypal.standard.forms import PayPalPaymentsForm
+from paypal.standard.models import ST_PP_COMPLETED
+from paypal.standard.ipn.signals import valid_ipn_received
+
 from django.shortcuts import get_object_or_404
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import (
+    RedirectView, TemplateView, ListView, DetailView
+)
 from django.forms import modelformset_factory
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from django.http import HttpResponse
+
 
 from catalogo.models import Produto
 from checkout.models import Pedido
@@ -83,6 +97,86 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('checkout:cart_item')
-        return super(CheckoutView, self).get(request, *args, **kwargs)
-
+        response = super(CheckoutView, self).get(request, *args, **kwargs)
+        response.context_data['pedido'] = pedido
+        return response
 checkout = CheckoutView.as_view()
+
+
+class ListaDePedidoView(LoginRequiredMixin, ListView):
+    template_name = "checkout/lista_pedido.html"
+    paginate_by = 10
+    def get_queryset(self):
+        return Pedido.objects.filter(user=self.request.user)
+lista_pedido = ListaDePedidoView.as_view()
+
+
+class DetalhePedidoView(LoginRequiredMixin, DetailView):
+    template_name = 'checkout/detalhe_pedido.html'
+    def get_queryset(self):
+        return Pedido.objects.filter(user=self.request.user)
+detalhe_pedido = DetalhePedidoView.as_view()
+
+
+
+class PagSeguroView(LoginRequiredMixin, RedirectView):
+
+    def get_redirect_url(self, *args, **kwargs):
+        pedido_pk = self.kwargs.get('pk')
+        pedido = get_object_or_404(
+            Pedido.objects.filter(user=self.request.user), pk=pedido_pk
+        )
+        pg = pedido.pagseguro()
+        pg.redirect_url = self.request.build_absolute_uri(
+            reverse('checkout:detalhe_pedido', args=[pedido.pk])
+        )
+        pg.notification_url = self.request.build_absolute_uri(
+            reverse('checkout:pagseguro_notification')
+        )
+        response = pg.checkout()
+        return response.payment_url
+pagseguro_view = PagSeguroView.as_view()
+
+
+@csrf_exempt
+def pagseguro_notification(request):
+    notification_code = request.POST.get('notificationCode', None)
+    if notification_code:
+        pg = PagSeguro(
+            email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
+            config={'sandbox': settings.PAGSEGURO_SANDBOX}
+        )
+        notification_data = pg.check_notification(notification_code)
+        status = notification_data.status
+        reference = notification_data.reference
+        try:
+            pedido = Pedido.objects.get(pk=reference)
+        except Pedido.DoesNotExist:
+            pass
+        else:
+            pedido.pagseguro_update_status(status)
+    return HttpResponse('OK')
+
+
+
+class PaypalView(LoginRequiredMixin, TemplateView):
+
+    template_name = 'checkout/paypal.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PaypalView, self).get_context_data(**kwargs)
+        pedido_pk = self.kwargs.get('pk')
+        pedido = get_object_or_404(
+            Pedido.objects.filter(user=self.request.user), pk=pedido_pk
+        )
+        paypal_dict = pedido.paypal()
+        paypal_dict['return_url'] = self.request.build_absolute_uri(
+            reverse('checkout:lista_pedido')
+        )
+        paypal_dict['cancel_return'] = self.request.build_absolute_uri(
+            reverse('checkout:lista_pedido')
+        )
+        context['form'] = PayPalPaymentsForm(initial=paypal_dict)
+        return context
+paypal_view = PaypalView.as_view()
+

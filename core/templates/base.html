@@ -21,7 +21,7 @@
   
   <!--CSS interno-->
   <link rel="stylesheet" href="{% static 'css/boot/bootstrap-social-gh-pages/bootstrap-social.css' %}" media="screen" />
-   <link rel="stylesheet" href="{% static 'css/boot/bootstrap-social' %}" media="screen" />
+  <link rel="stylesheet" href="{% static 'css/boot/bootstrap-social' %}" media="screen" />
   <link rel="stylesheet" href="{% static 'css/boot/bootstrap.min.css' %}" media="screen" />
   <link rel="stylesheet" href="{% static 'css/boot/custom.min.css'%}" media="screen" />
   <link rel="stylesheet" href="{% static 'css/slider.css'%}" type="text/css">
@@ -81,7 +81,7 @@
 
         </li>
         <li class="carrinho_menu_usuario"><img src="{% static 'images/topo/carrinho.png' %}"> ( 0 )</li> <!--carrinho de compras responsivo--> 
-        <li class="item2"><a href="">Meus Pedidos</a></li>
+        <li class="item2"><a href="{% url 'checkout:lista_pedido' %}">Meus Pedidos</a></li>
         <li class="item3"><a href="{% url 'minhaconta' %}">Minha Conta</a></li>
         <li class="item4"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)0000-0000</li>
         <li class="item5"><span><img src="{% static 'images/topo/telefone.png' %}"> </span>(11)0000-0000</li>
@@ -260,6 +260,7 @@
     <script src="{%static 'js/MenuFixo.js' %}"></script>
     <script src="{%static 'js/menu.js' %}"></script>
     <script src="{%static 'js/produto.js' %}"></script> 
+    {% block scripts %}{% endblock %}
     
 </body>
 </html>
