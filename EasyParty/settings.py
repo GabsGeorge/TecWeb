@@ -217,5 +217,5 @@ PAGSEGURO_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
 PAGSEGURO_SANDBOX = True
 
 #Paypal
-PAYPAL_TEST = True
+PAYPAL_TEST = False
 PAYPAL_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'

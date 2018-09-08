@@ -94,6 +94,7 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
             pedido = Pedido.objects.criacao_pedido(
                 user=request.user, cart_items=cart_items
             )
+            cart_items.delete()
         else:
             messages.info(request, 'Não há itens no carrinho de compras')
             return redirect('checkout:cart_item')
@@ -122,13 +123,13 @@ detalhe_pedido = DetalhePedidoView.as_view()
 class PagSeguroView(LoginRequiredMixin, RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
-        pedido_pk = self.kwargs.get('pk')
-        pedido = get_object_or_404(
-            Pedido.objects.filter(user=self.request.user), pk=pedido_pk
+        order_pk = self.kwargs.get('pk')
+        order = get_object_or_404(
+            Order.objects.filter(user=self.request.user), pk=order_pk
         )
-        pg = pedido.pagseguro()
+        pg = order.pagseguro()
         pg.redirect_url = self.request.build_absolute_uri(
-            reverse('checkout:detalhe_pedido', args=[pedido.pk])
+            reverse('checkout:order_detail', args=[order.pk])
         )
         pg.notification_url = self.request.build_absolute_uri(
             reverse('checkout:pagseguro_notification')
@@ -176,7 +177,25 @@ class PaypalView(LoginRequiredMixin, TemplateView):
         paypal_dict['cancel_return'] = self.request.build_absolute_uri(
             reverse('checkout:lista_pedido')
         )
+
+        paypal_dict['notify_url'] = self.request.build_absolute_uri(
+            reverse('paypal-ipn')
+        )
         context['form'] = PayPalPaymentsForm(initial=paypal_dict)
         return context
 paypal_view = PaypalView.as_view()
+
+
+def paypal_notification(sender, **kwargs):
+    ipn_obj = sender
+    if ipn_obj.payment_status == ST_PP_COMPLETED and \
+        ipn_obj.receiver_email == settings.PAYPAL_EMAIL:
+        try:
+            pedido = Pedido.objects.get(pk=ipn_obj.invoice)
+            pedido.complete()
+        except Pedido.DoesNotExist:
+            pass
+
+
+valid_ipn_received.connect(paypal_notification)
 

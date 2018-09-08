@@ -126,10 +126,11 @@ class Pedido(models.Model):
             email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
             config={'sandbox': settings.PAGSEGURO_SANDBOX}
         )
+         
         pg.sender = {
             'email': self.user.email
         }
-        pg.reference_prefix = ''
+        pg.reference_prefix = None
         pg.shipping = None
         pg.reference = self.pk
         for item in self.items.all():

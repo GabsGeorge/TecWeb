@@ -24,6 +24,7 @@ urlpatterns = [
 
     # begin url app Checkout
     url(r'^compras/', include('checkout.urls', namespace='checkout')),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
     # end url app Checkout
 
 
