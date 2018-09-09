@@ -2,8 +2,7 @@
 from django.db import models
 from django.conf import settings
 from catalogo.models import Produto
-#from pagseguro import PagSeguro
-
+from pagseguro import PagSeguro
 
 #Carrinho de compras----
 class CartItemManager(models.Manager):
@@ -126,7 +125,7 @@ class Pedido(models.Model):
             email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
             config={'sandbox': settings.PAGSEGURO_SANDBOX}
         )
-         
+
         pg.sender = {
             'email': self.user.email
         }
