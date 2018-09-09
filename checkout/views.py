@@ -1,6 +1,6 @@
 # coding=utf-8
 
-#from pagseguro import PagSeguro
+from pagseguro import PagSeguro
 
 from paypal.standard.forms import PayPalPaymentsForm
 from paypal.standard.models import ST_PP_COMPLETED
@@ -125,15 +125,16 @@ class PagSeguroView(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         pedido_pk = self.kwargs.get('pk')
         pedido = get_object_or_404(
-            Order.objects.filter(user=self.request.user), pk=pedido_pk
+            Pedido.objects.filter(user=self.request.user), pk=pedido_pk
         )
         pg = pedido.pagseguro()
         pg.redirect_url = self.request.build_absolute_uri(
             reverse('checkout:detalhe_pedido', args=[pedido.pk])
         )
         pg.notification_url = self.request.build_absolute_uri(
-            reverse('checkout:detalhe_pedido')
+            reverse('checkout:pagseguro_notification')
         )
+
         response = pg.checkout()
         return response.payment_url
 pagseguro_view = PagSeguroView.as_view()
@@ -144,6 +145,7 @@ def pagseguro_notification(request):
     notification_code = request.POST.get('notificationCode', None)
     if notification_code:
         pg = PagSeguro(
+
             email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
             config={'sandbox': settings.PAGSEGURO_SANDBOX}
         )

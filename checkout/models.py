@@ -129,8 +129,8 @@ class Pedido(models.Model):
         pg.sender = {
             'email': self.user.email
         }
-        pg.reference_prefix = None
-        pg.shipping = None
+        pg.reference_prefix = ''    
+        pg.shipping = None  
         pg.reference = self.pk
         for item in self.items.all():
             pg.items.append(
