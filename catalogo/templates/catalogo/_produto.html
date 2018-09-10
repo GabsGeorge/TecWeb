@@ -8,10 +8,10 @@
 			  					<img src="{{produto.imagem.url}}" alt="{{produto.nome_p}}" />
 			  				</a>
 			  				{% else %}
-			  					<img src="{% static 'images/produto-sem-imagem2.png" alt="{{produto.nome_p}}" />
+			  					<img src="http://placehold.it/350x250" alt="{{produto.nome_p}}" />
 			  				{% endif %}
 			  				<div class="caption">
-			  					<h3>{{produto.nome_p}}</h3>
+			  					<h4>{{produto.nome_p}}</h4>
 			  					<p>Por R$ {{produto.preco_p}}</p>
 			  				{% if produto.vender %}	
 			  					<p><a href="{% url 'checkout:create_cartitem' produto.slug %}" class="btn btn-success" role="button">Adicionar</a>
@@ -27,3 +27,6 @@
 					</div>
 				</div>
 			</div>
+
+
+			
