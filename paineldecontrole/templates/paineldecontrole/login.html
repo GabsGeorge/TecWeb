@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load widget_tweaks %}
 <html lang="pt-br">
 
 <head>
@@ -42,10 +43,31 @@
                             <div class="login-form">
                                 <h4> <img src="{% static 'images/easyparty.jpg' %}" width="150"> </h4>
                                 <form action="" method="POST">
-                                    <div class="form-group">
                                     {% csrf_token %}
-                                    {{ form.as_p}}   
+                                    {% for error in form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                        {{ error }}
                                     </div>
+                                    {% endfor %}
+                                    <fieldset>
+                                        <div class="form-group{% if form.username.errors %} has-error{% endif %}">
+                                          <label for="{{ form.username.auto_id }}" class="col-md-3 control-label">{{ form.username.label }}</label>
+                                          <div class="col-md-9">
+                                            {% render_field form.username class="form-control" %}
+                                            {% for error in form.username.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                            {% endfor %}
+                                          </div>
+                                        </div>
+                                        <div class="form-group{% if form.password.errors %} has-error{% endif %}">
+                                          <label for="{{ form.password.auto_id }}" class="col-md-3 control-label">{{ form.password.label }}</label>
+                                          <div class="col-md-9">
+                                            {% render_field form.password class="form-control" %}
+                                            {% for error in form.password.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                            {% endfor %}
+                                          </div>
+                                        </div>
 
                                         <label class="pull-right">
         								    <a href="#">Esqueceu sua senha?</a>

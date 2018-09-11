@@ -4,6 +4,11 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, Admi
 from django.views.generic import View, TemplateView, CreateView, UpdateView, FormView
 from django.views import generic
 from django.conf import settings 
+from django.utils.translation import ugettext_lazy as _
+from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+from jet.dashboard.dashboard_modules import google_analytics
+
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
@@ -20,6 +25,16 @@ from core.models import Cliente
 
 
 Usuario = get_user_model()
+
+
+
+class CustomIndexDashboard(Dashboard):
+    columns = 3
+    
+    def init_with_context(self, context):
+        self.available_children.append(google_analytics.GoogleAnalyticsVisitorsTotals)
+        self.available_children.append(google_analytics.GoogleAnalyticsVisitorsChart)
+        self.available_children.append(google_analytics.GoogleAnalyticsPeriodVisitors)
 
 
 class IndexView(generic.ListView):

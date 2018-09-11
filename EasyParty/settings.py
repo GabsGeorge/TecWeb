@@ -15,6 +15,7 @@ import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -35,6 +36,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -219,3 +222,65 @@ PAGSEGURO_SANDBOX = True
 #Paypal
 PAYPAL_TEST = False
 PAYPAL_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
+
+#Django Jet 
+
+
+
+JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(PROJECT_DIR, 'Silima-ec6099832631.json')
+
+JET_SIDE_MENU_COMPACT = True
+
+JET_DEFAULT_THEME = 'light-gray'
+
+JET_THEMES = [
+    {
+        'theme': 'default', # theme folder name
+        'color': '#47bac1', # color of the theme's button in user menu
+        'title': 'Default' # theme title
+    },
+    {
+        'theme': 'green',
+        'color': '#44b78b',
+        'title': 'Green'
+    },
+    {
+        'theme': 'light-green',
+        'color': '#2faa60',
+        'title': 'Light Green'
+    },
+    {
+        'theme': 'light-violet',
+        'color': '#a464c4',
+        'title': 'Light Violet'
+    },
+    {
+        'theme': 'light-blue',
+        'color': '#5EADDE',
+        'title': 'Light Blue'
+    },
+    {
+        'theme': 'light-gray',
+        'color': '#222',
+        'title': 'Light Gray'
+    }
+]
+
+
+
+
+JET_SIDE_MENU_CUSTOM_APPS = [
+    ('core', [ # Each list element is a tuple with application name (app_label) and list of models
+        'Clientes',
+        'Colaboradores',
+        'Contratos',
+    ]),
+    ('checkout', [
+        'Shop',
+        'City',
+        'MetroStation',
+    ]),
+    ('catalogo', [
+        'Feedback',
+    ]),
+]

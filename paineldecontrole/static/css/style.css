@@ -2269,7 +2269,7 @@ textarea {
   padding: 20px;
   border: 0 solid #e7e7e7;
   border-radius: 5px;
-  box-shadow: 0 5px 20px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 5px 33px 0 rgba(0, 0, 0, 0.8);
 }
 .card-subtitle {
   font-size: 12px;
@@ -6928,4 +6928,9 @@ tbody tr td:last-child {
   .retina-logo {
     display: inline-block !important;
   }
+}
+
+col-md-3 {
+    flex: 0 0 25%;
+    max-width: 35% !important; 
 }

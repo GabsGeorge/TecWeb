@@ -10,8 +10,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class LoginView(generic.ListView):
 	template_name = 'paineldecontrole/login.html'
-	success_url = reverse_lazy('index')
-login = LoginView.as_view()
+	success_url = reverse_lazy('home')
+login = LoginView.as_view() 
 
 
 class IndexContaView(LoginRequiredMixin, TemplateView):
