@@ -44,7 +44,7 @@ class Produto(models.Model):
     nome_p = models.CharField("Nome do produto", db_column='Nome_P', max_length=100)  # Field name made lowercase.
     quantidade = models.SmallIntegerField("Quantidade", db_column='Quantidade')  # Field name made lowercase.
     categoria_p = models.ForeignKey(Categoria, models.DO_NOTHING, db_column='categoria_p')  # Field name made lowercase.
-    imagem = models.ImageField("Imagem", db_column='Imagem',upload_to='produtos')
+    imagem = models.ImageField("Imagem", db_column='Imagem',upload_to='media')
     descricao = models.TextField("Descrição",db_column='Descricao_P')
     custo_p = models.DecimalField("Custo", decimal_places=2, max_digits=10, db_column='Custo_P')
     preco_p = models.DecimalField("Preço", decimal_places=2, max_digits=10, db_column='Preço_P')
