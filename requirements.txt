@@ -32,3 +32,4 @@ xmltodict==0.10.2
 arrow==0.8.0
 python-dateutil==2.7.3
 google-api-python-client==1.4.1
+django-jet==1.0.7
