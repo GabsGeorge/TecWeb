@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     
     #libs
     'widget_tweaks',
+    'easy_thumbnails',
     'social_django',
     'paypal.standard.ipn',
     #apps
@@ -170,6 +171,16 @@ UTHENTICATION_BACKENDS = (
     'accounts.backends.ModelBackend',
 )
 
+
+
+# Thumbnails
+THUMBNAIL_ALIASES = {
+    '': {
+        'imagem_produto': {'size': (285, 160), 'crop': True},
+    },
+}
+
+
 #Mensagens Django
 
 from django.contrib.messages import constants as messages_constants
@@ -226,12 +237,15 @@ PAYPAL_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
 #Django Jet 
 
 
+JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+
+JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
 
 JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(PROJECT_DIR, 'Silima-ec6099832631.json')
 
-JET_SIDE_MENU_COMPACT = True
+JET_SIDE_MENU_COMPACT = False
 
-JET_DEFAULT_THEME = 'light-gray'
+JET_DEFAULT_THEME = 'default'
 
 JET_THEMES = [
     {
@@ -268,19 +282,3 @@ JET_THEMES = [
 
 
 
-
-JET_SIDE_MENU_CUSTOM_APPS = [
-    ('core', [ # Each list element is a tuple with application name (app_label) and list of models
-        'Clientes',
-        'Colaboradores',
-        'Contratos',
-    ]),
-    ('checkout', [
-        'Shop',
-        'City',
-        'MetroStation',
-    ]),
-    ('catalogo', [
-        'Feedback',
-    ]),
-]

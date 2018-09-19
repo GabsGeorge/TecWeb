@@ -1,4 +1,5 @@
 # coding=utf-8
+import json
 
 from pagseguro import PagSeguro
 
@@ -6,9 +7,9 @@ from paypal.standard.forms import PayPalPaymentsForm
 from paypal.standard.models import ST_PP_COMPLETED
 from paypal.standard.ipn.signals import valid_ipn_received
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import (
-    RedirectView, TemplateView, ListView, DetailView
+    RedirectView, TemplateView, ListView, DetailView, View
 )
 from django.forms import modelformset_factory
 from django.contrib import messages
@@ -25,9 +26,9 @@ from checkout.models import Pedido
 from .models import CartItem
 
 
-class CreateCartItemView(RedirectView):
+class CreateCartItemView(View):
 
-    def get_redirect_url(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         produto = get_object_or_404(Produto, slug=self.kwargs['slug'])
         if self.request.session.session_key is None:
             self.request.session.save()
@@ -35,10 +36,15 @@ class CreateCartItemView(RedirectView):
             self.request.session.session_key, produto
         )
         if created:
-            messages.success(self.request, 'Produto adicionado com sucesso')
+            message = 'Produto adicionado com sucesso'
         else:
-            messages.success(self.request, 'Produto atualizado com sucesso')
-        return reverse('checkout:cart_item')
+            message = 'Produto atualizado com sucesso'
+        if request.is_ajax():
+            return HttpResponse(
+                json.dumps({'message': message}), content_type='application/javascript'
+            )
+        messages.success(request, message)
+        return redirect('checkout:cart_item')
 create_cartitem = CreateCartItemView.as_view()
 
 

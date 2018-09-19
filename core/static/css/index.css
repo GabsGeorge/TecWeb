@@ -106,22 +106,10 @@
     height: 120px;
 }
 
-.produtos{
-    display: grid;
-    grid-template-columns: 23% 23% 23% 23%;
-    grid-template-rows: 425px;
-    position: relative;
-    right: 7px;
-
-}
-
 .thumbnail {
 	margin: 10px !important;
 }
 
-.thumbnail img{
-	width: 200px;
-}
 
 .thumbnail:hover{
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);

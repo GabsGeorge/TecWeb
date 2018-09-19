@@ -3,19 +3,19 @@
 {% load static i18n %}
 
 {# Setup favicon #}
-{% block extrahead %}<link rel="shortcut icon" type="image/png" href="{{MEDIA_URL}}seguro.png"/>{% endblock %}
+{% block extrahead %}<link rel="shortcut icon" type="image/png" href="{{MEDIA_URL}}your_logo.png"/>{% endblock %}
 
 {# Setup browser tab label #}
-{% block title %}{{ title }} |  {% trans "Your title" %}{% endblock %}
+{% block title %}{{ title }} |  {% trans "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" %}{% endblock %}
 
 {# Setup branding #}
 {% block branding %}
     <h1 id="site-name">
-        <a href="{% url 'admin:index' %}">
+        <a href="{% url 'admin:index' %}"> ola aaaaaaaaaaaaaaaaaaa
             {# Your logo here #}
-            <img style="background-color: white" src="{{MEDIA_URL}}seguro.png" alt="Your Company Name" height="50%" width="50%">
+            <img style="background-color: black" src="{{MEDIA_URL}}your_logo.png" alt="Silima Festas e Eventos" height="50%" width="50%">
             <br><br>
-            </span> {% trans "Your Branding" %}
+            </span> {% trans "JET DEMO" %}
         </a>
     </h1>
 {% endblock %}

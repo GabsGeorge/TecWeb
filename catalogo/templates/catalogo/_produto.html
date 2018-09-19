@@ -1,32 +1,33 @@
- 			<div class="container">
-				<div class="row">
-					<div class="produtos">
-						{%for produto in produtos%}
-			  		    <div class="thumbnail">
-			  				<a href="{{ produto.get_absolute_url }}">
-			  				{% if produto.imagem %}	
-			  					<img src="{{produto.imagem.url}}" alt="{{produto.nome_p}}" />
-			  				</a>
-			  				{% else %}
-			  					<img src="http://placehold.it/350x250" alt="{{produto.nome_p}}" />
-			  				{% endif %}
-			  				<div class="caption">
-			  					<h4>{{produto.nome_p}}</h4>
-			  					<p>Por R$ {{produto.preco_p}}</p>
-			  				{% if produto.vender %}	
-			  					<p><a href="{% url 'checkout:create_cartitem' produto.slug %}" class="btn btn-success" role="button">Adicionar</a>
-			  					<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>	
-			  				{% else %}
-			  					 <p><a href="" class="btn btn-success" role="button">Alugar</a>
-			  					<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>	
-			  				{%endif%}
-			  					
-			  				</div>
-			  		    </div>
-			  		    {% endfor %}
-					</div>
-				</div>
+ {% load thumbnail %}		
+ 		
+<div class="row">
+    {%for produto in produtos%}
+   		<div class="col-md-4 text-center col-sm-6 col-xs-12">
+        	<div class="product-box">
+				<div class="thumbnail">
+			  		<a href="{{ produto.get_absolute_url }}">
+			  		{% if produto.imagem %}	
+			  			<img src="{{produto.imagem |thumbnail_url:'imagem_produto' }}" alt="{{produto.nome_p}}" />
+			  		</a>
+			  		{% else %}
+			  			<img src="http://placehold.it/350x250" alt="{{produto.nome_p}}" />
+			  		{% endif %}
+			  		<div class="caption">
+			  			<h4>{{produto.nome_p}}</h4>
+			  			<p>Por R$ {{produto.preco_p}}</p>
+			  			{% if produto.vender %}	
+			  				<p><a href="{% url 'checkout:create_cartitem' produto.slug %}" class="btn btn-success" role="button">Adicionar</a>
+			  				<a href="{{ produto.get_absolute_url }}" class="btn btn-default cart-item-add" role="button">Mais detalhes</a></p>
+			  			{% else %}
+			  				<p><a href="" class="btn btn-success" role="button">Alugar</a>
+			  				<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>
+			  			{%endif%}
+			  		</div>
+			  	</div>	    
 			</div>
+		</div>
+	{% endfor %}
+</div>			
 
 
-			
+	
