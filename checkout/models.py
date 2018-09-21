@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from catalogo.models import Produto
 from pagseguro import PagSeguro
+from django.db.models import Avg
 
 #Carrinho de compras----
 class CartItemManager(models.Manager):
@@ -12,23 +13,21 @@ class CartItemManager(models.Manager):
             created = False
             cart_item = self.get(cart_key=cart_key, produto=produto)
             cart_item.quantidade = cart_item.quantidade + 1
+            
             cart_item.save()
         else:
             created = True
-            cart_item = CartItem.objects.create(
-                cart_key=cart_key, produto=produto, preco_p=produto.preco_p
-            )
+            cart_item = CartItem.objects.create(cart_key=cart_key, produto=produto, preco_p=produto.preco_p)
         return cart_item, created
 
 #Item do Carrinho de compras --
 class CartItem(models.Model):
 
-    cart_key = models.CharField(
-        'Chave do Carrinho', max_length=40, db_index=True
-    )
+    cart_key = models.CharField('Chave do Carrinho', max_length=40, db_index=True)
     produto = models.ForeignKey('catalogo.Produto', verbose_name='Produto')
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
     preco_p = models.DecimalField('Preço', decimal_places=2, max_digits=8)
+    total_p = models.DecimalField('Total', decimal_places=2, max_digits=8, null=True, blank=True)
 
     objects = CartItemManager()
 
@@ -39,7 +38,6 @@ class CartItem(models.Model):
 
     def __str__(self):
         return '{} [{}]'.format(self.produto, self.quantidade)
-
 
 def post_save_cart_item(instance, **kwargs):
     if instance.quantidade < 1:

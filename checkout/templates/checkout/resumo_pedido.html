@@ -30,8 +30,10 @@
         <dd>R$ {{ item.preco_p|floatformat:"2" }}</dd>
     </dl>
     {%endfor%}
+    
 </table>
 
 
+<a href="{% url 'checkout:checkout' %}" class="btn btn-success">Checkout</a>
 </fieldset>
 {% endblock %}

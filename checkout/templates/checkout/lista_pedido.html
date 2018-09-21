@@ -27,7 +27,7 @@
             {% for pedido in object_list %}
             <tr>
                 <td>
-                    <a href="{% url 'checkout:detalhe_pedido' pedido.pk %}">#{{ pedido.pk }}</a>
+                    <a href="{% url 'checkout:detalhe_pedido' pedido.pk%}">#{{ pedido.pk }}</a>
                 </td>
                 <td>
                     {% for produto in pedido.produtos %}
@@ -49,3 +49,5 @@
     {% pagination request paginator page_obj %}
     <!--End Paginator-->
 {% endblock %}
+
+

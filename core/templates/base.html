@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="{% static 'css/pagination.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/servicos.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/btnsocial.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/carrinho.css'%}" type="text/css">
   
 
 </head>
@@ -104,7 +105,7 @@
       </form>
 
       <!--End Carrinho-->
-      <a href="{% url 'checkout:cart_item' %}">
+      <a href="{% url 'checkout:cart_item'%}">
       <div class="carrinho">
           <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}">  Carrinho</button>
           <div class="preco-carrinho"> 0 itens | R$ 0,00 </div>

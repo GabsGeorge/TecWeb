@@ -57,16 +57,28 @@
                         </tr>
                         {% endfor %}
                     </tbody>
+
                 </table>
+
                 <p class="text-right">
                     <a href="{% url 'lista_produto' %}" class="pull-left btn btn-default">Continuar Comprando</a>
                     <button type="submit" class="btn btn-primary" name="button">Atualizar Carrinho</button></li>
-                    <a href="{% url 'checkout:checkout' %}" class="btn btn-success">Finalizar Compra</a>
+                    
+                    <a href="{% url 'checkout:checkout'%}" class="btn btn-success">Finalizar Compra</a>
                 </p>
+
+                </br>
+                <section class="line"></section>
+                <section class="resumo_carrinho">
+                    <h3>Resumo do pedido</h3>
+                    <h5>Total do pedido : </h5>
+                    <h5><dd>{{ object.total|floatformat:"2" }}</dd></h5>
+
+                </section>
+
+
             </form>
         </div>
     </div>
-    </div>
 </div>
-
 {%endblock%}

@@ -32,6 +32,7 @@ class CreateCartItemView(View):
         produto = get_object_or_404(Produto, slug=self.kwargs['slug'])
         if self.request.session.session_key is None:
             self.request.session.save()
+
         cart_item, created = CartItem.objects.add_item(
             self.request.session.session_key, produto
         )
@@ -45,6 +46,8 @@ class CreateCartItemView(View):
             )
         messages.success(request, message)
         return redirect('checkout:cart_item')
+        
+
 create_cartitem = CreateCartItemView.as_view()
 
 
@@ -107,6 +110,7 @@ class CheckoutView(LoginRequiredMixin, TemplateView):
         response = super(CheckoutView, self).get(request, *args, **kwargs)
         response.context_data['pedido'] = pedido
         return response
+
 checkout = CheckoutView.as_view()
 
 
@@ -123,6 +127,8 @@ class DetalhePedidoView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return Pedido.objects.filter(user=self.request.user)
 detalhe_pedido = DetalhePedidoView.as_view()
+
+
 
 
 
