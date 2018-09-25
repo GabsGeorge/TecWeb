@@ -5,16 +5,16 @@
 {% block extrahead %}<link rel="shortcut icon" type="image/png" href="{{MEDIA_URL}}your_logo.png"/>{% endblock %}
 
 {# Setup browser tab label #}
-{% block title %}{{ title }} |  {% trans "Your title" %}{% endblock %}
+{% block title %}{{ title }} |  {% trans "Admin Silima - Festas e Eventos" %}{% endblock %}
 
 {# Setup branding #}
 {% block branding %}
     <h1 id="site-name">
         <a href="{% url 'admin:index' %}">
             {# Your logo here #}
-            <img style="background-color: white" src="{{MEDIA_URL}}your_logo.png" alt="Easy Party System" height="50%" width="50%">
+            <img style="background-color: white" src="/static/images/easyparty.jpg" alt="Easy Party System" height="50%" width="50%">
             <br><br>
-            </span> {% trans "Your Branding" %}
+            </span> {% trans "Easy Party System" %}
         </a>
     </h1>
 {% endblock %}

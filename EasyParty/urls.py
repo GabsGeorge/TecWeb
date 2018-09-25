@@ -9,7 +9,6 @@ from django.contrib.auth import views
 
 from core import views
 from catalogo import views as catalogo_views
-from paineldecontrole import views as paineldecontrole_views
 
 urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
@@ -22,10 +21,6 @@ urlpatterns = [
     # begin url app Catalogo,
     url(r'^catalogo/', include('catalogo.urls')),
     # end url app Catalogo
-
-    # begin url app Painel de Controle
-    url(r'^easyparty/', include('paineldecontrole.urls')),
-    # end url app Painel de Controle
 
     # begin url app Checkout
     url(r'^compras/', include('checkout.urls', namespace='checkout')),

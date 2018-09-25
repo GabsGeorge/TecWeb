@@ -7,7 +7,7 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
 from jet.dashboard.dashboard_modules import google_analytics
-
+from django.contrib import messages
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
@@ -84,7 +84,7 @@ calculadora =  CalculadoraView.as_view()
 
 class RegistroView(TemplateView, FormView):
     template_name = 'registrar.html'
-    model = Cliente
+    model = Usuario
     form_class = UserAdminCreationForm
     success_url = reverse_lazy('minhaconta')
 registro = RegistroView.as_view()
@@ -95,7 +95,7 @@ registro = RegistroView.as_view()
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
     template_name = 'alterar-dados.html'
-    model = Cliente
+    model = Usuario
     fields = ['username','name', 'email', 'cpf']
     success_url = reverse_lazy('minhaconta')
 
