@@ -15,17 +15,20 @@
        	<!--End Paginator-->
 </div>
 
+
+{%endblock%}
+
 {% block scripts %}
 
 <script type="text/javascript">
 $(function(){
-    $('.cart-item-add').on('click', function(e){
+    $('.adicionar-carrinho').on('click', function(e){
         e.preventDefault();
         $.ajax({
             url: $(this).attr('href'),
             dataType: 'json',
             success: function(data, textStatus, jqXHR){
-                alert(data.message);
+                bootbox.alert(data.message);
             }
         });
     });
@@ -33,6 +36,3 @@ $(function(){
 </script>
 
 {% endblock %}
-
-
-{%endblock%}

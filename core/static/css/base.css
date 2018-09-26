@@ -12,7 +12,7 @@ footer{
 
 .reset_list{display: inline; text-align: center;}
 
-.fixed {position: fixed; z-index: 9999;}
+.fixed {position: fixed; z-index: 2;}
 
 /*Inicio Menu superior*/
 
