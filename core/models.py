@@ -41,6 +41,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     )
     codigo_u = models.AutoField(db_column='Codigo_U', primary_key=True)  # Field name made lowercase.
     name = models.CharField('Nome', max_length=100, blank=True)
+    second_name = models.CharField('Sobre nome', max_length=100, blank=True)
     email = models.EmailField('E-mail', unique=True)
     is_staff = models.BooleanField('Equipe', default=False)
     is_active = models.BooleanField('Ativo', default=True)

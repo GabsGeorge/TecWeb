@@ -32,7 +32,7 @@ class ClienteAdmin(UserAdmin):
     add_form = ClienteForm
     form = ClienteAlteraForm
     add_fieldsets = ((None, { "fields": ("username", "name", "email","cpf", "telefone_u", "endereco_u")}),)
-    fieldsets = ((None, { "fields": ("name", "email", "cpf", "password1", "password2")}),)
+    fieldsets = ((None, { "fields": ("name", "email", "cpf")}),)
     list_display =["codigo_u","username","name","email", 'is_staff', 'is_active', 'date_joined']
     filter_horizontal = []
     ordering = ["codigo_u"]
