@@ -3,7 +3,7 @@
 /* LOGIN FORM */
 
 body.login {
-  background: $login-background-color;
+  background: blue;
   padding: 100px 30px 30px 30px;
 
   @include for-phone {
