@@ -73,7 +73,3 @@ class Cliente(Usuario):
     endereco_u = models.CharField("Endereço", db_column='Endereco_U', max_length=255)  # Field name made lowercase.
     news = models.NullBooleanField("Deseja receber novidades ?", db_column='News', blank=True)  # Field name made lowercase.
         
-
-
-
-

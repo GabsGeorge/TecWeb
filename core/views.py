@@ -15,9 +15,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from social_django.models import UserSocialAuth
 
-from core.forms import ClienteForm, ContatoForm, UserAdminCreationForm
+from core.forms import ContatoForm, UserAdminCreationForm
 from catalogo.models import Produto, Categoria
-from core.models import Cliente
 
 
 
@@ -36,9 +35,6 @@ class CustomIndexDashboard(Dashboard):
        self.available_children.append(google_analytics.GoogleAnalyticsVisitorsTotals)
        self.available_children.append(google_analytics.GoogleAnalyticsVisitorsChart)
        self.available_children.append(google_analytics.GoogleAnalyticsPeriodVisitors)
-
-
-
 
 
 class IndexView(generic.ListView):

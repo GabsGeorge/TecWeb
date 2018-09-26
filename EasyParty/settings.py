@@ -240,8 +240,6 @@ JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
 
 JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
 
-JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(PROJECT_DIR, 'Silima-ec6099832631.json')
-
 JET_SIDE_MENU_COMPACT = False
 
 JET_DEFAULT_THEME = 'default'

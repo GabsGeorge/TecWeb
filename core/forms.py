@@ -31,5 +31,3 @@ class ContatoForm(forms.ModelForm):
     email = forms.EmailField(label="E-mail") 
     telefone = forms.CharField(label="telefone")
     mensagem = forms.CharField(label="mensagem", widget=forms.Textarea())
-
-        

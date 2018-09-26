@@ -44,6 +44,7 @@ class CreateCartItemView(View):
             return HttpResponse(
                 json.dumps({'message': message}), content_type='application/javascript'
             )
+        total = CartItem.objects.total()
         messages.success(request, message)
         return redirect('checkout:cart_item')
         

@@ -39,6 +39,15 @@ class CartItem(models.Model):
     def __str__(self):
         return '{} [{}]'.format(self.produto, self.quantidade)
 
+    def total(self):
+        aggregate_queryset = self.items.aggregate(
+            total=models.Sum(
+                models.F('preco_p') * models.F('quantidade'),
+                output_field=models.DecimalField()
+            )
+        )
+        return aggregate_queryset['total']
+
 def post_save_cart_item(instance, **kwargs):
     if instance.quantidade < 1:
         instance.delete()
