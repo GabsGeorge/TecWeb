@@ -13,15 +13,16 @@
       <li class="active">Finalização da Compra</li>
     </ol>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-15">
             <p>
-                Pedido #{{ pedido.pk }}
+               <h1> Pedido #{{ pedido.pk }}</h1>
+               
             </p>
         </div>
-        <div class="col-md-4 col-md-offset-2">
+        <div class="col-md-5 col-md-offset-2">
             <a href="{% url 'checkout:pagseguro_view' pedido.pk %}" class="btn btn-success">Pagar com Pagseguro</a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <a href="{% url 'checkout:paypal_view' pedido.pk %}" class="btn btn-primary">Pagar com Paypal</a>
         </div>
     </div>
