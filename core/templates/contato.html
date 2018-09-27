@@ -8,17 +8,17 @@
     <p class="page-description text-center">Entre em contato conosco</p>
     
     <div class="pgContato">  
-	   <div class="contato">  
+	   <div class="contato" align ="center">  
 	      <div class="formContato">
-	      	{for label in form  }  
-	         <form action="#" id="formContato" method="post" tabindex="1">  
-	            <input type="text" id="nome" name="nome" placeholder="Nome" required />  
+	        <form action="#" id="formContato" method="post" tabindex="1"> 
+				{% csrf_token %}
+				{{ form.as_p }}
+	        	<input type="text" id="nome" name="nome" placeholder="Nome" required />  
 	            <input type="email" id="email" name="email" placeholder="Email" required />  
 	            <input type="tel" id="tel" name="tel" placeholder="Telefone" />  
 	            <textarea id="conteudo" name="conteudo" placeholder="Deixe uma mensagem" required ></textarea>  
 	            <button type="submit" class="botaoContato">Enviar</button>  
-	         </form>  
-	      	{endfor}
+	        </form>  
 	      </div>  
 	   </div>  
 	</div>  

@@ -26,7 +26,7 @@ class ClienteForm(forms.ModelForm):
 
 
 
-class ContatoForm(forms.ModelForm):
+class ContatoForm(forms.Form):
     nome = forms.CharField(label="nome")
     email = forms.EmailField(label="E-mail") 
     telefone = forms.CharField(label="telefone")
