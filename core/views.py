@@ -17,6 +17,7 @@ from social_django.models import UserSocialAuth
 
 from core.forms import ContatoForm, UserAdminCreationForm
 from catalogo.models import Produto, Categoria
+from core.models import Cliente
 
 
 
@@ -82,11 +83,12 @@ calculadora =  CalculadoraView.as_view()
 # -----------------------------------------------//---------------------------------#
 # pagina de cadastro Usuário
 
-class RegistroView(TemplateView, FormView):
+class RegistroView(CreateView, FormView):
     template_name = 'registrar.html'
     model = Usuario
     form_class = UserAdminCreationForm
     success_url = reverse_lazy('minhaconta')
+    #messages.success('Cadastro realizado com sucesso')
 registro = RegistroView.as_view()
 
 
@@ -95,8 +97,8 @@ registro = RegistroView.as_view()
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
     template_name = 'alterar-dados.html'
-    model = Usuario
-    fields = ['username','name', 'email', 'cpf']
+    model = Cliente
+    fields = ['username', 'name', 'second_name', 'email', 'cpf', 'telefone_u','endereco_u','news']
     success_url = reverse_lazy('minhaconta')
 
     def get_object(self):

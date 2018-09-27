@@ -16,10 +16,6 @@
         <div class="col-md-12">
             <p>
                 Pedido #{{ pedido.pk }}
-                    <dt>Total R$</dt>
-                    <dd>{{ object.total|floatformat:"2" }}</dd>
-                    <dt>Situação</dt>
-                    <dd>{{ object.get_status_display }}</dd>
             </p>
         </div>
         <div class="col-md-4 col-md-offset-2">

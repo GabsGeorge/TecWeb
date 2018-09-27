@@ -69,7 +69,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
 class Cliente(Usuario):
     cpf = models.IntegerField("CPF", db_column='CPF', unique=True)  # Field name made lowercase.
-    telefone_u = models.IntegerField("Telefone", db_column='Telefone_U')  # Field name made lowercase.
+    telefone_u = models.IntegerField("Telefone", db_column='Telefone_U', default=True)  # Field name made lowercase.
     endereco_u = models.CharField("Endereço", db_column='Endereco_U', max_length=255)  # Field name made lowercase.
-    news = models.NullBooleanField("Deseja receber novidades ?", db_column='News', blank=True)  # Field name made lowercase.
+    news = models.NullBooleanField("Deseja receber novidades ?", db_column='News', default=True)  # Field name made lowercase.
         

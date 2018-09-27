@@ -230,7 +230,7 @@ PAGSEGURO_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
 PAGSEGURO_SANDBOX = True
 
 #Paypal
-PAYPAL_TEST = False
+PAYPAL_TEST = True
 PAYPAL_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
 
 #Django Jet 

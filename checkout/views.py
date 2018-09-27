@@ -211,6 +211,4 @@ def paypal_notification(sender, **kwargs):
         except Pedido.DoesNotExist:
             pass
 
-
 valid_ipn_received.connect(paypal_notification)
-
