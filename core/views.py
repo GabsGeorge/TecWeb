@@ -19,6 +19,10 @@ from core.forms import ContatoForm, UserAdminCreationForm
 from catalogo.models import Produto, Categoria
 from core.models import Cliente
 
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+
 
 
 Usuario = get_user_model()
@@ -47,12 +51,21 @@ index = IndexView.as_view()
 
 
 def contato(request):
-    form = contatoForm
-    contexto = {
-        "categorias":Categoria.objects.all(),
-        'form':form
-    }
-    return render(request, "contato.html", contexto)
+    if request.method == 'GET':
+        form = ContatoForm()
+    else:
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            nome = form.cleaned_data["nome"]
+            email = form.cleaned_data["email"]
+            telefone = form.cleaned_data["telefone"]
+            mensagem = form.cleaned_data["mensagem"]
+            try:
+               send_mail(nome,email,telefone,mensagem['lcs.amorim.lima@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found')
+            return redirect("troxa")    
+    return render(request, "contato.html", {"formula":form})
 
 
 class FestaView(TemplateView):
@@ -77,7 +90,9 @@ minhaconta = MinhaContaView.as_view()
 
 class CalculadoraView(TemplateView):
     template_name = 'calculadora.html'
-calculadora =  CalculadoraView.as_view()  
+calculadora =  CalculadoraView.as_view() 
+
+
 
 
 # -----------------------------------------------//---------------------------------#
