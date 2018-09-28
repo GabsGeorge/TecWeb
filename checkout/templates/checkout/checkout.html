@@ -16,13 +16,10 @@
         <div class="col-md-16">
             <p>
                <h1> Pedido #{{ pedido.pk }}</h1>
-               
+               <img src="{% static 'images/paypal.png' %}" style="width: 200px; margin-left: 42%;">           
             </p>
         </div>
-        <div class="col-md-5 col-md-offset-2">
-            <a href="{% url 'checkout:pagseguro_view' pedido.pk %}" class="btn btn-success">Pagar com Pagseguro</a>
-        </div>
-        <div class="col-md-5">
+        <div class="col-md-5" style=" margin-left: 43%;">
             <a href="{% url 'checkout:paypal_view' pedido.pk %}" class="btn btn-primary">Pagar com Paypal</a>
         </div>
     </div>
