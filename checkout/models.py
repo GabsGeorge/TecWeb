@@ -1,4 +1,4 @@
-# coding: utf-8
+    # coding: utf-8
 from django.db import models
 from django.conf import settings
 from catalogo.models import Produto

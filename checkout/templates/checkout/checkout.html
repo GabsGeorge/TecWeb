@@ -22,6 +22,9 @@
         <div class="col-md-5" style=" margin-left: 43%;">
             <a href="{% url 'checkout:paypal_view' pedido.pk %}" class="btn btn-primary">Pagar com Paypal</a>
         </div>
+        <div class="col-md-4">
+          <a href="{% url 'checkout:pagseguro_view' pedido.pk %}" class="btn btn-primary">Pagar com Paypal</a>
+        </div>
     </div>
     </div>
 </div>
