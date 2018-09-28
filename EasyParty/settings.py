@@ -226,9 +226,9 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/configuracoes/'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 #PagSeguro
-PAGSEGURO_TOKEN = 'B7497F23ADAC4B69AEBD4EFD10CF47B2'
-PAGSEGURO_EMAIL = 'gabriel.g.s.santos@hotmail.com'
-PAGSEGURO_SANDBOX = False
+PAGSEGURO_TOKEN = ''
+PAGSEGURO_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
+PAGSEGURO_SANDBOX = True
 
 #Paypal
 PAYPAL_TEST = True

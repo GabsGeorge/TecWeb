@@ -52,6 +52,7 @@ def post_save_cart_item(instance, **kwargs):
     if instance.quantidade < 1:
         instance.delete()
 
+
 models.signals.post_save.connect(
     post_save_cart_item, sender=CartItem, dispatch_uid='post_save_cart_item'
 )
