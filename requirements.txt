@@ -24,7 +24,7 @@ pycryptodome==3.4.3
 
 social-auth-app-django==2.1.0
 social-auth-core==1.7.0
-pagseguro==1.11.0
+pagseguro
 django-paypal==0.4.1
 South==1.0.2
 requests==2.11.1
