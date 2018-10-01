@@ -12,21 +12,21 @@
       <li><a href="{% url 'checkout:cart_item' %}">Carrinho de Compras</a></li>
       <li class="active">Finalização da Compra</li>
     </ol>
-    <div class="row">
+    <div class="row col-md-8 col-md-offset-2">
         <div class="col-md-16">
             <p>
-               <h1> Pedido #{{ pedido.pk }}</h1>
-               <img src="{% static 'images/paypal.png' %}" style="width: 200px; margin-left: 42%;">           
+                <h1> Pedido #{{ pedido.pk }}</h1>
+                <img src="{% static 'images/paypal.png' %}" style="width: 165px; margin-left: 0%;">
+                <img src="{% static 'images/pagseguro.png' %}" style="width: 165px; margin-left: 45%;">             
             </p>
         </div>
-        <div class="col-md-5" style=" margin-left: 43%;">
+        <div class="col-md-8" style="">
             <a href="{% url 'checkout:paypal_view' pedido.pk %}" class="btn btn-primary">Pagar com Paypal</a>
         </div>
-        <!--
-        <div class="col-md-4 col-md-offset-2">
+        <div class="col-md-4">
           <a href="{% url 'checkout:pagseguro_view' pedido.pk %}" class="btn btn-success">Pagar com Pagseguro</a>
         </div>
-        -->
+
     </div>
     </div>
 </div>

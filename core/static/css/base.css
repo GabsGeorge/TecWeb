@@ -1388,12 +1388,14 @@ footer li {
 }
 
 .envio img{
-height: 100px;
+  height: 100px;
 }
 .seguro img{
-height: 100px;
+  height: 100px;
 }
 
+.btn_cart{
+	text-align: center;
 }
 
 /*Fim Rodapé*/
