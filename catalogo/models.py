@@ -51,6 +51,8 @@ class Produto(models.Model):
     altura = models.DecimalField("Altura em cm", decimal_places=2, max_digits=10, db_column='alutra')
     largura = models.DecimalField("largura em cm", decimal_places=2, max_digits=10, db_column='largura')
     comprimento = models.DecimalField("comprimeito em cm", decimal_places=2, max_digits=10, db_column='comprimeito')
+    peso = models.DecimalField("Peso", decimal_places=2, max_digits=10, db_column='peso')
+    qtd_de_itens = models.SmallIntegerField("Quantidade de itens", db_column='Quantidade de Itens')
     
     slug = models.SlugField("Identificador", max_length=100)
     vender = models.BooleanField(db_column='Vender', default=True)
