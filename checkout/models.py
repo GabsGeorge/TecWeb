@@ -18,6 +18,7 @@ class CartItemManager(models.Manager):
         else:
             created = True
             cart_item = CartItem.objects.create(cart_key=cart_key, produto=produto, preco_p=produto.preco_p)
+            
         return cart_item, created
 
 #Item do Carrinho de compras --
@@ -39,14 +40,12 @@ class CartItem(models.Model):
     def __str__(self):
         return '{} [{}]'.format(self.produto, self.quantidade)
 
-    def total(self):
-        aggregate_queryset = self.items.aggregate(
-            total=models.Sum(
-                models.F('preco_p') * models.F('quantidade'),
-                output_field=models.DecimalField()
-            )
-        )
-        return aggregate_queryset['total']
+    def total_carrinho(self):
+        tot = self.ItemDoPedido_set.all().aggregate(
+            tot_ped = Sum(F('quantidade')* F('preco_p'), output_field=FloatField())    
+        )['total']
+        self.total_p = tot['total']
+
 
 def post_save_cart_item(instance, **kwargs):
     if instance.quantidade < 1:
@@ -186,3 +185,4 @@ class ItemDoPedido(models.Model):
 
     def __str__(self):
         return '[{}] {}'.format(self.pedido, self.produto)  
+

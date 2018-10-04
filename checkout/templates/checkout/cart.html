@@ -32,7 +32,11 @@
                             Quantidade
                         </th>
                         <th>
+                           
 
+                        </th>
+                        <th>
+                                                    
                         </th>
                     </thead>
                     <tbody>
@@ -46,9 +50,13 @@
                             </td>
                             <td>
                                 R$ {{ form.instance.preco_p|floatformat:"2" }}
+
                             </td>
                             <td>
                                 {% render_field form.quantidade class='form-control' %}
+                            </td>
+                            <td>
+                               
                             </td>
                             <td class="text-center">
                                 <button value="on" type="submit" name="{{ form.DELETE.html_name }}" class="btn btn-danger btn-sm">remover</button>
@@ -57,6 +65,7 @@
                         </tr>
                         {% endfor %}
                     </tbody>
+
 
                 </table>
 
@@ -72,7 +81,7 @@
                 <section class="resumo_carrinho">
                     <h3>Resumo do pedido</h3>
                     <h5>Total do pedido : </h5>
-                    <dd>{{ object.total|floatformat:"2" }}</dd>
+                    <dd>{{ formset.instance.total_p }}</dd>
                 </section>
 
 

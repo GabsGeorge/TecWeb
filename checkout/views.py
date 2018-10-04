@@ -47,7 +47,7 @@ class CreateCartItemView(View):
         total = CartItem.objects.total()
         messages.success(request, message)
         return redirect('checkout:cart_item')
-        
+       
 
 create_cartitem = CreateCartItemView.as_view()
 
@@ -75,6 +75,8 @@ class CartItemView(TemplateView):
         else:
             formset = CartItemFormSet(queryset=CartItem.objects.none())
         return formset
+
+        
 
     def get_context_data(self, **kwargs):
         context = super(CartItemView, self).get_context_data(**kwargs)
@@ -128,8 +130,6 @@ class DetalhePedidoView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return Pedido.objects.filter(user=self.request.user)
 detalhe_pedido = DetalhePedidoView.as_view()
-
-
 
 
 

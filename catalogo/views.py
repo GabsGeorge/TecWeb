@@ -17,7 +17,7 @@ class CategoriaListView(generic.ListView):
         context = super(CategoriaListView, self).get_context_data(**kwargs)
         context['current_category'] = get_object_or_404(Categoria, slug=self.kwargs['slug'])
         return context    
-    paginate_by = 8
+    paginate_by = 9
 
 categoria = CategoriaListView.as_view() 
 
@@ -28,7 +28,7 @@ class ListProdutoView(generic.ListView):
     model = Produto
     template_name = 'catalogo/lista_produto.html'
     context_object_name = 'produtos'
-    paginate_by = 8
+    paginate_by = 9
 
     def get_queryset(self):
         queryset = Produto.objects.all()

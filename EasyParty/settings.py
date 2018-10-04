@@ -177,6 +177,7 @@ UTHENTICATION_BACKENDS = (
 THUMBNAIL_ALIASES = {
     '': {
         'imagem_produto': {'size': (285, 160), 'crop': True},
+        'imagem_produto_unico': {'size': (400, 400), 'crop': True},
     },
 }
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect , HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AdminPasswordChangeForm
-from django.views.generic import View, TemplateView, CreateView, UpdateView, FormView
+from django.views.generic import View, TemplateView, CreateView, UpdateView, FormView, ListView
 from django.views import generic
 from django.conf import settings 
 from django.contrib import messages
@@ -18,6 +18,7 @@ from social_django.models import UserSocialAuth
 from core.forms import ContatoForm, UserAdminCreationForm
 from catalogo.models import Produto, Categoria
 from core.models import Cliente
+from checkout.models import Pedido
 
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -42,11 +43,12 @@ class CustomIndexDashboard(Dashboard):
        self.available_children.append(google_analytics.GoogleAnalyticsPeriodVisitors)
 
 
-class IndexView(generic.ListView):
+class IndexView(ListView):
     model = Produto
     template_name = 'index.html'
     context_object_name = 'produtos'
     paginate_by = 8
+
 index = IndexView.as_view()
 
 
@@ -91,7 +93,6 @@ minhaconta = MinhaContaView.as_view()
 class CalculadoraView(TemplateView):
     template_name = 'calculadora.html'
 calculadora =  CalculadoraView.as_view() 
-
 
 
 
