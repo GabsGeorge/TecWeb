@@ -28,4 +28,5 @@ urlpatterns = [
         r'^finalizando/(?P<pk>\d+)/paypal/$', views.paypal_view,
         name='paypal_view'
     ),
+
 ]

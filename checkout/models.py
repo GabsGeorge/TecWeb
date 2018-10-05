@@ -33,19 +33,12 @@ class CartItem(models.Model):
     objects = CartItemManager()
 
     class Meta:
-        verbose_name = 'Item do Carrinho'
-        verbose_name_plural = 'Itens dos Carrinhos'
+        verbose_name = 'Item do carrinho'
+        verbose_name_plural = 'Itens dos carrinhos'
         unique_together = (('cart_key', 'produto'),)
 
     def __str__(self):
         return '{} [{}]'.format(self.produto, self.quantidade)
-
-    def total_carrinho(self):
-        tot = self.ItemDoPedido_set.all().aggregate(
-            tot_ped = Sum(F('quantidade')* F('preco_p'), output_field=FloatField())    
-        )['total']
-        self.total_p = tot['total']
-
 
 def post_save_cart_item(instance, **kwargs):
     if instance.quantidade < 1:
@@ -185,4 +178,4 @@ class ItemDoPedido(models.Model):
 
     def __str__(self):
         return '[{}] {}'.format(self.pedido, self.produto)  
-
+        

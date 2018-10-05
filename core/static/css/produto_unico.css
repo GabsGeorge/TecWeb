@@ -211,11 +211,11 @@ margin-left: 30px;
 }
 
 .nav-tabs {
-    border-bottom: 1px solid #428bca!important;
+    border-bottom: 1px solid #5cb85c!important;
 }
 
 .panel-default>.panel-heading {
-    background-color: #428bca!important;
+    background-color: #5cb85c!important;
 }
 
 @media (min-width: 992px){

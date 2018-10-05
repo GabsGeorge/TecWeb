@@ -12,10 +12,67 @@
       <li><a href="{% url 'checkout:cart_item' %}">Carrinho de Compras</a></li>
       <li class="active">Finalização da Compra</li>
     </ol>
-    <div class="row col-md-8 col-md-offset-2">
+        <!-- Alertas -->
+    {% block messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+      </div>
+      {% endfor %}
+    {% endblock %}
+
+    <fieldset>
+
+  <h3>Resumo do pedido</h3>
+  </br>
+    <div class="row">
+      <div class="col-md-11">
+      <table class="table table-bordered">
+        <thead>
+          <th>ID</th>
+          <th>Total</th>
+          <th>Situação</th>
+          <th>Data</th>
+          <th style="width: 10%;">Meio de Pagamento</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#{{ pedido.pk }}</td>
+            <td>{{ pedido.total|floatformat:"2" }}</td>
+            <td>{{ pedido.get_status_display }}</td>
+            <td>{{ pedido.criado|date:"d/m/Y H:i" }}</td>
+            <td>A escolher</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+      <h3>Itens do Pedido</h3>
+      </br>
+      </fieldset>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in pedido.items.all %}
+          <tr>
+            <th scope="row">{{ item.produto }}</th>
+            <td>{{ item.quantidade }}</td>
+            <td>R$ {{ item.preco_p|floatformat:"2" }}</td>
+          </tr>
+          {%endfor%}      
+        </tbody>
+      </table>
+
+    <div class="row col-md-8 col-md-offset-2"style="padding-bottom: 70px;">
         <div class="col-md-16">
             <p>
-                <h1> Pedido #{{ pedido.pk }}</h1>
                 <img src="{% static 'images/paypal.png' %}" style="width: 165px; margin-left: 0%;">
                 <img src="{% static 'images/pagseguro.png' %}" style="width: 165px; margin-left: 45%;">             
             </p>
