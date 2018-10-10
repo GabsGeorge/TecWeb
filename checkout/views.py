@@ -73,16 +73,6 @@ class CartItemView(TemplateView):
             formset = CartItemFormSet(queryset=CartItem.objects.none())
         return formset
 
-
-    def total(self):
-        aggregate_queryset = self.CartItem.aggregate(
-            total=models.Sum(
-                models.F('preco_p') * models.F('quantidade'),
-                output_field=models.DecimalField()
-            )
-        )
-        return aggregate_queryset['total'] or 0
-
     def get_context_data(self, **kwargs):
         context = super(CartItemView, self).get_context_data(**kwargs)
         context['formset'] = self.get_formset()
@@ -219,32 +209,5 @@ def paypal_notification(sender, **kwargs):
 
 valid_ipn_received.connect(paypal_notification)
 
-
-
-#Aluguel de pedido
-
-class CreateCartItemView_aluguel(View):
-
-    def get(self, request, *args, **kwargs):
-        produto = get_object_or_404(Produto, slug=self.kwargs['slug'])
-        if self.request.session.session_key is None:
-            self.request.session.save()
-
-        cart_item, created = CartItem.objects.add_item(
-            self.request.session.session_key, produto
-        )
-        if created:
-            message = 'Produto adicionado com sucesso'
-        else:
-            message = 'Produto atualizado com sucesso'
-        if request.is_ajax():
-            return HttpResponse(
-                json.dumps({'message': message}), content_type='application/javascript'
-            )
-        messages.success(request, message)
-        return redirect('checkout:cart_item')
-       
-
-create_cartitem = CreateCartItemView.as_view()
 
 

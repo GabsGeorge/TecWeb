@@ -29,20 +29,6 @@ from django.shortcuts import render, redirect
 Usuario = get_user_model()
 
 
-from django.utils.translation import ugettext_lazy as _
-from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
-from jet.dashboard.dashboard_modules import google_analytics
-
-
-class CustomIndexDashboard(Dashboard):
-    columns = 3
-
-    def init_with_context(self, context):
-       self.available_children.append(google_analytics.GoogleAnalyticsVisitorsTotals)
-       self.available_children.append(google_analytics.GoogleAnalyticsVisitorsChart)
-       self.available_children.append(google_analytics.GoogleAnalyticsPeriodVisitors)
-
-
 class IndexView(ListView):
     model = Produto
     template_name = 'index.html'
@@ -100,10 +86,11 @@ calculadora =  CalculadoraView.as_view()
 # pagina de cadastro Usuário
 
 class RegistroView(CreateView, FormView):
-    template_name = 'registrar.html'
+    template_name = 'core/registrar.html'
     model = Usuario
     form_class = UserAdminCreationForm
     success_url = reverse_lazy('minhaconta')
+
     #messages.success('Cadastro realizado com sucesso')
 registro = RegistroView.as_view()
 
@@ -114,7 +101,7 @@ registro = RegistroView.as_view()
 class UpdateUserView(LoginRequiredMixin, UpdateView):
     template_name = 'alterar-dados.html'
     model = Cliente
-    fields = ['username', 'name', 'second_name', 'email', 'cpf', 'telefone_u','endereco_u','news']
+    fields = ['username', 'name', 'second_name', 'email', 'cpf','rg','telefone_u','endereco_u','news']
     success_url = reverse_lazy('minhaconta')
 
     def get_object(self):

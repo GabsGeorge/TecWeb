@@ -26,6 +26,9 @@ urlpatterns = [
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
     # end url app Checkout
 
+    # begin url app location
+    url(r'^locacao/', include('location.urls', namespace='location')),
+    # end url app location
 
     url(r'^contato/', views.contato, name="contato"),
     url(r'^festas/', views.festa, name="festas"),
@@ -41,6 +44,7 @@ urlpatterns = [
     url(r'^usuario/configuracoes/',views.config, name='config'),
     url(r'^login/', login, { "template_name":"login.html" }, name='login'),
     url(r'^logout/$', logout, {'next_page': 'index'}, name='logout'),
+
     #Social Login
     url(r'^auth/', include('social_django.urls', namespace='social')),
     # end url app Conta    

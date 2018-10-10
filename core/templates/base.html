@@ -7,7 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="o8T8bcReiMYG3qarYEMgdkICXCDK8_XldGAzyLws1EA" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="google-site-verification" content="HjErs8honfeAnXOq2KTwrbJVNTfIiQ9BZRcTM1RttnY" />  
+  <meta name="google-site-verification" content="HjErs8honfeAnXOq2KTwrbJVNTfIiQ9BZRcTM1RttnY" /> 
+  <meta name="language" content="pt-br" />
+  <meta name="resource-type" content="document" />
+  <meta name="classification" content="Internet" />
+  <meta name="distribution" content="Global" />
+  <meta name="author" content="Fabyo" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta http-equiv="Pragma" content="no-cache" />
+
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" /> 
   
   <link rel="shortcut icon" type="image/png" href="/Logo.png"/>
   <link rel="shortcut icon" type="image/png" href="static/images/Logo.png"/>
@@ -115,8 +124,8 @@
         <li class="carrinho_menu_usuario"><img src="{% static 'images/topo/carrinho.png' %}"> ( 0 )</li> <!--carrinho de compras responsivo--> 
         <li class="item2"><a href="{% url 'checkout:lista_pedido' %}">Meus Pedidos</a></li>
         <li class="item3"><a href="{% url 'minhaconta' %}">Minha Conta</a></li>
-        <li class="item4"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)0000-0000</li>
-        <li class="item5"><span><img src="{% static 'images/topo/telefone.png' %}"> </span>(11)0000-0000</li>
+        <li class="item4"><a href="{% url 'location:contrato_item' %}">Fechamento de Contratos</a></li>
+        <li class="item5"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)0000-0000</li>
         <li class="item6">
             <span><img src="{% static 'images/topo/facebook-logo.png' %}"></span>
             <span><img src="{% static 'images/topo/instagram-logo.png' %}"></span>
@@ -138,7 +147,7 @@
       <!--End Carrinho-->
       <a href="{% url 'checkout:cart_item'%}">
       <div class="carrinho">
-          <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}">  Carrinho</button>
+          <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}"> Compras</button>
           <div class="preco-carrinho"> 0 itens | R$ 0,00 </div>
       </div>
       </a>  

@@ -42,9 +42,9 @@
             </br> 
 
              {% if produto_atual.vender %}    
-                <p><a href="{% url 'checkout:create_cartitem' produto_atual.slug %}" class=" adicionar-carrinho btn btn-success btn-lg btn-block" role="button">Adicionar</a>
+                <p><a href="{% url 'checkout:create_cartitem' produto_atual.slug %}" class=" adicionar-carrinho btn btn-success btn-lg btn-block" role="button">Comprar</a>
             {% else %}
-                <p><a href="{% url 'checkout:create_cartitem' produto_atual.slug %}" class=" adicionar-carrinho btn btn-success btn-lg btn-block"" role="button">Alugar</a>
+                <p><a href="{% url 'location:create_contratoitem' produto_atual.slug %}" class=" adicionar-carrinho btn btn-success btn-lg btn-block"" role="button">Alugar</a>
             {%endif%} 
             
             </br>

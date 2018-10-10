@@ -51,10 +51,13 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'social_django',
     'paypal.standard.ipn',
+    'localflavor',
+    
     #apps
     'core',
     'catalogo',
-    'checkout'
+    'checkout',
+    'location',
 ]
 
 MIDDLEWARE = [
