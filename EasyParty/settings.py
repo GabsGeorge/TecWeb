@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'social_django',
     'paypal.standard.ipn',
-    'crispy_forms',
+    
 
     #apps
     'core',
@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'location',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 
 MIDDLEWARE = [
