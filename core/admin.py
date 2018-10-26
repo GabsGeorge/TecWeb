@@ -2,12 +2,11 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django import forms
 
-from core.models import Cliente
 from core.models import Contrato
 from core.models import Colaborador
 from core.models import Usuario
 
-
+"""
 class ClienteForm(forms.ModelForm):
     def save(self, commit=True):
         cliente = super(UsuarioForm,self).save(commit=False)
@@ -37,7 +36,7 @@ class ClienteAdmin(UserAdmin):
     filter_horizontal = []
     ordering = ["codigo_u"]
     list_filter = ["name"]
-
+"""
 #Usuario end
 #
 #Contratos begin
@@ -59,7 +58,6 @@ class ColaboradoresAdmin(admin.ModelAdmin):
 #Colaboradores end
 
 
-admin.site.register(Cliente,ClienteAdmin)
 admin.site.register(Contrato)
 admin.site.register(Colaborador, ColaboradoresAdmin)
 admin.site.register(Usuario)

@@ -91,6 +91,8 @@ footer{
 .item4{
 	grid-row: 1;
 	grid-column: 5;
+	background: #1691BE;
+    color: #fff;
 }
     .item4 img{
         width: 19px;

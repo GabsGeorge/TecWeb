@@ -48,9 +48,9 @@ class Produto(models.Model):
     descricao = models.TextField("Descrição",db_column='Descricao_P')
     custo_p = models.DecimalField("Custo", decimal_places=2, max_digits=10, db_column='Custo_P')
     preco_p = models.DecimalField("Preço", decimal_places=2, max_digits=10, db_column='Preço_P')
-    altura = models.DecimalField("Altura", decimal_places=3, max_digits=10, db_column='alutra')
-    largura = models.DecimalField("largura", decimal_places=3, max_digits=10, db_column='largura')
-    comprimento = models.DecimalField("comprimeito", decimal_places=3, max_digits=10, db_column='comprimeito')
+    altura = models.DecimalField("Altura(cm)", decimal_places=3, max_digits=10, db_column='alutra')
+    largura = models.DecimalField("largura(cm)", decimal_places=3, max_digits=10, db_column='largura')
+    comprimento = models.DecimalField("Comprimento(cm)", decimal_places=3, max_digits=10, db_column='comprimeito')
     peso = models.DecimalField("Peso(kg)", decimal_places=3, max_digits=10, db_column='peso')
     qtd_de_itens = models.SmallIntegerField("Quantidade de itens", db_column='Quantidade de Itens')
     

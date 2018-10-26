@@ -15,9 +15,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from social_django.models import UserSocialAuth
 
-from core.forms import ContatoForm, UserAdminCreationForm
+from core.forms import ContatoForm, UserAdminCreationForm, UserAdminAlteraCadastro
 from catalogo.models import Produto, Categoria
-from core.models import Cliente
+from core.models import Usuario
 from checkout.models import Pedido
 
 from django.core.mail import send_mail, BadHeaderError
@@ -33,7 +33,7 @@ class IndexView(ListView):
     model = Produto
     template_name = 'index.html'
     context_object_name = 'produtos'
-    paginate_by = 8
+    paginate_by = 9
 
 index = IndexView.as_view()
 
@@ -85,8 +85,8 @@ calculadora =  CalculadoraView.as_view()
 # -----------------------------------------------//---------------------------------#
 # pagina de cadastro Usuário
 
-class RegistroView(CreateView, FormView):
-    template_name = 'core/registrar.html'
+class RegistroView(FormView):
+    template_name = 'registrar.html'
     model = Usuario
     form_class = UserAdminCreationForm
     success_url = reverse_lazy('minhaconta')
@@ -95,13 +95,14 @@ class RegistroView(CreateView, FormView):
 registro = RegistroView.as_view()
 
 
+
 # -----------------------------------------------//---------------------------------#
 #funcao para alterar dados Usuário
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
     template_name = 'alterar-dados.html'
-    model = Cliente
-    fields = ['username', 'name', 'second_name', 'email', 'cpf','rg','telefone_u','endereco_u','news']
+    model = Usuario
+    form_class=UserAdminAlteraCadastro
     success_url = reverse_lazy('minhaconta')
 
     def get_object(self):

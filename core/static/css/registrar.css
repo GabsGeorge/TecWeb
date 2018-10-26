@@ -5,6 +5,34 @@
 
 input[type=text]{outline:none}
 
+.panel-primary {
+    margin: auto!important;
+    box-shadow: 2px 2px 2px 2px #0000001a!important;
+    width: 80%!important;
+    
+
+}
+
+.panel-heading {
+  background-color:rgba(206, 156, 60, 0.85)!important;
+  border-color: #ffffff!important;  
+}
+
+.panel{
+  background:url(../../static/images/bg-login.jpg) no-repeat center;
+  background-size: 915px;
+  box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19)!important;
+}
+
+.panel-body{
+    background: rgba(206, 156, 60, 0.85)!important;
+}
+
+.heading {
+    color: #fff;
+    background-color: #337ab700!important;
+    border-color: #337ab7!important;
+}
 
 #navthing {
   margin-left: 50px;
@@ -101,6 +129,7 @@ a{color:inherit;text-decoration:none}
   background:url(../../static/images/bg-login.jpg) no-repeat center;
   background-size: 600px;
   box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+  margin-bottom: 50px;
 }
 .login-html{
   width:100%;

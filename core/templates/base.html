@@ -59,6 +59,7 @@
   <link rel="stylesheet" href="{% static 'css/servicos.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/btnsocial.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/carrinho.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/calculadora.css'%}" type="text/css">
 
   <link rel="stylesheet" href="{% static 'css/css_produto_unico/style.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/css_produto_unico/flexslider.css'%}" type="text/css">
@@ -67,7 +68,6 @@
   <link rel="stylesheet" href="{% static 'css/css_produto_unico/shop.css'%}" type="text/css">
 
  
-  
 
 
   <!-- Google Tag Manager -->
@@ -124,7 +124,7 @@
         <li class="carrinho_menu_usuario"><img src="{% static 'images/topo/carrinho.png' %}"> ( 0 )</li> <!--carrinho de compras responsivo--> 
         <li class="item2"><a href="{% url 'checkout:lista_pedido' %}">Meus Pedidos</a></li>
         <li class="item3"><a href="{% url 'minhaconta' %}">Minha Conta</a></li>
-        <li class="item4"><a href="{% url 'location:contrato_item' %}">Fechamento de Contratos</a></li>
+        <li class="item4"><a href="{% url 'location:contrato_item' %}">Aluguel de serviços</a></li>
         <li class="item5"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)0000-0000</li>
         <li class="item6">
             <span><img src="{% static 'images/topo/facebook-logo.png' %}"></span>
@@ -208,7 +208,7 @@
           </li>
           
           <li class="calculadora" >
-            <a class="style_circulo" href="">
+            <a class="style_circulo" href="{% url 'calculadora' %}">
               <img src="{%static 'images/Calculadora.png' %}" style="height: 45px; margin-top: 30%;">
             </a>
             <p class="texto">Calculadora</p>
@@ -234,18 +234,12 @@
             </a>
             <p class="texto">Nossas Dicas</p>
           </li>
-          <li class="fale-conosco">
-            <a class="style_circulo" href="">
-              <img src="{%static 'images\faleconosco.png' %}"style="height:45px; margin-top: 30%;";>
-            </a>
-            <p class="texto"> Fale Conosco</p>
-          </li>
 
           <li class="contato">
             <a class="style_circulo" href="{% url 'contato' %}">
               <img src="{%static 'images/contato.png' %}"style="height:45px; margin-top: 30%;";>
             </a>
-            <p class="texto"> Contato</p>
+            <p class="texto">Contato</p>
           </li>
       </nav>
       
@@ -285,6 +279,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
 
 
     <script src="{%static 'css/bootbootstrap.min.js' %}"></script>
@@ -292,7 +287,8 @@
     <script src="{%static 'js/slider.js' %}"></script>
     <script src="{%static 'js/MenuFixo.js' %}"></script>
     <script src="{%static 'js/menu.js' %}"></script>
-    <script src="{%static 'js/produto.js' %}"></script> 
+    <script src="{%static 'js/produto.js' %}"></script>
+    <script src="{%static 'js/calculadora.js' %}"></script> 
 
 
     {% block scripts %}{% endblock %}
@@ -300,7 +296,8 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9W9TG9"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) --> 
+      <!-- End Google Tag Manager (noscript) --> 
+
 
 </body>
 </html>

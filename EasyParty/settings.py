@@ -51,14 +51,17 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'social_django',
     'paypal.standard.ipn',
-    'localflavor',
-    
+    'crispy_forms',
+
     #apps
     'core',
     'catalogo',
     'checkout',
     'location',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,6 +1,9 @@
 # coding=utf-8
 import json
 
+from django.db import models
+
+
 from pagseguro import PagSeguro
 
 from paypal.standard.forms import PayPalPaymentsForm
@@ -74,9 +77,21 @@ class CartItemView(TemplateView):
         return formset
 
     def get_context_data(self, **kwargs):
-        context = super(CartItemView, self).get_context_data(**kwargs)
-        context['formset'] = self.get_formset()
-        return context
+       context = super(CartItemView, self).get_context_data(**kwargs)
+       context['formset'] = self.get_formset()
+       session_key = self.request.session.session_key
+       if session_key:
+           cart_items = CartItem.objects.filter(cart_key=session_key)
+           aggregate_queryset = cart_items.aggregate(
+                total=models.Sum(
+                    models.F('preco_p') * models.F('quantidade'),
+                    output_field=models.DecimalField()
+                )
+            )
+           context["total"] = aggregate_queryset['total'] or 0
+       else:
+           context["total"] = 0
+       return context
 
 
     def post(self, request, *args, **kwargs):

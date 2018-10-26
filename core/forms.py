@@ -1,34 +1,26 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django import forms
 from localflavor.br.forms import BRZipCodeField
-
-from .models import Usuario, Cliente
+from .models import Usuario
 
 class UserAdminCreationForm(UserCreationForm):
-    zip_code = BRZipCodeField(label='CEP', max_length=9)
-    street = forms.CharField(label='Rua', max_length=100)
-    district = forms.CharField(label='Bairro', max_length=100)
-    city = forms.CharField(label='Cidade', max_length=100)
-    state = forms.CharField(label='Estado', max_length=100)
-    
+ 
     class Meta:
-        model = Cliente
-        fields = ['username', 'name', 'second_name', 'email', 'cpf']
+        model = Usuario
+        fields = ['username', 'name', 'second_name', 'email', 'cpf' , 'telefone_u']
 
+class UserAdminAlteraCadastro(UserCreationForm):
+ 
+    class Meta:
+        model = Usuario
+        fields = ['username', 'name', 'second_name', 'email', 'cpf' ,'rg', 'telefone_u', 'zip_code', 'street', 'district', 'city', 'state', 'number', 'password1', 'password2']
 
 class UserAdminForm(forms.ModelForm):
 
     class Meta:
-        model = Cliente
+        model = Usuario
         fields = ['username', 'email', 'name', 'is_active', 'is_staff']
 
-
-class ClienteForm(forms.ModelForm):
-
-    class Meta:
-        model = Cliente
-        fields = ["name","username","email","cpf","telefone_u","endereco_u","news"]
 
 
 
