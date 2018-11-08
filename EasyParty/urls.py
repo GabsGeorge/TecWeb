@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^quemsomos/',views.quemsomos, name='quemsomos'),
     url(r'^servicos/',views.servicos, name='servicos'),
     url(r'^calculadora/',views.calculadora, name='calculadora'),
+    url(r'^nossas-dicas/',views.NossasDicas, name='nossasDicas'),
 
     # begin url app Conta
     url(r'^usuario/minhaconta/',views.minhaconta, name='minhaconta'),
@@ -44,6 +45,7 @@ urlpatterns = [
     url(r'^usuario/configuracoes/',views.config, name='config'),
     url(r'^login/', login, { "template_name":"login.html" }, name='login'),
     url(r'^logout/$', logout, {'next_page': 'index'}, name='logout'),
+
 
     #Social Login
     url(r'^auth/', include('social_django.urls', namespace='social')),

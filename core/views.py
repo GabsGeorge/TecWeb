@@ -80,6 +80,9 @@ class CalculadoraView(TemplateView):
     template_name = 'calculadora.html'
 calculadora =  CalculadoraView.as_view() 
 
+class NossasDicasView(TemplateView):
+    template_name = 'nossasDicas.html'
+NossasDicas = NossasDicasView.as_view()
 
 
 # -----------------------------------------------//---------------------------------#
