@@ -3,8 +3,11 @@ from catalogo.models import Categoria
 from catalogo.models import Produto
 from django.views import generic
 from django.db import models
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from watson import search as watson
 # Create your views here.
+
 
 #Categorias
 class CategoriaListView(generic.ListView):
