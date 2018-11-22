@@ -1,6 +1,5 @@
 dj-database-url==0.4.1
 Django==1.10
-
 django-widget-tweaks==1.4.3
 
 gcloud==0.17.0
@@ -35,6 +34,5 @@ google-api-python-client==1.4.1
 django-jet==1.0.7
 easy-thumbnails==2.3
 uritemplate==3.0.0
-django-widget-tweaks==1.4.3
 django-watson==1.5.2
 django-newsletter==0.7
