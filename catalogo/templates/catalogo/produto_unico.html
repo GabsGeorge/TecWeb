@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block conteudo %}
+{% load thumbnail %}    
+
+
+<div class="container gallery-container">
+    <div class="page-header">
+        <h1>{{produto_atual.nome_p}}</h1>
+    </div>
+
+    <div class="tz-gallery">
+
+    <section class="produto_unico">   
+
+        <section class="foto_principal">
+            <img src="{{produto_atual.imagem |thumbnail_url:'imagem_produto_unico' }}">
+        </section>
+
+        <section class="dados">
+            <p> <b>Quantidade em estoque</b>: {{produto_atual.quantidade}}</p>
+            <p> <b>Fornecedor</b>: {{produto_atual.nome_f}}</p>
+                {% if produto_atual.ativo %}
+                    <p><b>Disponibilidade</b>: Imediata</p>
+                {%else%}
+                    <p><b>Disponibilidade</b>: Não</p>
+                {%endif%} 
+            </br>       
+
+            <div class="incremento">
+                <article class="btn_incrementar">
+                    <input type="text" name="format" value="0" id="format" size="2"/>
+                    <input type="button" name="menos" id="menos" value="&#8744" />
+                    <input type="button" name="mais" id="mais" value="&#8743" />
+                </article>  
+                    
+                <article class="preco">
+                    <p> <span>R$ {{produto_atual.preco_p}}</span> à vista</br>
+                    ou 1x de R$ 24,90 Sem juros</p>
+                </article>
+            </div>
+            </br> 
+
+             {% if produto_atual.vender %}    
+                <p><a href="{% url 'checkout:create_cartitem' produto_atual.slug %}" class=" adicionar-carrinho btn btn-success btn-lg btn-block" role="button">Comprar</a>
+            {% else %}
+                <p><a href="{% url 'contrato:create_contratoitem' produto_atual.slug %}" class=" adicionar-carrinho btn btn-success btn-lg btn-block"" role="button">Alugar</a>
+            {%endif%} 
+            
+            </br>
+            </br> 
+
+            <article class="frete">
+                <div class="busca_frete">
+                    <input type="text" name="frete" placeholder="Digite seu cep" id="campo_frete">
+                    <button class="btn_calcular_frete">ok</button>
+                    
+                </div>
+                <p>Atente-se ao tempo de produção dos produtos selecionados, as estimativas de entrega abaixo não contemplam o prazo de produção.</p>    
+            </article>
+            </section> 
+        </section>    
+        
+        <section class="">
+            <div class="container">
+                <div class="page-header">
+                   
+                </div>
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="panel with-nav-tabs panel-default">
+                            <div class="panel-heading">
+                                    <ul class="nav_per nav-tabs">
+                                        <li class="active"><a href="#tab1default" data-toggle="tab">Descrição</a></li>
+                                        <li><a href="#tab2default" data-toggle="tab">Informações</a></li>
+                                    </ul>
+                            </div>
+                            <div class="panel-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="tab1default"> {{produto_atual.descricao|linebreaks }}</div>
+                                    <div class="tab-pane fade" id="tab2default">
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">codigo do produto</th>
+                                                <th scope="col">Altura</th>
+                                                <th scope="col">Largura</th>
+                                                <th scope="col">Comprimento</th>
+                                                <th scope="col">Peso</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">{{produto_atual.codigo_p}}</th>
+                                                <td>{{produto_atual.altura}}</td>
+                                                <td>{{produto_atual.largura}}</td>
+                                                <td>{{produto_atual.comprimento}}</td>
+                                                <td>{{produto_atual.peso}} Kg</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>      
+    </div>
+</div>
+
+{%endblock%}
+
+{% block scripts %}
+
+<script type="text/javascript">
+$(function(){
+    $('.adicionar-carrinho').on('click', function(e){
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('href'),
+            dataType: 'json',
+            success: function(data, textStatus, jqXHR){
+                bootbox.alert(data.message);
+            }
+        });
+    });
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block conteudo %}
+{% load widget_tweaks %}
+
+<div class="container gallery-container">
+
+    <h1>Carrinho de compras</h1>
+    
+    <div class="tz-gallery">
+       
+       <ol class="breadcrumb">
+  			<li><a href="{% url 'index' %}">Início</a></li>
+  			<li><a href="{% url 'checkout:cart_item' %}">Carrinho de Compras</a></li>
+  			<li class="active">Pagamento via Paypal</li>
+		</ol>
+        <!-- Alertas -->
+    {% block messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+      </div>
+      {% endfor %}
+    {% endblock %}
+
+		<div class="page-header">
+    		<h1>Você está sendo redirecionado para o paypal</h1>
+		</div>
+		<div id="paypal" class="row">
+		    {{ form.render }}
+        <img src="{% static 'images/loading.gif'%}">
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+{% block scripts %}
+<script type="text/javascript">
+    $(function(){
+        $("#paypal form").submit();
+    });
+</script>
+{%endblock%}

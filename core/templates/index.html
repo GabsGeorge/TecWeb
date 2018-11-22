@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block conteudo %}
+{% load pagination %}
+
+		<!-- INICIO DO SLIDER -->		
+	</br>
+		<div class="bs-example">
+		  	  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		        <!-- Carousel indicators -->
+		        <ol class="carousel-indicators">
+		            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		            <li data-target="#myCarousel" data-slide-to="1"></li>
+		            <li data-target="#myCarousel" data-slide-to="2"></li>
+		            <li data-target="#myCarousel" data-slide-to="3"></li>
+		        </ol>   
+		        <!-- Wrapper for carousel items -->
+		        <div class="carousel-inner">
+		            <div class="item active">
+		                <img src="{% static 'images/images-banner/slide1.jpg' %}" alt="Chuva de amor">
+		            </div>
+		            <div class="item">
+		                <img src="{% static 'images/images-banner/slide2.jpg' %}" alt="Meu batizado">
+		            </div>
+		            <div class="item">
+		                <img src="{% static 'images/images-banner/slide3.jpg' %}" alt="Harry Potter">
+		            </div>
+		            <div class="item">
+		                <img src="{% static 'images/images-banner/slide4.jpg' %}" alt="Cassino">
+		            </div>
+		        </div>
+		        <!-- Carousel controls -->
+		        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+		            <span class="glyphicon glyphicon-chevron-left"></span>
+		        </a>
+		        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+		            <span class="glyphicon glyphicon-chevron-right"></span>
+		        </a>
+		    </div>
+	</div>
+
+		<!-- FIM DO SLIDER -->
+		</br>
+
+		<!-- inicio - Banner abaixo slider -->
+		<section class="banner_baixo_slider">
+			<article class="item_01">
+				<img src="{% static 'images/banner_baixo/compra_segura.jpg' %}">
+			</article>
+			<article class="item_02">
+				<img src="{% static 'images/banner_baixo/desconto.jpg' %}">
+			</article>
+			<article class="item_03">
+				<img src="{% static 'images/banner_baixo/frete.jpg' %}">
+			</article>
+			<article class="item_04">
+				<img src="{% static 'images/banner_baixo/van.jpg' %}">
+			</article>
+
+		</section>
+		<!-- Fim - Banner abaixo slider -->
+
+		<!-- Inicio - Banner novidades -->		
+		<section class="banner_novidades">
+			<div class="page-header">
+				<h2>Novidades <img src="{% static 'images/confetti.png' %}"></h2>
+			</div>
+
+			<article class="banner_item_01">
+				<img src="{% static 'images/festa-mario.jpg' %}"> 
+			</article>
+			
+			<article class="banner_item_02"> 
+				<img src="{% static 'images/festa-homem_aranha.jpg' %}">
+			</article>
+			
+			<article class="banner_item_03">
+				<img src="{% static 'images/festa-moana.jpg' %}">
+			</article>
+
+			<article class="banner_item_04"> 
+				<img src="{% static 'images/festa-carros.jpg' %}">
+			</article>
+		</section>
+		<!-- fim - Banner novidades -->	
+
+		<!-- FIM DO SLIDER -->
+
+<div class="container gallery-container">
+
+    <div class="page-header">
+		<h1>Em destaque
+		<img src="{% static 'images/balloons.png' %}">	
+		</h1>
+	</div>
+
+    <div class="tz-gallery">
+        {% include "catalogo/_produto.html" %}
+    </div>
+		<!--Begin Paginator-->
+		{% pagination request paginator page_obj %}
+       	<!--End Paginator-->
+       </div>
+
+</div>
+
+{%endblock%}
+
+{%block scripts%}
+<script type="text/javascript">
+$(function(){
+    $('.adicionar-carrinho').on('click', function(e){
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('href'),
+            dataType: 'json',
+            success: function(data, textStatus, jqXHR){
+                bootbox.alert(data.message);
+            }
+        });
+    });
+});
+</script>
+{%endblock%}
