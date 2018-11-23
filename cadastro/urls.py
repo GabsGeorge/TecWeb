@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views
-from django.contrib.auth.views import login, logout
+from django.contrib.auth.views import login, logout, password_reset
 
 from cadastro import views
 
@@ -18,5 +18,6 @@ urlpatterns = [
     url(r'^registrar/',views.registro, name='registrar'),
     url(r'^login/', login,{"template_name":"cadastro/login.html" }, name='login'),
     url(r'^logout/$', logout, {'next_page': 'index'}, name='logout'),
+
  
 ]

@@ -16,6 +16,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^index/', views.index, name="index"),
+
+
+    url(r'^, include', include('django.contrib.auth.urls')),
     
     # begin url app Catalogo,
     url(r'^catalogo/', include('catalogo.urls')),

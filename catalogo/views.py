@@ -28,7 +28,7 @@ categoria = CategoriaListView.as_view()
 
 
 #Listatgem de produtos
-class ListProdutoView(generic.ListView):
+class ListProdutoView(SuccessMessageMixin, generic.ListView):
     model = Produto
     template_name = 'catalogo/lista_produto.html'
     context_object_name = 'produtos'
@@ -38,7 +38,7 @@ class ListProdutoView(generic.ListView):
         queryset = Produto.objects.all()
         q = self.request.GET.get('q', '')
         if q:
-            queryset = watson.filter(queryset, q)
+            queryset = watson.filter(q)
         return queryset
 
 lista_produto = ListProdutoView.as_view()
