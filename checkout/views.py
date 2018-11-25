@@ -203,7 +203,6 @@ class PaypalView(LoginRequiredMixin, TemplateView):
         paypal_dict['cancel_return'] = self.request.build_absolute_uri(
             reverse('checkout:lista_pedido')
         )
-
         paypal_dict['notify_url'] = self.request.build_absolute_uri(
             reverse('paypal-ipn')
         )
@@ -215,7 +214,8 @@ paypal_view = PaypalView.as_view()
 
 def paypal_notification(sender, **kwargs):
     ipn_obj = sender
-    if ipn_obj.payment_status == ST_PP_COMPLETED and ipn_obj.receiver_email == settings.PAYPAL_EMAIL:
+    if ipn_obj.payment_status == ST_PP_COMPLETED and \
+        ipn_obj.receiver_email == settings.PAYPAL_EMAIL:
         try:
             pedido = Pedido.objects.get(pk=ipn_obj.invoice)
             pedido.complete()

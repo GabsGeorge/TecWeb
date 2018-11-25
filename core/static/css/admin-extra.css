@@ -1,3 +1,6 @@
-body {
-    background: blue!important;
+body.login {
+    /* background: #354052; */
+    padding: 100px 30px 30px 30px;
+    padding: 7.14286rem 2.14286rem 2.14286rem 2.14286rem;
+    background-image: azure;
 }

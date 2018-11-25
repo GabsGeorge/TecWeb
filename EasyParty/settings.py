@@ -31,7 +31,7 @@ SECRET_KEY = '_vj89-pt+ubkp1!shq-ol0tpoict&f6=%!&c3mb%1una2i7sra'
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['silima.herokuapp.com' , 'localhost']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -263,7 +263,7 @@ PAYPAL_TEST = True
 PAYPAL_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
 
 
-NEWSLETTER_CONFIRM_EMAIL = False
+NEWSLETTER_CONFIRM_EMAIL = True
 
 #Django Jet 
 
