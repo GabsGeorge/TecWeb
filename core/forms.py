@@ -6,17 +6,15 @@ from django.contrib.auth.forms import UserCreationForm
 class ContatoForm(forms.Form):
     nome = forms.CharField(label="nome")
     email = forms.EmailField(label="E-mail") 
-    telefone = forms.CharField(label="telefone")
-    message = forms.CharField(label="message", widget=forms.Textarea())
+    mensagem = forms.CharField(label="mensagem", widget=forms.Textarea())
 
     def send_mail(self):
         nome = self.cleaned_data['nome']
         email = self.cleaned_data['email']
-        telefone = self.cleaned_data['telefone']
-        message = self.cleaned_data['message']
-        message = 'Nome: {0}\nE-mail:{1}\n{2}'.format(nome, email, telefone, message)
+        mensagem = self.cleaned_data['mensagem']
+        mensagem = 'Nome: {0}\nE-mail:{1}\n{2}'.format(nome, email, mensagem)
         send_mail(
-            'Contato do Django E-Commerce', message, settings.DEFAULT_FROM_EMAIL,
+            'Contato de Cliente', mensagem, settings.DEFAULT_FROM_EMAIL,
             [settings.DEFAULT_FROM_EMAIL]
         )
 

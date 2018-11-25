@@ -28,7 +28,8 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '_vj89-pt+ubkp1!shq-ol0tpoict&f6=%!&c3mb%1una2i7sra'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -64,7 +65,7 @@ INSTALLED_APPS = [
     'cadastro'
 ]
 
-SITE_ID = 1
+SITE_ID = 5
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -96,6 +97,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 #Categoria apps
                 'catalogo.context_processors.categorias',
+                #Produto apps
+                #'checkout.context_processors.produtos',
                 #Social Login    
                 'social_django.context_processors.backends',  
                 'social_django.context_processors.login_redirect', 
@@ -183,16 +186,17 @@ AUTHENTICATION_BACKENDS = (
 
 
 #Email
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT='587'
-EMAIL_HOST_USER = 'silimafestaseventos@gmail.com'
-EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'silimafestaseventos@gmail.com'
 EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'silimaadmin'
+EMAIL_HOST_USER = 'silimafestaseventos@gmail.com'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+#EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+#EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 
 

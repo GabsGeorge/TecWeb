@@ -34,6 +34,7 @@ from checkout.models import CartItem
 Usuario = get_user_model()
 
 
+
 class IndexView(ListView):
     model = Produto
     template_name = 'index.html'
@@ -45,18 +46,19 @@ index = IndexView.as_view()
 
 def contato(request):
     success = False
+    formVazio = ContatoForm()
     form = ContatoForm(request.POST or None)
     if form.is_valid():
         form.send_mail()
         success = True
+        messages.success(request, 'Email enviado com successo')
+
     elif request.method == 'POST':
         messages.error(request, 'Formulário inválido')
     context = {
-        'form': form,
+        'form': formVazio,
         'success': success
-
     }
-    messages.success(request, 'Email enviado com successo')
     return render(request, 'contato.html', context)
 
 

@@ -267,7 +267,7 @@ margin: 0;
     background: #1691be;
     color: #fff;
     height: 55px;
-    width: 126px;
+    width: 130px;
 }
 
 .carrinho_button span{
@@ -1139,14 +1139,15 @@ footer li {
   display: grid;
   grid-template-columns:100%;
   grid-template-rows: auto;
+  background: #fb9f0de0;
+  padding-bottom: 12px;
 }
 
 .obrigado p{
-  
-  padding-top: 20px; 
-  font-family: ComicSansMS;
-  font-size: 20px;
-  color: #c4161c;
+  text-align: center;
+  padding-top: 14px; 
+  font-size: 14px;
+  color: #fff;
   text-align: center;
   align-content: center;
   margin: auto;
@@ -1162,14 +1163,12 @@ footer li {
 
 .info{
     display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 110px;
     text-align: center;
     margin-top: 40px;
-    width: 100%;
-    position: relative;
-    left: 28%;
-    width: 45%;
+    width: 95%;
+    margin-bottom: 200px;
 }
 
 
@@ -1179,8 +1178,6 @@ footer li {
 .pagamento p{
   text-align: center;
   color: #c4161c;
-  font-family: FuturaBT;
-  font-size: 15px;
   font-weight: bold;
 }
 
@@ -1197,21 +1194,20 @@ footer li {
 
 /*Formas de envio*/
 
-.envio p{
+.pagamento2 p{
   text-align: center;
-  font-family: FuturaBT;
-  font-size: 15px;
   color: #c4161c;
   font-weight: bold;
 }
 
-.envio{
+.pagamento2{
   text-align: center;
   grid-row:1;
   grid-column-start: 2;
   grid-column-end: 2;
 }
-.envio img{
+
+.pagamento2 img{
   height: 90%;
 }
 
@@ -1236,7 +1232,14 @@ footer li {
   height: 90%;
 }
 
+.fb-page{
+  text-align: center;
+  grid-row:1;
+  grid-column-start: 4;
+  grid-column-end: 4;
+  margin-right: 10px;
 
+}
 
 /*______________________________ Rodapé - Responsivo_______________________________________*/
 
@@ -1245,7 +1248,7 @@ footer li {
 
   .menu-rodape{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     grid-template-rows: auto auto;
 
   }
@@ -1274,21 +1277,21 @@ footer li {
 }
 
 .servico{
-  grid-row: 1;
-  grid-column-start: 4; 
-  grid-column-end: 4;
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 1;
 }
 
 .nossas-dicas{
   grid-row: 2;
-  grid-column-start: 1; 
-  grid-column-end: 1;
+  grid-column-start: 2; 
+  grid-column-end: 2;
 }
 
 .contato{
   grid-row: 2;
-  grid-column-start: 2; 
-  grid-column-end: 2;
+  grid-column-start: 3; 
+  grid-column-end: 3;
 }
 
 
@@ -1304,22 +1307,48 @@ footer li {
 
 .info {
     display: grid;
-    grid-template-columns: 33.33% 33.33% 33.33%;
-    grid-template-rows: 110px;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 120px;
     text-align: center;
     margin-top: 40px;
-    width: 100%;
-    position: relative;
-    left: 13%;
-    width: 75%;
+    width: 98%;
   }
 
 }
 
 /*______________________________ Rodapé - Responsivo_______________________________________*/
 
+@media only screen and (max-width :1110px) {
+
+.info {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 90px;
+    text-align: center;
+    margin-top: 40px;
+    width: 95%;
+  }
+
+}
+
+
+@media only screen and (max-width :800px) {
+
+.info {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 65px;
+    text-align: center;
+    margin-top: 40px;
+    width: 97%;
+  }
+
+
+
+/*______________________________ Rodapé - Responsivo_______________________________________*/
+
 /* iPads (restrato e paisagem) */
-@media only screen and (max-width :580px) {
+@media only screen and (max-width :680px) {
 
   .menu-rodape{
     display: grid;
@@ -1393,8 +1422,7 @@ footer li {
   grid-column-start: 1;
   grid-column-end: 1;
 }
-.envio{
-  padding-top: 40px;
+.pagamento2{
   text-align: center;
   grid-row:2;
   grid-column-start: 1;
@@ -1408,7 +1436,15 @@ footer li {
   grid-column-end: 1;
 }
 
-.envio img{
+.fb-page{
+  padding-top: 20px;
+  text-align: center;
+  grid-row:4;
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+
+.pagamento2 img{
   height: 100px;
 }
 .seguro img{

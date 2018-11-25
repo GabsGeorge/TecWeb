@@ -38,7 +38,7 @@ class ListProdutoView(SuccessMessageMixin, generic.ListView):
         queryset = Produto.objects.all()
         q = self.request.GET.get('q', '')
         if q:
-            queryset = watson.filter(q)
+            queryset = watson.filter(queryset, q)
         return queryset
 
 lista_produto = ListProdutoView.as_view()

@@ -8,17 +8,16 @@
   <meta name="google-site-verification" content="o8T8bcReiMYG3qarYEMgdkICXCDK8_XldGAzyLws1EA" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="google-site-verification" content="HjErs8honfeAnXOq2KTwrbJVNTfIiQ9BZRcTM1RttnY" /> 
-  <meta name="language" content="pt-br" />
-  <meta name="resource-type" content="document" />
-  <meta name="classification" content="Internet" />
-  <meta name="distribution" content="Global" />
-  <meta name="author" content="Fabyo" />
   <meta http-equiv="imagetoolbar" content="no" />
   <meta http-equiv="Pragma" content="no-cache" />
 
   <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" /> 
   
+  <link rel="icon" href="{% static 'images/Logo.png' %}" type="image/x-icon"/>
+  <link rel="shortcut icon" href="{% static 'images/Logo.png' %}" type="image/x-icon"/>
+
   <link rel="shortcut icon" type="image/png" href="{% static 'images/Logo.png' %}"/>
+  <link rel="shortcut icon" type="image/png" href="http://silima.herokuapp.com/{% static 'images/Logo.png' %}"/>
 
 
   <!--CSS externo bootstrap-->
@@ -59,7 +58,6 @@
   <link rel="stylesheet" href="{% static 'css/btnsocial.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/carrinho.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/calculadora.css'%}" type="text/css">
-  <link rel="stylesheet" href="{% static 'css/nossasdicas'%}" type="text/css">
   
   <link rel="stylesheet" href="{% static 'css/css_produto_unico/style.css'%}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/css_produto_unico/flexslider.css'%}" type="text/css">
@@ -135,7 +133,7 @@
             Seja bem-vindo!<a href="{% url 'cadastro:registrar' %}" class="txt-branco"> Cadastre-se</a> ou efetue o <a href="{% url 'cadastro:login' %}" class="txt-branco">Login</a>
             {%endif%}
           </li>
-
+        
           <li class="carrinho_menu_usuario"><a href="{% url 'checkout:cart_item'%}"><img src="{% static 'images/topo/carrinho.png' %}"> Carrinho ( 0 )</a></li>
            <!--carrinho de compras responsivo--> 
            <li class="contrato_menu_usuario"><a href= "{% url 'contrato:contrato_item' %}"><img src="{% static 'images/contract.png' %}"> Contratos ( 0 )</a></li>
@@ -143,10 +141,9 @@
           <li class="item2"><a href="{% url 'checkout:lista_pedido' %}">Meus Pedidos</a></li>
           <li class="item3"><a href="{% url 'contrato:lista_contrato' %}">Meus Contratos</a></li>
           <li class="item4"><a href="{% url 'cadastro:minhaconta' %}">Minha Conta</a></li> 
-          <li class="item5"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)0000-0000</li>
+          <li class="item5"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)97661-1428</li>
           <li class="item6">
-            <span><img src="{% static 'images/topo/facebook-logo.png' %}"></span>
-            <span><img src="{% static 'images/topo/instagram-logo.png' %}"></span>
+            <span><a href="https://www.facebook.com/SiLimaFestaseEventos/"><img src="{% static 'images/topo/facebook-logo.png' %}"></span></a>
           </li> 
     </nav>
 
@@ -166,10 +163,10 @@
         
           <div class="carrinho">
             <a href="{% url 'checkout:cart_item'%}">
-              <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}"> Compras <br> R$ {{total|floatformat:"2" }}</button>
+              <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}"> Carrinho de compras  <center></center></button>
             </a>
             <a href="{% url 'contrato:contrato_item' %}">
-              <button class="carrinho_button"><img src="{%static 'images/contract.png' %}"> Contratos <br> R$ {{total|floatformat:"2" }}</button>
+              <button class="carrinho_button"><img src="{%static 'images/contract.png' %}"> Contrato de aluguel </button>
             </a>
           </div>
           
@@ -275,14 +272,14 @@
 
  <section class="info">
 
-  <section class="envio">
-    <p>Formas de Envio:</p>
-    <img src="{%static 'images/envio.png' %}">
+  <section class="pagamento2">
+    <p>Pague com Paypal:</p>
+    <img src="{%static 'images/paypal.png' %}">
   </section>  
 
 
   <section class="pagamento">
-    <p>Formas de Pagamento:</p>
+    <p>Pague com PagSeguro:</p>
     <img src="{%static 'images/pagseguro.jpg' %}">
   </section> 
 
@@ -290,11 +287,24 @@
     <img src="{%static 'images/seguro.png' %}">
   </section> 
 
+<div class="fb-page" data-href="https://www.facebook.com/SiLimaFestaseEventos/" data-tabs="timeline" data-width="400px" data-height="210px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/SiLimaFestaseEventos/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SiLimaFestaseEventos/">Si Lima - Festas e Eventos</a></blockquote></div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2&appId=316913515726919&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
 
 </section>
 
 <section class="obrigado">
-  <p>Obrigado por nos visitar, volte sempre!</p>
+  <p>Copyright © 2018 | Easy Party System</p>
 </section> 
 
 </footer>
@@ -326,6 +336,7 @@
     $('.dropdown-toggle').dropdown();
   }); 
 </script>
+
 {% block scripts %}{% endblock %}
 
 <!--Menu Fixo-->
