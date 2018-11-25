@@ -46,10 +46,6 @@ urlpatterns = [
     url(r'^nossasdicas/',views.nossasdicas, name='nossasdicas'),
 
 
- 
-
-
-
     #Social Login
     url(r'^auth/', include('social_django.urls', namespace='social')),
     # end url app Conta 
