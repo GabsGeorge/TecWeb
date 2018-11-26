@@ -82,13 +82,10 @@ function PegaValor(){
 	adulto = document.getElementById('adultos').value
 	var adultos,
 	adultos = Number(adulto);
-	alert(adulto)
 	crianca = document.getElementById('criancas').value
 	var criancas;
 	criancas = Number(crianca/2)
-	alert(criancas)
 	total = Number(criancas + adultos)
-	alert(total)
 	Calculo(adultos, criancas)
 }
 
@@ -103,7 +100,7 @@ function Calculo(adultos,criancas){
 	document.getElementById('caixa_pipoca').value = pipoca * (adultos + criancas)
 	document.getElementById('caixa_docinhos').value = docinhos * (adultos + criancas)
 	document.getElementById('caixa_chocolate').value = chocolate * (adultos + criancas)
-	document.getElementById('caixa_cupcake').value = cupcakes
+	document.getElementById('caixa_cupcake').value = cupcake
 	document.getElementById('caixa_biscoito_decorado').value = biscoito_decorado
 	document.getElementById('caixa_bolo').value = bolo * (adultos + criancas)
 	document.getElementById('caixa_saladinha').value = saladinha * (adultos + criancas)
