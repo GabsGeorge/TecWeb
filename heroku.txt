@@ -1,5 +1,0 @@
-heroku login 
-git remote -v 
-git remote add heroku https://git.heroku.com/silima.git
-pip freeze > requirements.txt
-heroku run python manage.py migrate
