@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Si Lima - Festas e Eventos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="o8T8bcReiMYG3qarYEMgdkICXCDK8_XldGAzyLws1EA" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="google-site-verification" content="HjErs8honfeAnXOq2KTwrbJVNTfIiQ9BZRcTM1RttnY" /> 
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta http-equiv="Pragma" content="no-cache" />
+
+  <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" /> 
+  
+  <link rel="icon" href="{% static 'images/Logo.png' %}" type="image/x-icon"/>
+  <link rel="shortcut icon" href="{% static 'images/Logo.png' %}" type="image/x-icon"/>
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/Logo.png' %}"/>
+  <link rel="shortcut icon" type="image/png" href="http://silima.herokuapp.com/{% static 'images/Logo.png' %}"/>
+
+
+  <!--CSS externo bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
+  <script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
+
+  <!--CSS interno-->
+  <link rel="stylesheet" href="{% static 'css/boot/bootstrap-social-gh-pages/bootstrap-social.css' %}" media="screen" />
+  <link rel="stylesheet" href="{% static 'css/boot/bootstrap-social' %}" media="screen" />
+  <link rel="stylesheet" href="{% static 'css/boot/bootstrap.min.css' %}" media="screen" />
+  <link rel="stylesheet" href="{% static 'css/boot/custom.min.css'%}" media="screen" />
+  <link rel="stylesheet" href="{% static 'css/slider.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/index.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/base.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/detalhe_produto.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/login.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/form.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/registrar.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/festa.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/produto_unico.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/quemsomos.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/pagination.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/servicos.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/btnsocial.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/carrinho.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/calculadora.css'%}" type="text/css">
+  
+  <link rel="stylesheet" href="{% static 'css/css_produto_unico/style.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/css_produto_unico/flexslider.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/css_produto_unico/jquery-ui1.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/css_produto_unico/easy-responsive-tabs.css'%}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/css_produto_unico/shop.css'%}" type="text/css">
+
+
+
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P9W9TG9');</script>
+<!-- End Google Tag Manager --> 
+
+</head>
+
+<body>
+  <header>
+    <nav class="menu_usuario">
+
+      <li class="dropdown"><!--Menu usuário responsivo fase 1-->
+        <span class="m1"><img src="{% static 'images/topo/menu.png' %}"></span>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu1">Conta <span class="caret">
+        <span></a>
+          {% if user.is_authenticated %}
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a href="#" style="background: #00000026;">Seja bem vindo <strong>{{user.username}}</strong></a></li>
+              <li><a href="{% url 'cadastro:logout' %}"> Sair</a></li>
+            </ul>
+          {%else%}
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a href="{% url 'cadastro:login' %}">Entrar</a></li>
+              <li><a href="{% url 'cadastro:registrar' %}">Cadastre-se</a></li>
+            </ul>
+          {%endif%}
+        </li>
+
+
+
+      <li class="dropdown"> <!--Menu usuário responsivo fase 2-->
+        <span class="m2"><img src="{% static 'images/topo/menu.png' %}"></span>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="menu2">Conta <span class="caret">
+        <span></a>
+          {% if user.is_authenticated %}
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a href="#" style="background: #00000026;">Seja bem vindo <strong>{{user.username}}</strong></a></li>
+              <li><a href="{% url 'cadastro:logout' %}"> Sair</a></li>
+              <li><a href="{% url 'cadastro:minhaconta' %}">Minha conta</a></li>
+              <li><a href="{% url 'checkout:lista_pedido' %}"">Meus Pedidos</a></li>
+              <li><a href="{% url 'contrato:lista_contrato' %}">Meus Contrato</a></li>  
+            </ul>
+          {%else%}
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a href="{% url 'cadastro:login' %}">Entrar</a></li>
+              <li><a href="{% url 'cadastro:registrar' %}">Cadastre-se</a></li>
+              <li><a href="{% url 'cadastro:minhaconta' %}">Minha conta</a></li>
+              <li><a href="{% url 'checkout:lista_pedido' %}"">Meus Pedidos</a></li>
+              <li><a href="{% url 'contrato:lista_contrato' %}">Meus Contrato</a></li>  
+            </ul>
+          {%endif%}
+
+
+          <li class="item1">
+          {% if user.is_authenticated %}
+            <span><img src="{%static 'images/topo/login.png' %} "></span> 
+            Olá {{user.username}}, Seja bem-vindo!</a><a href="{% url 'cadastro:logout' %}"> Sair</a></li>
+          {%else%}
+            <span><img src="{% static 'images/topo/login.png' %}"></span>
+            Seja bem-vindo!<a href="{% url 'cadastro:registrar' %}" class="txt-branco"> Cadastre-se</a> ou efetue o <a href="{% url 'cadastro:login' %}" class="txt-branco">Login</a>
+            {%endif%}
+          </li>
+        
+          <li class="carrinho_menu_usuario"><a href="{% url 'checkout:cart_item'%}"><img src="{% static 'images/topo/carrinho.png' %}"> Carrinho</a></li>
+           <!--carrinho de compras responsivo--> 
+           <li class="contrato_menu_usuario"><a href= "{% url 'contrato:cart_item' %}"><img src="{% static 'images/contract.png' %}"> Contratos</a></li>
+
+          <li class="item2"><a href="{% url 'checkout:lista_pedido' %}">Meus Pedidos</a></li>
+          <li class="item3"><a href="{% url 'contrato:lista_contrato' %}">Meus Contratos</a></li>
+          <li class="item4"><a href="{% url 'cadastro:minhaconta' %}">Minha Conta</a></li> 
+          <li class="item5"><span><img src="{% static 'images/topo/whatsapp-logo.png' %}"> </span>(11)97661-1428</li>
+          <li class="item6">
+            <span><a href="https://www.facebook.com/SiLimaFestaseEventos/"><img src="{% static 'images/topo/facebook-logo.png' %}"></span></a>
+          </li> 
+    </nav>
+
+
+        <section class="conteudo">
+          <div class="logo"> <a href="{% url 'index' %}" >
+            <img src="{%static 'images/topo/logo_silima.png' %}">  
+          </a> 
+        </div>
+        <!--Begin Pesquisa-->
+        <form class="pesquisa" role="search" action="{% url 'lista_produto' %}">
+          <input name="q"  type="text" placeholder="Buscar">
+          <button class="pesquisa-button"><img src="{%static 'images/topo/btn_busca.png' %}"></button>
+        </form>
+
+        <!--End Carrinho-->
+        
+          <div class="carrinho">
+            <a href="{% url 'checkout:cart_item'%}">
+              <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}"> Carrinho de compras  <center></center></button>
+            </a>
+            <a href="{% url 'contrato:cart_item' %}">
+              <button class="carrinho_button"><img src="{%static 'images/contract.png' %}"> Contrato de aluguel </button>
+            </a>
+          </div>
+          
+      </section>
+
+      <div class="container">
+      <nav class="menu_categorias">
+        <div class="main clearfix">
+          <nav id="menu" class="nav">         
+            <ul>
+              {%for categoria in categorias %}
+              <li>
+                <a href="{{ categoria.get_absolute_url }}">
+                  <span class="icon">
+                    <i aria-hidden="true"><img src="{{categoria.imagem.url}}"></i>
+                  </span>
+                  <span>{{categoria.nome}}</span>
+                </a>
+              </li>
+              {%endfor%}
+            </ul>
+          </nav>
+        </div> 
+      </nav>
+    </div><!-- /Fim -->
+
+    
+  </heade>
+</span>
+
+  <main class="container">
+    {% block conteudo %}
+
+
+    {% endblock %}
+  </main>
+
+  <!--newslleter-->
+  <form class="news" enctype="multipart/form-data" method="POST" action="/newsletter/news/subscribe/">
+    {% csrf_token %}
+    <figure><img src="{%static 'images/email.png' %}"></figure>
+    <span>NEWSLLETER</span>
+    <input type="email" name="email_field" required="" id="id_email_field" placeholder="user@dominio.com">
+    <button id="id_submit" name="submit" value="Subscribe" type="submit">Enviar</button>
+  </form>
+
+  <!--fim - newslleter-->
+
+  <footer class="bg-rodape">
+
+   <div class="arabesco">
+     <img src="{%static 'images/Arabesco.png' %}">
+   </div> 
+
+   <nav class="menu-rodape">
+
+     <li class="sobre_silima" >
+      <a class="style_circulo" href="{% url 'quemsomos' %}">
+        <img src="{%static 'images/Logo.png' %}" style="height: 45px; margin-top: 30%;">
+      </a>
+      <p class="texto">Sobre Nós</p>
+    </li>
+
+    <li class="calculadora" >
+      <a class="style_circulo" href="{% url 'calculadora' %}">
+        <img src="{%static 'images/Calculadora.png' %}" style="height: 45px; margin-top: 30%;">
+      </a>
+      <p class="texto">Calculadora</p>
+    </li>
+
+    <li class="festa" >
+      <a class="style_circulo" href="{% url 'festas' %}">
+        <img src="{%static 'images/Festas.png' %}" style="height: 45px; margin-top: 30%;">
+      </a>
+      <p class="texto">Festas</p>
+    </li>
+
+    <li class="servico">
+      <a class="style_circulo" href="{% url 'servicos' %}"">
+        <img src="{%static 'images/servico.png' %}" style="height:45px; margin-top: 30%;">
+      </a>
+      <p class="texto">Serviços</p>
+    </li>
+
+    <li class="nossas-dicas">
+      <a class="style_circulo" href="{% url 'nossasdicas' %}">
+        <img src="{%static 'images\nossasdicas.png' %}" style="height:45px; margin-top: 30%;">
+      </a>
+      <p class="texto">Nossas Dicas</p>
+    </li>
+
+    <li class="contato">
+      <a class="style_circulo" href="{% url 'contato' %}">
+        <img src="{%static 'images/contato.png' %}"style="height:45px; margin-top: 30%;";>
+      </a>
+      <p class="texto">Contato</p>
+    </li>
+  </nav>
+
+  <div class="arabesco">
+   <img src="{%static 'images/Arabesco.png' %}">
+ </div>     
+
+ <section class="info">
+
+  <section class="pagamento2">
+    <p>Pague com Paypal:</p>
+    <img src="{%static 'images/paypal.png' %}">
+  </section>  
+
+
+  <section class="pagamento">
+    <p>Pague com PagSeguro:</p>
+    <img src="{%static 'images/pagseguro.jpg' %}">
+  </section> 
+
+  <section class="seguro">
+    <img src="{%static 'images/seguro.png' %}">
+  </section> 
+
+<div class="fb-page" data-href="https://www.facebook.com/SiLimaFestaseEventos/" data-tabs="timeline" data-width="400px" data-height="210px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/SiLimaFestaseEventos/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SiLimaFestaseEventos/">Si Lima - Festas e Eventos</a></blockquote></div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2&appId=316913515726919&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</section>
+
+<section class="obrigado">
+  <p>Copyright © 2018 | Easy Party System</p>
+</section> 
+
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+
+
+<script src="{%static 'css/bootbootstrap.min.js' %}"></script>
+<script src="{%static 'js/menu_categorias.custom.js' %}"></script>
+<script src="{%static 'js/slider.js' %}"></script>
+<script src="{%static 'js/MenuFixo.js' %}"></script>
+<script src="{%static 'js/menu.js' %}"></script>
+<script src="{%static 'js/produto.js' %}"></script>
+<script src="{%static 'js/calculadora.js' %}"></script> 
+<script src="{%static 'js/registro.js' %}"></script>
+<script src="{%static 'js/jQuery-Mask-Plugin-master/dist/jquery.mask.js' %}"></script>
+<script src="{%static 'js/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js' %}"></script> 
+<script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+
+<script>
+  $(function () {
+    $('.dropdown-toggle').dropdown();
+  }); 
+</script>
+
+{% block scripts %}{% endblock %}
+
+<!--Menu Fixo-->
+<script type="text/javascript">
+//Diz para o navegador o que será carregado no momento em que a página é acessada.
+jQuery("document").ready(function($){
+ 
+    //Elemento que vai receber os eventos.
+    var nav = $('.menu_usuario');
+ 
+    //Ao rolar a página, a função será executada.
+    $(window).scroll(function () {
+        //Se o tamanho da parte rolada for maior que 136px (pixels) ->
+        if ($(this).scrollTop() > 1) {
+            nav.addClass("fixed"); //Aplica a classe scrolled_menu no elemento .menu
+        } else {
+            nav.removeClass("fixed"); //Remove a classe scrolled_menu no elemento .menu
+        }
+    });
+ 
+}); 
+
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9W9TG9"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) --> 
+
+
+</body>
+</html>

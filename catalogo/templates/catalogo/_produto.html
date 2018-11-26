@@ -1,0 +1,42 @@
+ {% load thumbnail %}		
+ 		
+<div class="row">
+    {%for produto in produtos%}
+   		<div class="col-md-4 text-center col-sm-6 col-xs-12">
+        	<div class="product-box">
+				<div class="thumbnail">
+			  		<a href="{{ produto.get_absolute_url }}">
+			  		{% if produto.imagem %}	
+			  			<img src="{{produto.imagem |thumbnail_url:'imagem_produto' }}" alt="{{produto.nome_p}}" />
+			  		</a>
+			  		{% else %}
+			  			<img src="http://placehold.it/350x250" alt="{{produto.nome_p}}" />
+			  		{% endif %}
+			  		<div class="caption">
+			  			<h4>{{produto.nome_p}}</h4>
+			  			<p>Por R$ {{produto.preco_p}}</p>
+			  			{% if produto.vender %}	
+			  				<p><a onclick="setInterval('atualizar()',2000)" href="{% url 'checkout:create_cartitem' produto.slug %}" class=" adicionar-carrinho btn btn-success" role="button">Comprar</a>
+			  				<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>
+			  			{% else %}
+			  				<p><a href="{% url 'contrato:create_cartitem' produto.slug %}" class="adicionar-carrinho btn btn-success" role="button">Alugar</a>
+			  				<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>
+			  			{%endif%}
+			  		</div>
+			  	</div>	    
+			</div>
+		</div>
+	{% endfor %}
+</div>			
+
+{% block scripts %}
+
+<script type="text/javascript">
+ function atualizar (){
+            window.location.reload();
+
+</script>
+
+{% endblock %}
+
+         

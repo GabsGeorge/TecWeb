@@ -1,0 +1,19 @@
+{% extends 'admin/base_site.html' %}
+{% load static i18n %}
+
+{# Setup favicon #}
+{% block extrahead %}<link rel="shortcut icon" type="image/png" href="{{MEDIA_URL}}your_logo.png"/>{% endblock %}
+
+{# Setup browser tab label #}
+{% block title %}{{ title }} |  {% trans "Admin Silima - Festas e Eventos" %}{% endblock %}
+
+{# Setup branding #}
+{% block branding %}
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">
+            <img style="background-color: white" src="/static/images/topo/logo_silima.png"  alt="Silima Festas e Eventos" height="100%" width="100%">
+            <br><br>
+            </span> {% trans "Silima Festas e Eventos" %}
+        </a>
+    </h1>
+{% endblock %}

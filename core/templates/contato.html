@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% load widget_tweaks %}
+{% block conteudo %}
+
+<div class="container gallery-container">
+	<div class="page-header">
+   <h1>Fale Conosco <img src="{% static 'images/cake.png' %}"></h1>
+ </div>
+ <div class="tz-gallery">
+  {% block messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+  {% endblock %}  
+
+  <form class="form-horizontal" action="" method="post">
+    {% csrf_token %}
+    <fieldset>
+      {% for field in form %}
+      <div class="form-group{% if field.errors %} has-error{% endif %}">
+        <label for="{{ field.auto_id }}" class="col-md-3 control-label">{{ field.label }}</label>
+        <div class="col-md-6">
+          {% render_field field class='form-control' %}
+          {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+      <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+          <button type="Submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+{%endblock%}

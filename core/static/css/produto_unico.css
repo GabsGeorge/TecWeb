@@ -1,0 +1,238 @@
+/*produto*/
+
+.produto_unico{
+    display: grid;
+    grid-template-columns: 53% 48%;
+    grid-auto-rows: auto auto;
+    font-family: Ubuntu, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    color: #000000a6;
+}
+
+.foto_principal img{
+    padding-left: 100px;  
+}
+
+.foto_principal{
+    grid-row: 1;
+    grid-column: 1;
+    border: solid 1px silver;
+    width: 100%;
+    height: 100%;
+}
+
+.dados {
+    grid-row: 1;
+    grid-column: 2;
+    padding: 30px;
+}
+
+.dados p {
+margin-left: 30px;     
+}
+
+.btn_incrementar{
+    grid-column: 1;
+    grid-row: 1;
+    width: 80px;
+    height: 55px;
+    border: solid 1px #f8a827;
+    border-radius: 6px;
+    margin-left: 30px;
+}
+
+#menos{
+    position: relative;
+    top: -30px;
+    left: 45px;
+    background: none;
+    border: none;
+    color: #f09400;
+    font-size: 20px;
+}
+
+#mais{  
+    position: relative;
+    left: 17px;
+    top: -51px;
+    background: none;
+    border: none;
+    color: #f09400;
+    font-size: 20px;
+
+}
+
+#format{
+    width: 50px;
+    height: 52px;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 25px;
+    font-weight: 600;
+    color: #bababa;
+}
+
+.btn_compra{
+    grid-column: 2;
+    grid-row: 1;
+    background: #619f46;
+    border-radius: 6px;
+    padding: 10px 29px;
+    color: #ffffff;
+    display: inline-block;
+    font: normal 700 30px/1 "Calibri", sans-serif;
+    text-align: center;
+    text-shadow: 1px 1px #6c6767;
+    margin-left: 30px;
+    border: none;
+}
+
+.btn_compra:hover{
+    animation: bounce 0.6s;
+}
+
+
+
+.btn_colocar_carrinho{
+    background: #f8a827;
+    border-radius: 6px;
+    color: #ffffff;
+    display: inline-block;
+    font: normal 700 19px/1 "Calibri", sans-serif;
+    text-align: center;
+    margin-left: 30px;
+    border: none;
+    height: 44px;
+}
+
+.btn_colocar_carrinho:hover{
+    animation: bounce 0.6s;
+}
+
+
+.btn_colocar_carrinho img{
+    width: 45px;
+}
+
+.incremento{
+   display: grid;
+   grid-template-columns:  25% 50%;
+   grid-template-rows: 100%;       
+
+}
+
+.preco span{
+    font-size: 35px;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 700;
+    color: #619f46;
+}
+
+.frete p{
+    font-family: Ubuntu, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    padding: 20px;
+    color: #000000a6;
+}
+
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    40% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+
+    80% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+}
+
+.btn_calcular_frete{
+    background: #59c0e7;
+    border-radius: 3px;
+    color: #ffffff;
+    display: inline-block;
+    text-align: center;
+    border: none;
+    height: 26px;
+    width: 37px;
+}
+
+#campo_frete{
+    border: none;
+    background: none;
+    width: 165px;
+    margin-left: 30px;
+    padding: 7px;
+    font-family: Ubuntu, sans-serif;
+    font-size: 14px;
+    color: #000;
+    font-style: italic;
+}
+
+
+.busca_frete{
+    width: 240px;
+    background: white;
+    margin-left: 30px;
+    border: solid 1px silver;
+
+}
+
+
+.nav_per {
+ 
+    list-style:none!important;
+    margin: 15px;
+}
+
+.nav_per li{
+    width: 100px;
+    padding: 5px;
+}
+
+.nav_per a{
+    padding: 10px;
+    text-decoration: none;
+}
+
+.panel-heading{
+    height: 60px!important;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #5cb85c00!important;
+}
+
+        
+
+@media (min-width: 992px){
+.col-md-11 {
+    width: 97.666667%!important;
+}
+
+.nav-tabs>li>a:hover {
+    border-color:none!important;
+}
+
+#tab1default{
+    font-size: 15px!important;
+    position: relative!important;
+    bottom: 9px!important;
+}
+
+#tab2default{
+    font-size: 15px;
+    position: relative;
+    bottom: 9px;
+}

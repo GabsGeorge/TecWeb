@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% load widget_tweaks %}
+{% block conteudo %}
+
+<div class="container gallery-container">
+	<div class="page-header">
+    <h1> Cadastre-se <img src="{% static 'images/cake.png' %}"></h1>
+  </div>
+ <!-- Alertas -->
+  {% block messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">
+  {{ message }}
+  </div>
+  {% endfor %}
+  {% endblock %}
+
+<form class="form-horizontal" method="POST" action="">
+  {% csrf_token %}
+  {% for error in form.non_field_errors %}
+  <div class="alert alert-danger">
+    {{ error }}
+  </div>
+  {% endfor %}
+
+  <fieldset style="margin-bottom: 70px!important; color: #fff!important;">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Cadastro de Cliente</div>
+
+      <div class="panel-body">
+        <div class="form-group">
+          <div class="col-md-11 control-label">
+            <p class="help-block"><h11>*</h11> Campo Obrigatório </p>
+          </div>
+        </div>
+
+
+        <!-- Text input-->
+        <div class="form-group{% if form.username.errors %} has-error{% endif %}">
+          <label for="{{ form.username.auto_id }}" class="col-md-2 control-label">{{ form.username.label }}</label>
+          <div class="col-md-4">
+            {% render_field form.username class="form-control" %}
+            {% for error in form.username.errors %}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-group{% if form.nome.errors %} has-error{% endif %}">
+          <label for="{{ form.nome.auto_id }}" class="col-md-2 control-label">{{ form.nome.label }}</label>
+          <div class="col-md-8">
+            {% render_field form.nome class="form-control" %}
+            {% for error in form.nome.errors %}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-group{% if form.sobrenome.errors %} has-error{% endif %}">
+          <label for="{{ form.sobrenome.auto_id }}" class="col-md-2 control-label">{{ form.sobrenome.label }}</label>
+          <div class="col-md-8">
+            {% render_field form.sobrenome class="form-control" %}
+            {% for error in form.sobrenome.errors %}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="{{ form.cpf.auto_id }}">{{ form.cpf.label }} <h11>*</h11></label>  
+          <div class="col-md-3">
+            {% for error in form.cpf.errors %}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %}
+            {% render_field form.cpf class="form-control" placeholder="XXX.XXX.XX-XX" maxlength="14" data-mask="000.000.000-00"%}
+          </div>
+
+          <label class=" col-md-2 control-label" for="{{ form.nascimento.auto_id }}">{{ form.nascimento.label }}<h11>*</h11></label>  
+          <div class="col-md-3">
+            {% render_field form.nascimento class="form-control" placeholder="DD/MM/AAAA"  maxlength="10" data-mask="00/00/0000"%}
+            {% for error in form.nascimento.errors %}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+
+          <!-- Multiple Radios (inline) -->
+
+          <label class="col-md-3 control-label" for="radios">Sexo <h11>*</h11></label>
+          <div class="col-md-4"> 
+            <label required="" class="radio-inline" for="radios-0" >
+              <input name="sexo" id="sexo" value="feminino" type="radio" required>
+              Feminino
+            </label> 
+            <label class="radio-inline" for="radios-1">
+              <input name="sexo" id="sexo" value="masculino" type="radio">
+              Masculino
+            </label>
+          </div>
+        </div>
+
+        <!-- Prepended text-->
+        <div class="form-group{% if form.telefone_u.errors %} has-error{% endif %}">
+          <label class="col-md-2 control-label" for="{{ form.telefone_u.auto_id }}">{{ form.telefone_u.label }}</label>
+          <div class="col-md-3">
+            {% for error in form.telefone_u.errors%}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %}
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+              {% render_field form.telefone_u class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="14" data-mask="00 0000-0000"%}
+            </div>
+          </div>    
+
+          <div class="form-group{% if form.celular.errors %} has-error{% endif %}">
+            <label class="col-md-2 control-label" for="{{ form.celular.auto_id }}">{{ form.celular.label }} <h11>*</h11></label>
+            <div class="col-md-3">
+              {% for error in form.celular.errors %}
+              <span class="help-block">{{ error }}</span>
+              {% endfor %}
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                {% render_field form.celular class="form-control" placeholder="XX XXXXX-XXXX" required="" type="text"   maxlength="16" data-mask="00 0 0000-0000"%}
+              </div>
+            </div>
+          </div>    
+        </div> 
+
+        <!-- Prepended text-->
+        <div class="form-group{% if form.email.errors %} has-error{% endif %}">
+          <label class="col-md-2 control-label" for="{{ form.email.auto_id }}">{{ form.email.label }} <h11>*</h11></label>
+          <div class="col-md-5">
+            {% for error in form.email.errors %}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %} 
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              {% render_field form.email class="form-control" placeholder="email@email.com" required="" type="text"%}        
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Search input-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
+          <div class="col-md-3">
+            {% render_field form.cep class="form-control" id="cep" name="cep" placeholder="Apenas números" class="form-control input-md" required="" value="" type="search" maxlength="8" data-mask="00000-000" %}  
+          </div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-primary" onclick="pesquisacep(cep.value)">Pesquisar</button>
+          </div>
+        </div>
+
+        <!-- Prepended text-->
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="prependedtext">Endereço</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon">Rua</span>
+              {% render_field form.rua class="form-control" placeholder="" required=""  readonly="readonly" type="text" %} 
+            </div>
+
+          </div>
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">{{ form.numero.label }} <h11>*</h11></span>
+              {% render_field form.numero class="form-control" placeholder="" required=""  type="text" %} 
+            </div>
+
+          </div>
+
+          <div class="col-md-3">
+            <div class="input-group">
+              <span class="input-group-addon">{{ form.bairro.label }}</span>
+              {% render_field form.bairro class="form-control"  placeholder="" required=""  readonly="readonly" type="text" %} 
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="prependedtext"></label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon">{{ form.cidade.label }}</span>
+              {% render_field form.cidade class="form-control"  placeholder="" required=""  readonly="readonly" type="text" %} 
+            </div>
+
+          </div>
+
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">{{ form.estado.label }}</span>
+              {% render_field form.estado class="form-control" placeholder="" required="" readonly="readonly" type="text" %} 
+            </div>
+
+            <!-- Button (Double) -->
+
+          </div>
+        </div>
+
+        <br>
+
+        <div class="form-group{% if form.password1.errors %} has-error{% endif %}">
+          <label for="{{ form.password1.auto_id }}" class="col-md-2 control-label">{{ form.password1.label }}</label>
+          <div class="col-md-3">
+            {% render_field form.password1 class="form-control" %}
+            {% for error in form.password1.errors %}
+            <span class="help-block">{{ error }}</span>
+            {% endfor %}
+          </div>
+
+          <div class="form-group{% if form.password2.errors %} has-error{% endif %}">
+            <label for="{{ form.password2.auto_id }}" class="col-md-3 control-label">{{ form.password2.label }}</label>
+            <div class="col-md-3">
+              {% render_field form.password2 class="form-control" %}
+              {% for error in form.password2.errors %}
+              <span class="help-block">{{ error }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="Cadastrar"></label>
+          <div class="col-md-8">
+            <button id="Cadastrar" name="Cadastrar" class="btn btn-success" autocomplete="off" type="Submit">Cadastrar</button>
+            <button id="Cancelar" name="Cancelar" class="btn btn-danger" type="Reset">Cancelar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </fieldset>
+</form>
+</div>
+
+
+
+      <script type="text/javascript">
+
+        $(document).ready(function(){
+          $('#nascimento').mask('00/00/0000');
+          $('#cep').mask('00000-000');
+          $('#id_telefone_u').mask('(00) 0000-0000');
+          $('#id_celular').mask('(00) 0 0000-0000');
+          $('#id_cpf').mask('000.000.000-00');
+          $('.ip_address').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
+            translation: {
+              'Z': {
+                pattern: /[0-9]/, optional: true
+              }
+            }
+          });
+          $('.ip_address').mask('099.099.099.099');
+          $('.percent').mask('##0,00%', {reverse: true});
+          $('.clear-if-not-match').mask("00/00/0000", {clearIfNotMatch: true});
+          $('.placeholder').mask("00/00/0000", {placeholder: "__/__/____"});
+          $('.fallback').mask("00r00r0000", {
+            translation: {
+              'r': {
+                pattern: /[\/]/,
+                fallback: '/'
+              },
+              placeholder: "__/__/____"
+            }
+          });
+          $('.selectonfocus').mask("00/00/0000", {selectOnFocus: true});
+        });
+      </script>
+
+      {%endblock%}

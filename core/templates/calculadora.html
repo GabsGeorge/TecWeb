@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block conteudo %}
+<body onload="Valores()">
+<head >
+
+</head>
+<div class="container gallery-container">
+  <div class="page-header">
+      <h1>Calcule sua festa!<img src="{% static 'images/calculator.png' %}"></h1>
+
+    </div>
+  <div class="tz-gallery">
+    <div class="container">
+    <div class="row">
+          
+          <div class="col-md-2">
+            <p>Adultos: <input type="int" id="adultos" class="form-control"></p>
+          </div>
+          <div class="col-md-2">
+            <p>Crianças: <input type="int" id="criancas" class="form-control"></p>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" id="calcular" onclick="PegaValor()" class="formnovalidate btn btn-primary">Calcular!</button>
+          </div>
+  </div>
+    <div class="row">
+        <!--Coluna Meio-->
+        <aside role="complementary" class="col-md-4 col-md-push-5">
+    
+    
+        <!--Titulo-->             
+      <h2 style="color:red">Doces</h2>
+      <br>
+      
+        <!--Itens-->
+        <!--Docinhos-->       
+        <div class="row" id="colunas">
+          <input id="caixa_docinhos" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Docinhos</label>
+        </div>
+        
+        <!--Chocolate-->        
+        <div class="row" id="colunas">
+          <input id="caixa_chocolate" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Chocolate</label>
+        </div>
+        
+        <!--Cupcake*-->
+        <div class="row" id="colunas">
+          <input id="caixa_cupcake" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Cupcake*</label>
+        </div>
+        
+        <!--Biscoito Decorado*-->       
+        <div class="row" id="colunas">
+          <input id="caixa_biscoito_decorado" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Biscoito Decorado*</label>
+        </div>
+        
+        <!--Bolo-->
+        <div class="row" id="colunas">
+          <input id="caixa_bolo" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Bolo*</label>
+        </div>
+        
+        <!--Saladinha de frutas-->
+        <div class="row" id="colunas">
+          <input id="caixa_saladinha" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Saladinha de Frutas*</label>
+        </div>
+            
+        <!--Sorvete ou Picolé-->
+        <div class="row" id="colunas">
+          <input id="caixa_sorvete" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Sorvete ou Picolé</label>
+        </div>
+    
+      
+    
+    
+    </aside>
+    
+    
+    <!--Coluna Direita-->
+    <div role="main" class="col-md-4 col-md-push-4">
+         
+     <!--Titulo-->              
+      <h2 style="color:red">Bebidas</h2>
+      <br>
+      
+        <!--Itens-->
+        <!--Refrigerante-->       
+        <div class="row" id="colunas">
+          <input id="caixa_refrigerante" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Refrigerante</label>
+        </div>
+        <!--Água-->       
+        <div class="row" id="colunas">
+          <input id="caixa_agua" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Água</label>
+        </div>
+        
+        <!--Suco-->       
+        <div class="row" id="colunas">
+          <input id="caixa_suco" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Suco</label>
+        </div>
+        
+        <!--Cerveja-->
+        <div class="row" id="colunas">
+          <input id="caixa_cerveja" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Cerveja</label>
+        </div>
+      
+      <!--Titulo-->             
+      <h2 style="color:red">Brindes</h2>
+      <br>
+      
+        <!--Tubete com Balas-->       
+        <div class="row" id="colunas">
+          <input id="caixa_tubete" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Tubete com Balas</label>
+        </div>
+        
+        <!--Latinha com balas ou chocolate-->
+        <div class="row" id="colunas">
+          <input id="caixa_latinha" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Latinha com balas ou chocolate</label>
+        </div>
+        
+        <!--Lembrancinha para criança-->
+        <div class="row" id="colunas">
+          <input id="caixa_lembrancinha" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Lembrancinha para crianças</label>
+        </div>
+     
+     
+        </div>
+    
+    <!--Coluna Esquerda-->
+        <nav class="col-md-4 col-md-pull-6">
+    
+      <!--Titulo-->             
+      <h2 style="color:red">Salgados</h2>
+      <br>
+      
+        <!--Itens-->
+        <!--Salgadinho Frito-->       
+        <div class="row" id="colunas">
+          <input id="caixa_salgadinho_frito" type="text" value="" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Salgadinho Frito</label>
+        </div>
+        
+        <!--Salgadinho Assado-->        
+        <div class="row" id="colunas">
+          <input id="caixa_salgadinho_assado" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Salgadinho Asssado</label>
+        </div>
+        
+        <!--Minissanduiche-->
+        <div class="row" id="colunas">
+          <input id="caixa_minissanduiche" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Minissanduiche</label>
+        </div>
+        
+        <!--Minipizza-->        
+        <div class="row" id="colunas">
+          <input id="caixa_minipizza" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Minipizza</label>
+        </div>
+        
+        <!--Cachorro-Quente-->
+        <div class="row" id="colunas">
+          <input id="caixa_cachorro_quente" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Cachorro-Quente</label>
+        </div>
+        
+        <!--Minialmoço ou Jantar-->
+        <div class="row" id="colunas">
+          <input id="caixa_minialmoco" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Minialmoço ou Jantar</label>
+        </div>
+            
+        <!--Batata Frita-->
+        <div class="row" id="colunas">
+          <input id="caixa_batata_frita" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Batata Frita*</label>
+        </div>
+            
+        <!--Pipoca-->
+        <div class="row" id="colunas">
+          <input id="caixa_pipoca" type="int" class="form-control col-md-2 caixas" readonly><label id="" class="alinha">&emsp;Pipoca*</label>
+        </div>
+       
+        </nav>
+    </div>
+    <!-- <footer class="row" class="col-md-11"> -->
+    <!--Titulo---->
+        <h6 style="color:red">Legenda(*)</h6>
+    <br>
+    <!--Legenda-->
+    <div class="col-md-12">
+      <!-- Batata Frita -->
+      <div class="row">
+        <label id="lengeda">Batata Frita  e Pipoca = Saquinho.</label>
+      </div>  
+      <div class="row" >
+        <label id="legenda">Cupcake e Biscoito Decorado = Item decorativo. Não se calcula por pessoa;</label>
+      </div>  
+      <div class="row">
+        <label id="legenda"> Bolo = Fatias; Saladinha de Frutas = Potinho</label>
+      </div>
+    </div>
+    <!-- </footer> -->
+</div>
+      <!-- Grid row -->
+
+  </div>
+</div>
+      </section>
+</body>
+
+
+{%endblock%}
