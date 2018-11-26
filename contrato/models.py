@@ -1,4 +1,4 @@
-   # coding: utf-8
+    # coding: utf-8
 from django.db import models
 from django.conf import settings
 from catalogo.models import Produto
@@ -6,61 +6,63 @@ from pagseguro import PagSeguro
 from django.db.models import Avg
 
 #Carrinho de compras----
-class ContratoItemManager(models.Manager):
+class CartItemManagerContrato(models.Manager):
 
-    def add_item_item(self, contrato_key, produto):
-        if self.filter(contrato_key=contrato_key, produto=produto).exists():
+    def add_item(self, cart_key, produto):
+        if self.filter(cart_key=cart_key, produto=produto).exists():
             created = False
-            contrato_item = self.get(contrato_key=contrato_key, produto=produto)
-            contrato_item.quantidade = contrato_item.quantidade + 1
+            cart_item = self.get(cart_key=cart_key, produto=produto)
+            cart_item.quantidade = cart_item.quantidade + 1
             
-            contrato_item.save()
+            cart_item.save()
         else:
             created = True
-            contrato_item = ContratoItem.objects.create(contrato_key=contrato_key, produto=produto, preco_p=produto.preco_p)
+            cart_item = CartItemContrato.objects.create(cart_key=cart_key, produto=produto, preco_p=produto.preco_p)
             
-        return contrato_item, created
+        return cart_item, created
 
 #Item do Carrinho de compras --
-class ContratoItem(models.Model):
+class CartItemContrato(models.Model):
 
-    contrato_key = models.CharField('Chave do Contrato', max_length=40, db_index=True)
+    cart_key = models.CharField('Chave do Carrinho', max_length=40, db_index=True)
     produto = models.ForeignKey('catalogo.Produto', verbose_name='Produto')
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
     preco_p = models.DecimalField('Preço', decimal_places=2, max_digits=8)
-    
+    total_p = models.DecimalField('Total', decimal_places=2, max_digits=8, null=True, blank=True)
 
-    objects = ContratoItemManager()
+    objects = CartItemManagerContrato()
 
     class Meta:
         verbose_name = 'Item do contrato'
         verbose_name_plural = 'Itens dos contratos'
-        unique_together = (('contrato_key', 'produto'),)
+        unique_together = (('cart_key', 'produto'),)
 
     def __str__(self):
         return '{} [{}]'.format(self.produto, self.quantidade)
 
-def post_save_contrato_item(instance, **kwargs):
+def post_save_cart_item(instance, **kwargs):
     if instance.quantidade < 1:
         instance.delete()
 
 
 models.signals.post_save.connect(
-    post_save_contrato_item, sender=ContratoItem, dispatch_uid='post_save_contrato_item'
+    post_save_cart_item, sender=CartItemContrato, dispatch_uid='post_save_cart_item'
 )
 
 
-class PedidoContratoManager(models.Manager):
-    def criacao_pedido(self, user, contrato_items):
+#Pedido ------
+
+class PedidoManagerContrato(models.Manager):
+    def criacao_pedido(self, user, cart_items):
         pedido = self.create(user=user)
-        for contrato_item in contrato_items:
-            item_do_contrato = ItemDoContrato.objects.create(
-                pedido=pedido, quantidade=contrato_item.quantidade, produto=contrato_item.produto,
-                preco_p=contrato_item.preco_p
+        for cart_item in cart_items:
+            item_do_pedido = ItemDoPedidoContrato.objects.create(
+                pedido=pedido, quantidade=cart_item.quantidade, produto=cart_item.produto,
+                preco_p=cart_item.preco_p
             )
         return pedido
 
-class Contrato(models.Model):
+class PedidoContrato(models.Model):
 
     STATUS_CHOICES=(
         (0, 'Aguardando pagamento'),
@@ -78,18 +80,17 @@ class Contrato(models.Model):
     status = models.IntegerField('Situacao', choices=STATUS_CHOICES, default=0, blank=True)  
     opcoes_de_pagamento = models.CharField('Opcao de pagamento', choices=OPCOES_DE_PAGAMENTO, max_length=20, default= 'deposito') 
 
-
     criado = models.DateTimeField('Criado em', auto_now_add=True)
     modificado = models.DateTimeField('Modificado em', auto_now=True)
 
-    objects = PedidoContratoManager()
+    objects = PedidoManagerContrato()
 
     class Meta:
         verbose_name='Contrato'
         verbose_name_plural='Contratos'
 
     def __str__(self):
-        return 'PedidoContrato#{}'.format(self.pk)
+        return 'Contrato #{}'.format(self.pk)
 
     def produtos(self):
         produtos_ids = self.items.values_list('produto')
@@ -164,21 +165,16 @@ class Contrato(models.Model):
     
 
 #items do pedido --
-class ItemDoContrato(models.Model):
-    pedido = models.ForeignKey(Contrato, verbose_name='Contrato', related_name='items')
+class ItemDoPedidoContrato(models.Model):
+    pedido = models.ForeignKey(PedidoContrato, verbose_name='Pedido', related_name='items')
     produto = models.ForeignKey('catalogo.Produto', verbose_name='Produto')
     quantidade = models.PositiveIntegerField('Quantidade', default=1)
     preco_p = models.DecimalField('Preço', decimal_places=2, max_digits=8)
 
     class Meta:
-        verbose_name = 'Item do pedido'
-        verbose_name_plural = 'Itens dos pedidos'
+        verbose_name = 'Item do contrato'
+        verbose_name_plural = 'Itens dos contratos'
 
     def __str__(self):
-        return '[{}] {}'.format(self.pedido, self.produto)
-
-
-class DataContrato(models.Model):
-    Contrato = models.ForeignKey(Contrato, verbose_name='Contrato')
-    data = models.DateField('Dados do contrato')
-
+        return '[{}] {}'.format(self.pedido, self.produto)  
+        

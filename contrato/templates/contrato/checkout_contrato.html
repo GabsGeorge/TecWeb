@@ -9,7 +9,7 @@
       </div>
     <ol class="breadcrumb">
       <li><a href="{% url 'index' %}">Início</a></li>
-      <li><a href="{% url 'contrato:contrato_item' %}">Contrato</a></li>
+      <li><a href="{% url 'contrato:cart_item' %}">Contrato</a></li>
       <li class="active">Finalização do contrato</li>
     </ol>
         <!-- Alertas -->
@@ -37,7 +37,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>#{{ pedido.pk }}</td>
+            <td>#{{pedido.pk }}</td>
             <td>{{ pedido.total|floatformat:"2" }}</td>
             <td>{{ pedido.get_status_display }}</td>
             <td>{{ pedido.criado|date:"d/m/Y H:i" }}</td>
@@ -80,10 +80,10 @@
             </p>
         </div>
         <div class="col-md-8" style="">
-            <a href="{% url 'checkout:paypal_view' pedido.pk %}" class="btn btn-primary">Pagar com Paypal</a>
+            <a href="{% url 'contrato:paypal_view' pedido.pk %}" class="btn btn-primary">Pagar com Paypal</a>
         </div>
         <div class="col-md-4">
-          <a href="{% url 'checkout:pagseguro_view' pedido.pk %}" class="btn btn-success">Pagar com Pagseguro</a>
+          <a href="{% url 'contrato:pagseguro_view' pedido.pk %}" class="btn btn-success">Pagar com Pagseguro</a>
         </div>
 
     </div>

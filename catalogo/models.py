@@ -48,12 +48,11 @@ class Produto(models.Model):
     descricao = models.TextField("Descrição",db_column='Descricao_P')
     custo_p = models.DecimalField("Custo", decimal_places=2, max_digits=10, db_column='Custo_P')
     preco_p = models.DecimalField("Preço", decimal_places=2, max_digits=10, db_column='Preço_P')
-    altura = models.CharField("Altura(mts)", max_length=10, db_column='altura')
-    largura = models.CharField("largura(mts)", max_length=10, db_column='largura')
-    comprimento = models.CharField("Comprimento(mts)", max_length=10, db_column='comprimento')
+    altura = models.CharField("Altura(mts)", max_length=10, db_column='altura', blank=True)
+    largura = models.CharField("largura(mts)", max_length=10, db_column='largura', blank=True)
+    comprimento = models.CharField("Comprimento(mts)", max_length=10, db_column='comprimento', blank=True)
     peso = models.DecimalField("Peso(kg)", decimal_places=4, max_digits=10, db_column='peso')
-    qtd_de_itens = models.SmallIntegerField("Quantidade de itens do kit", db_column='Quantidade de Itens')
-    
+   
     slug = models.SlugField("Identificador", max_length=100)
     vender = models.BooleanField(db_column='Vender', default=True)
     ativo = models.BooleanField(db_column='Ativo',default=True)

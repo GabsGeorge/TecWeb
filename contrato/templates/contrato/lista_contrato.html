@@ -24,21 +24,21 @@
             </tr>
         </thead>
         <tbody>
-            {% for pedido in object_list %}
+            {% for contrato in object_list %}
             <tr>
                 <td>
-                    <a href="{% url 'contrato:detalhe_contrato' pedido.pk%}">#{{ pedido.pk }}</a>
+                    <a href="{% url 'contrato:detalhe_contrato' contrato.pk%}">#{{ contrato.pk }}</a>
                 </td>
                 <td>
-                    {% for produto in pedido.produtos %}
+                    {% for produto in contrato.produtos %}
                     {{ produto.nome_p }}{% if not forloop.last %}<br />{% endif %}
                     {% endfor %}
                 </td>
                 <td>
-                    {{ pedido.get_status_display }}
+                    {{ contrato.get_status_display }}
                 </td>
                 <td>
-                    {{ pedido.criado|date:"d/m/Y" }}
+                    {{ contrato.criado|date:"d/m/Y" }}
                 </td>
             </tr>
             {% endfor %}

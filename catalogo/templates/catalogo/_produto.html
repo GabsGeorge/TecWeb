@@ -19,7 +19,7 @@
 			  				<p><a onclick="setInterval('atualizar()',2000)" href="{% url 'checkout:create_cartitem' produto.slug %}" class=" adicionar-carrinho btn btn-success" role="button">Comprar</a>
 			  				<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>
 			  			{% else %}
-			  				<p><a href="{% url 'contrato:create_contratoitem' produto.slug %}" class="adicionar-carrinho btn btn-success" role="button">Alugar</a>
+			  				<p><a href="{% url 'contrato:create_cartitem' produto.slug %}" class="adicionar-carrinho btn btn-success" role="button">Alugar</a>
 			  				<a href="{{ produto.get_absolute_url }}" class="btn btn-default" role="button">Mais detalhes</a></p>
 			  			{%endif%}
 			  		</div>

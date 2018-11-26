@@ -136,7 +136,7 @@
         
           <li class="carrinho_menu_usuario"><a href="{% url 'checkout:cart_item'%}"><img src="{% static 'images/topo/carrinho.png' %}"> Carrinho ( 0 )</a></li>
            <!--carrinho de compras responsivo--> 
-           <li class="contrato_menu_usuario"><a href= "{% url 'contrato:contrato_item' %}"><img src="{% static 'images/contract.png' %}"> Contratos ( 0 )</a></li>
+           <li class="contrato_menu_usuario"><a href= "{% url 'contrato:cart_item' %}"><img src="{% static 'images/contract.png' %}"> Contratos ( 0 )</a></li>
 
           <li class="item2"><a href="{% url 'checkout:lista_pedido' %}">Meus Pedidos</a></li>
           <li class="item3"><a href="{% url 'contrato:lista_contrato' %}">Meus Contratos</a></li>
@@ -165,7 +165,7 @@
             <a href="{% url 'checkout:cart_item'%}">
               <button class="carrinho_button"><img src="{%static 'images/topo/carrinho.png' %}"> Carrinho de compras  <center></center></button>
             </a>
-            <a href="{% url 'contrato:contrato_item' %}">
+            <a href="{% url 'contrato:cart_item' %}">
               <button class="carrinho_button"><img src="{%static 'images/contract.png' %}"> Contrato de aluguel </button>
             </a>
           </div>

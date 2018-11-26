@@ -27,7 +27,7 @@
       label.disabled {color: #888;}
       label {color: #000; cursor: pointer;}
       #termos{
-        width: 800px;
+        width: 70%;
         height: 350px;
         padding: 10px 20px;
         overflow: auto;
@@ -132,9 +132,6 @@ Contratante (Cliente) Si Lima - Eventos
 </section>
 
 
-
-
-
 <h1>Item(s) do contrato</h1>
 </br>
 <div class="row">
@@ -198,14 +195,14 @@ Contratante (Cliente) Si Lima - Eventos
                 <a href="{% url 'lista_produto' %}" class="pull-left btn btn-default">Voltar para lista de itens</a>
                 <button type="submit" class="btn btn-primary" name="button">Atualizar Contrato</button></li>
 
-                <a href="{% url 'contrato:checkout_contrato'%}" class="btn btn-success" id="Btfinalizar">Finalizar Contrato</a>
+                <a href="{% url 'contrato:checkout'%}" class="btn btn-success" id="Btfinalizar">Finalizar Contrato</a>
             </p>
 
         </br>
         <section class="line"></section>
         <section class="resumo_carrinho">
             <h3>Resumo do Contrato</h3>
-            <h5>Total do pedido : R$ {{total|floatformat:"2" }}</h5>
+            <h5>Total do contrato : R$ {{total|floatformat:"2" }}</h5>
             <dd></dd>
         </section>
 
