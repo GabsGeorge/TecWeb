@@ -184,20 +184,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-#Email
-EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_PASSWORD = 'silimaadmin'
-EMAIL_HOST_USER = 'silimafestaseventos@gmail.com'
-EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-
 #EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 #EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
-
-
 
 
 # Thumbnails
@@ -236,31 +224,6 @@ AUTHENTICATION_BACKENDS = (
  'django.contrib.auth.backends.ModelBackend',
 )
 
-
-#Social login GitHub
-SOCIAL_AUTH_GITHUB_KEY = '00361c3cb7c9a77b76b5'
-SOCIAL_AUTH_GITHUB_SECRET = '23427532b3195fcf0b8aafbff42d8ce0b23b27e7'
-
-#Social login Facebook
-SOCIAL_AUTH_FACEBOOK_KEY = '316913515726919'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '060ef0bbce8616088cde0fea7c10ceb4'  # App Secret
-
-#Social login Google
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'BRBzgNP8l2JzajC8-WvhZ6Rt'  # App ID
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '898048350911-sh9pnf1b8vrvpg0fu38n3n2o5n2m4tgb.apps.googleusercontent.com'  # App Secret
-
-SOCIAL_AUTH_LOGIN_ERROR_URL = '/configuracoes/'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/configuracoes/'
-SOCIAL_AUTH_RAISE_EXCEPTIONS = False
-
-#PagSeguro
-PAGSEGURO_TOKEN = 'CBC3EF3FF6894879AAB4C905A08F4490'
-PAGSEGURO_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
-PAGSEGURO_SANDBOX = True
-
-#Paypal
-PAYPAL_TEST = True
-PAYPAL_EMAIL = 'gabriel.soares@aluno.faculdadeimpacta.com.br'
 
 
 NEWSLETTER_CONFIRM_EMAIL = True
